@@ -1,0 +1,99 @@
+<HTML><HEAD><TITLE>lab 2</TITLE></HEAD>
+<CENTER>
+<H2>lab 2 - shift and affine ciphers (jan 31)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+
+
+<P>
+<B>task 1:</b> 
+write a function <code>shift(s,k)</code> that takes in a string s and an
+integer k (the key) and shifts each alphabetic character in s by "adding
+k mod 26."  do not modify any punctuation/spaces.  return this ciphertext in 
+upper case.  test encryption and decryption (by shifting by -k) for
+the plain text message <code>"Caesar is #1! (chronologically, for the ciphers we consider)"</code> with the keys k=3 and k=15.
+
+<p>
+here are some python commands that may be helpful, though not all are
+necessary. recall <code>(a+b)%m</code> returns the remainder of (a+b) upon
+division by m.  you can access each element of a 
+of a string s the same way you would access elements of a list---either
+<code>for x in s</code> or individually by, e.g., <code>s[5]</code>.
+given a character (string of length 1) x, you can obtain the numerical ASCII
+representation (e.g., 65 for A, 66 for B, etc) with the command 
+<code>ord(x)</code>.  conversely, you can go from the ASCII representation y 
+back to the character with <code>ord(y)</code>.  you can also test if a 
+character x (or a whole string) is alphabetic by <code>x.isalpha()</code>.
+lastly, you can cover an entire string
+s to uppercase by <code>s.upper()</code>.
+
+<p>
+<b>task 2:</b> 
+write a function <code>all_shifts(s)</code> that takes in a ciphertext s
+and prints out all possible shifts mod 26 in lowercase, along with the 
+amount of the shift (i.e., the key).  (you can convert a string s to lowercase
+by <code>s.lower()</code>.)  use this to decode the message
+XPPEL EXTOY TRSE.
+
+<p>
+<b>task 3:</b> write a function <code>affine(s,a,b)</code>
+that takes in a string s and applies the affine shift x -> ax+b mod 26
+to each alphabetic character x in s.  return the shifted text in upper case.
+
+<p>
+<b>task 4:</b> write a function <code>invert(a,n)</code>
+that takes in an integer a and a positive integer n, and returns False if
+a is not invertible mod n.  otherwise, this should return an integer b between
+1 and n such that b is an inverse of a mod n.  do <b>not</b> use 
+any results on which elements are invertible--just use the definition.
+then use your function to determine which numbers between 1 and 25 are 
+invertible mod 26.
+
+<p>
+<b>task 5:</b> write a function <code>affine_dkey(a,b)</code>
+that takes in an affine shift encryption key (a,b) and 
+returns the coefficients [c,d] of the inverse transformation x -> cx+d mod 26
+if the key (a,b) is invertible.  if is not invertible, exit with an error 
+message saying this.  
+(the old way to exit with an error is to do something like print out an error 
+message and <code>return -1</code>; a cleaner, more modern way in python is to
+<a href="https://docs.python.org/3/tutorial/errors.html">raise an exception</a>,
+e.g. <code>raise ValueError("transformation is not invertible")</code>.
+i recommend the latter, but do not require it.)   
+using this and task 3, try applying affine cipher encryption and 
+decryption on the message <code>"This is affine cipher.  But is it a fine cipher?"</code>
+with the encryption keys (a,b) = (1,3), (a,b) = (7,2) and (a,b) = (13,25).
+
+<p>
+<b>task 6:</b> write a function <code>all_affine(s)</code>
+that prints out all possible invertible affine transformations x -> ax+b 
+mod 26 in lower case, along with the coefficients a and b.  use this to
+decode the message RMIKZ MNHMO FMGET QKZYH.
+
+
+
+<P>
+<B>lab 2 homework (due feb 7):</b>  
+complete the above tasks.
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

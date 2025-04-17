@@ -1,0 +1,272 @@
+############################################
+##
+## Applied Regression Analysis
+## Some examples in R
+## Kimball Martin
+## 10/26/2012
+##
+############################################
+
+
+############################################
+# Data for ANOVA Examples 2.9 and 2.11 from text
+############################################
+
+A <- c(14.5,12,9,6.5)
+B <- c(13.5,10,9,8.5)
+C <- c(11.5,11,14,10)
+D <- c(13,13,13.5,7.5)
+E <- c(15,12,8,7)
+F <- c(12.5,13.5,14,8)
+
+############################################
+# Note: there are many ways to input the data into the format needed
+# for the ANOVA commands in R, these examples just give one way
+############################################
+
+############################################
+# One way ANOVA
+############################################
+
+yields=data.frame(A,B,C,D,E,F)
+yield=stack(yields)
+anova(lm(values~ind,data=yield))
+
+## alternatively, can use the oneway.test command
+oneway.test(values~ind, data=yield, var.equal=T)
+
+## or use the aov command to get the same results
+model <- aov(lm(values~ind,data=yield))
+summary(model)
+
+############################################
+# Two way ANOVA
+############################################
+
+block <- factor(as.vector(row(yields)))
+treatment <- factor(as.vector(col(yields)))
+response <- c(yields$A,yields$B,yields$C,yields$D,yields$E,yields$F)
+
+## the above is a fancy way of getting the data from the above format
+## into what is needed for two-way ANOVA
+## Alternatively, you could enter the data manually as in the example below
+## You should use the factor command when the factors take on a discrete
+## set of values
+
+anova(lm(response ~ block + treatment))
+
+### again, can also use aov command
+
+############################################
+# Two way with interactions
+############################################
+
+
+############################################
+# Data for ANOVA Example 2.12 from text
+############################################
+
+growth <- c(6.6,7.2,8.3,8.7,6.9,8.3,8.1,8.5,7.9,9.2,9.1,9.0)
+diet <- c("A","A","A","A","B","B","B","B","C","C","C","C")
+coat <- c("light","light","dark","dark","light","light","dark","dark","light","light","dark","dark")
+diet <- factor(diet)
+coat <- factor(coat)
+
+### use * instead of + for two-way with interactions
+
+anova(lm(growth~diet*coat))
+
+### again, can also use aov command
+
+
+############################################
+# ANCOVA Example
+############################################
+
+head(ToothGrowth)
+tail(ToothGrowth)
+mod <- aov(len~dose*supp, data=ToothGrowth)
+summary(mod)
+
+dat1 <- subset(ToothGrowth, supp=="VC")
+dat2 <- subset(ToothGrowth, supp=="OJ")
+mod1 <- lm(len~dose, data=dat1)
+mod2 <- lm(len~dose, data=dat2)
+
+plot(len~dose,data=ToothGrowth,type='n')
+points(dat1$dose, dat1$len, pch=20)
+points(dat2$dose, dat2$len, pch=1)
+abline(mod1, lty=1)
+abline(mod2, lty=2)
+
+############################################
+# Polynomial Regression Model
+############################################
+
+cw1 <- subset(ChickWeight,Diet=='1')
+tail(cw1)
+plot(weight ~ Time, data = cw1)
+
+wts <- cw1$weight
+times <- cw1$Time
+times2 <- times*times
+times3 <- times*times2
+linmod <- lm(wts ~ times)
+summary(linmod)
+quadmod <- lm(wts ~ times + times2)
+summary(quadmod)
+cubmod <- lm(wts ~ times+times2+times3)
+summary(cubmod)
+aic1 = AIC(linmod)
+aic2 = AIC(quadmod)
+aic3 = AIC(cubmod)
+exp((aic2-aic1)/2)
+exp((aic2-aic3)/2)
+exp((aic3-aic1)/2)
+
+# compare with log model
+cw1a <- subset(cw1, Time > 0)
+logtimes = cw1a$weight
+logwts = cw1a$weight
+logtimes = cw1a$Time
+logmod <- lm(logwts ~ logtimes)
+summary(logmod)
+
+############################################
+# Example of Leverage Point
+############################################
+
+x <- c(1,2,3,4,5,10)
+y1 <- c(1.1,2,2.8,3.9,5,15)
+y2 <- c(1.1,2,7.8,3.9,5,10)
+mod1 <- lm(y1 ~ x)
+mod2 <- lm(y2 ~ x)
+summary(mod1, main="Model 1")
+summary(mod2, main="Model 2")
+
+par(mfrow=c(2,2))
+plot(x,y1)
+abline(mod1)
+plot(x,y2)
+abline(mod2)
+plot(residuals(mod1))
+plot(residuals(mod2))
+
+plot(mod1,main = "Model 1")
+plot(mod2,main = "Model 2")
+
+############################################
+# Polynomial Regression and Box-Cox 1
+############################################
+
+speed = cars$speed
+speed2 = speed*speed
+dist = cars$dist
+linmod <- lm(dist~speed)
+sqmod <- lm(dist~speed2)
+quadmod <- lm(dist~speed2+speed)
+logmod <- lm(log(dist)~log(speed))
+
+par(mfrow=c(2,2))
+plot(speed,dist)
+plot(speed2,dist)
+plot(log(speed),log(dist))
+require(MASS)
+boxcox(dist~speed)
+
+plot(linmod)
+plot(sqmod)
+
+AIC(linmod)
+AIC(quadmod)
+AIC(sqmod)
+AIC(logmod)
+
+############################################
+# Polynomial Regression and Box-Cox 2
+############################################
+
+pairs(trees)
+linmod <- lm(volume~girth+height, data=trees)
+logmod <- lm(log(Volume)~log(Girth)+log(Height), data=trees)
+par(mfrow=c(2,2))
+plot(linmod)
+
+boxcox(Volume~Girth,data=trees)
+boxcox(Volume~Height,data=trees)
+boxcox(Volume~Girth+Height,data=trees)
+boxcox(Volume~Girth*Height,data=trees)
+
+g1 <- trees$Girth
+h1 <- trees$Height
+g3 = g1*g1*g1
+h3 = h1*h1*h1
+g2h = g1*g1*h1
+cubmod <- lm(trees$Volume ~ g3+h3)
+conmod <- lm(trees$Volume ~ g2h)
+mixmod <- lm(trees$Volume ~ g3+h1)
+intermod <- lm(trees$Volume ~ g1*h1)
+
+AIC(linmod)
+AIC(cubmod)
+AIC(mixmod)
+AIC(intermod)
+AIC(conmod)
+
+############################################
+# Multicollinearity Data (from Ex. 7.6 of text)
+############################################
+
+y <- c(78.5,74.3,104.3,87.6,95.9,109.2,102.7,72.5,83.1,115.9,83.8,113.3,109.9)
+x1 <- c(7,1,11,11,7,11,3,1,2,21,1,11,10)
+x2 <- c(26,29,56,31,52,55,71,31,54,47,40,66,68)
+x3 <- c(6,15,8,8,6,9,17,22,18,4,23,9,8)
+x4 <- c(60,52,20,47,33,22,6,44,22,26,34,12,12)
+
+############################################
+# A GLM example (exponential)
+############################################
+
+isl <- islands[order(islands,decreasing=TRUE)]
+plot(isl)
+
+rank = 1:length(isl)
+mod <- glm(isl ~ rank, family=Gamma)
+summary(mod)
+
+par(mfrow=c(2,2))
+plot(mod)
+
+############################################
+# A GLM example (Poisson)
+############################################
+
+utils::data(Insurance, package = "MASS")
+head(Insurance)
+mod <- glm(Claims ~ Age, family=poisson, data=Insurance)
+summary(mod)
+plot(mod)
+
+############################################
+# Another GLM example (Poisson)
+############################################
+
+utils::data(ships, package = "MASS")
+head(ships)
+mod <- glm(incidents ~ type+year+period+service, family=poisson, data=ships)
+summary(mod)
+par(mfrow=c(2,2))
+plot(mod)
+
+# compare with linear model
+
+linmod <- lm(incidents ~ type+year+period+service, data=ships)
+summary(linmod)
+par(mfrow=c(2,2))
+plot(linmod)
+
+# see distribution of incidents
+incid = sort(ships$incidents,decreasing=TRUE)
+par(mfrow=c(1,1))
+plot(incid)
+

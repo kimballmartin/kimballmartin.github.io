@@ -1,0 +1,177 @@
+<HTML><HEAD><TITLE>diff eq (honors) - lab 4</TITLE></HEAD>
+<CENTER><H2>diff eq (honors) - lab 4<br>euler's method revisited</H2></CENTER>
+<P>
+
+<BR><BR>
+<CENTER>
+<TABLE WIDTH = 90% CELLPADDING=8>
+<TR><td>
+<h3>demonstration (follow along)</h3>
+<pre>
+For[t = List[0]; y = List[1]; 
+  i = 1, i <= 10, i++, 
+  t = Append[t, t[[i]] + 1];
+  y = Append[y, y[[i]] + (t[[i]] - y[[i]])]];
+t
+y
+coords = Table[{t[[i]], y[[i]]}, {i, Length[y]}]
+p1 = ListLinePlot[coords]
+</pre>
+
+This is Euler's method with step size 1 for approximating y' = t-y
+starting from the initial condition y(0) = 1, and going out to t=10.
+We are constructing lists of values of t_i and y_i so that
+t_i = t_{i-1} + Delta(t), y_i = y_{i-1} + Delta(y),
+with Delta(t) = 1 and Delta(y) = y' * Delta(t).
+
+<p>
+Notes on syntax:
+<ul>
+<li> the <a href="http://reference.wolfram.com/language/ref/List.html">List</a> command makes a list with some initial elements. 
+
+<li> the <a href="http://reference.wolfram.com/language/ref/Append.html">Append</a> command takes in a list and an object, and adds the object to the end
+of the list
+
+<li> the i-th element of a list <code>y</code> is accessed by <code>y[[i]]</code>, where i=1, not i=0, corresponds to the first element of the list
+
+<li> the <a href="http://reference.wolfram.com/language/ref/For.html">For</a> command executes a loop.  statements before the i=1 command are initial 
+statements before the loop, and statements after the i++ (which means 
+increment i by 1 each time) are statements done repeatedly.  be careful about 
+the differentiation between commas and semicolons here, which is not 
+quite intuitive.  (in our formatting, all the commas go on the second line,
+semicolons everywhere else.)
+
+<li> when h is small, the <code>coords</code> list will be long
+and you may want to hide the output.  you can do this by putting a semicolon
+at the end of that line.
+
+<li> in the above case, we just have <code>t[[i]] = i-1</code> and
+below we will have <code>t[[i]] = h*(i-1)</code>.  however, i constructed
+a table of t_i's in the above way make it more clear to generalize this to
+systems.  to show you want i mean, here is a simplification of the above code 
+using that  <code>t[[i]] = i-1</code>: 
+<pre>
+For[y = List[1]; 
+  i = 1, i <= 10, i++, 
+  y = Append[y, y[[i]] + ((i-1) - y[[i]])]];
+t
+y
+coords = Table[{(i-1), y[[i]]}, {i, Length[y]}]
+p1 = ListLinePlot[coords]
+</pre>
+you can copy and paste to check it gives you the same output.
+
+<li> this code is not particularly efficient.  there are two things
+that are inefficient here: using loops in mathematica and the repeated use of 
+the <code>Append</code> command.  the latter issue is that mathematica makes a 
+new list (array) each time this is called.  this is okay for our purposes,
+and  i did not try to make it more efficient so as not to make the code
+unnecessarily confusing (also, i am no mathematica expert), but if you want, 
+you can try to make it more efficient (say for your project).
+</ul>
+
+<p>
+Now we will see how to do this for a general step size h=Delta(t).
+
+<pre>
+For[t = List[0]; y = List[1]; h = 0.5; 
+  i = 1, i*h <= 10, i++, 
+  t = Append[t, t[[i]] + h]; 
+  y = Append[y, y[[i]] + (t[[i]] - y[[i]])*h]];
+coords = Table[{t[[i]], y[[i]]}, {i, Length[y]}]
+p2 = ListLinePlot[coords]
+Show[p1, p2]
+Show[p1, p2, PlotRange -> {{0, 3}, {0, 3}}]
+</pre>
+
+<h3>do on your own</h3>
+
+<ul>
+<li> Continuing with the above example, try various step sizes h.  About
+how small do you need to take h to be confident in your approximation
+for y for 0 <= t <= 10.
+</ul>
+
+
+<h3>for homework</h3>
+
+<ol>
+
+<li> 
+The Euler method works similarly for systems of first-order equations,
+and thus indirectly for higher-equations.
+Recall the system: x' = -sin y, y' = x
+from <a href="lab3.html">lab 3</a> for the pendulum y'' = -sin y.
+Use this to plot approximations to y(t) with varying step sizes to get
+good approximations to solutions for 0 <= t<= 10 for the following  ICs
+
+<br>(a) y(0)=1, y'(0) = 0.
+
+<br>
+y(0)=0, y'(0) = 1.
+
+<br>
+y(0)= 4, y'(0) = 0.
+
+<br>
+y(0)= 1, y'(0) = 3.
+
+<br>
+(compare the solutions with the phase portrait to see differences in types
+of solutions)
+
+<li>
+Revisit the predator-prey example from  <a href="lab3.html">lab 3</a>. 
+That is, x' = 2x - 0.1xy, y' = 0.005xy - 0.3y, where x(t) is the rabbit
+population and y(t) is the fox population.  Plot approximations to both
+x(t) and y(t) for 0 <= t <= 50 for the following sets of initial conditions:
+
+<br>
+(a) 100 rabbits, 20 foxes
+
+<br>
+(b) 50 rabbits, 20 foxes
+
+<br>
+(c) 10 rabbits, 10 foxes
+
+<br>
+(d) 100 rabbits, 50 foxes
+
+<br>
+(e) Among scenarios (a)--(d), are there ones where
+the model doesn't make sense in terms of
+populations?  Which scenarios seem to be robust, in the sense that small 
+deviations from the model due to random events will be "corrected" over time?  
+(E.g., if a population gets
+down to 1, or is all males, it's probably not going to bounce back up.)
+Explain.
+</ol> 
+
+<p>
+<h3>help</h3>
+see the <a href="lab1.html">lab 1 </a> and 
+<a href="lab2.html">lab 2</a> pages for reminders on how to do some things
+in mathematica and pointers to documentation.
+i also found <a href="http://mathprogramming-intro.org/">this book by
+shifrin</a> helpful for getting deeper into mathematica.
+
+</td>
+</TR>
+
+</TABLE>
+</CENTER>
+
+<BR><BR>
+<a href="labs.html">labs page</A>
+<br>
+<a href=".">course home</A>
+</HTML>
+
+<!--
+<TR> 
+<td> </td>
+<td> </td>
+<td> </td>
+</TR>
+-->

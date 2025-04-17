@@ -1,0 +1,118 @@
+<HTML><HEAD><TITLE>lab 6</TITLE></HEAD>
+<CENTER>
+<H2>lab 6 - rsa</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<a href="rsalab.py">my helper file</a> for this lab.  
+
+<p>
+it includes some
+data for this lab as well as functions to convert strings to integers and back,
+and determine the "block length" of strings you can use when working with
+a modulus n.  
+
+
+<P>
+<B>task 1:</b> 
+write a function <code>modexp(a,b,n)</code>, which a positive integer n and
+non-negative integers a, b, computes fast modular exponentiation of a^b mod n
+via repeated squaring.  (by a^b i mean exponentation, not bitwise as this
+would mean in python.)
+you may use the <code>binrep</code> function you
+wrote for lab 5.  test your function on a few small cases, then test
+<code>modexp(3,4567890,10000)</code> and compare the time taken with
+the straightforward python code <code>3**4567890 % 10000</code>.
+(recall the use of <code>timeit</code> from <a href="lab5.html">lab 5</a>
+for timing code.)
+
+<P>
+<B>task 2:</b>
+using your <code>modexp</code> function, verify
+my rsa digital signature <code>sig2</code> (no hashing) of my message 
+<code>m2</code> with my public key from the my helper file.
+question: can you figure out why i might have chosen e in my public key to
+bet 65537 = 2^16 + 1?  is there any security issue with different people
+using this value for e?
+
+<p>
+<b>task 3:</b>
+write a function <code>is_prime(p)</code> that, given a positive integer p,
+returns <code>True</code> if p is prime and <code>False</code> otherwise.
+you should check divisibility by numbers up to the square root of p.
+(you do not need to check divisibility by all numbers up to the square root
+of p, and i encourage you to implement simple speed-ups using this idea.)
+you can compute the floating point square root of p in python by first calling
+<code>from math import sqrt</code>, and then <code>sqrt(p)</code>.
+test your function on all integers p between 1 and 50 by printing all
+numbers in this range for which your function returns <code>True</code>.
+
+<p>
+<b>task 4:</b>
+write a function <code>is_pseudoprime(p)</code> that runs the
+following probabilistic primality test.  first, check that p
+is not divisible by any number 1 < d < min(p,100).  (for efficiency, if you
+wish, you can precompute a table of primes < 100, and test for divisibility by
+these).  then, if p > 100, check that p satisfies the expectation from 
+fermat's little theorem with a=2, i.e., that 2^(p-1) = 1 mod p.  
+(this means that p is a <i>fermat pseudoprime</i> for the base 2)
+return <code>True</code> if p passes both of these tests and <code>False</code>
+otherwise.  determine how many numbers p up to 2^20 such that p passes your 
+pseudoprime test but is not actually prime.  how does this compare with
+the number of pseudoprimes (or if you prefer primes) up to 2^20?
+also, compare the time taken to run <code>is_prime(p)</code>
+for all p to 2^20 versus <code>is_pseudoprime(p)</code>.
+
+<p>
+<b>task 5:</b>
+write a function <code>pseudoprime(k)</code>
+that finds a random pseudoprime of at least k digits.
+you can generate a random integer between a and b (inclusive) with the code
+function <code>randint(a,b)</code> after calling <code>from random import randint</code>.  suggestion: generate a random number, test it for being a 
+pseudoprime, and if it fails, increment by 1 (or maybe 2) and try again.
+test your function several times for k=2.
+
+<p>
+<b>task 6:</b>
+write a function <code>rsakeygen(p,q)</code> which returns a triple
+(n,e,d) consisting of n=pq and a random pair (d,e) of integers such that 
+de = 1 mod phi(n).  you should use your <code>modinv</code> function from
+lab 5 to do this efficiently.  
+test your function a few times on pairs of small primes (p,q).
+
+<p>
+<b>task 7:</b>
+generate random pseudoprimes p, q which are each about 10-15 digits long.
+(note: it's better not to pick p, q too close as there are factoring methods
+that can exploit this, so it's better choose them to have not exactly the
+same number of digits.)
+use the previous function to make a public rsa key (n,e) and private rsa key d.
+encrypt the message <code>m = "Psst! I know a secret about coronavirus."</code> with the public
+key and then decrypt it with the private key.  note that you will
+need to break your message into blocks, which you can either do "by hand"
+or you can automate with auxiliary functions.  
+
+
+
+<P>
+<B>lab 6 homework (hw 10)</b>: complete the above tasks (due mon apr 6)
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

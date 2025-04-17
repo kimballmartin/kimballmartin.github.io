@@ -1,0 +1,144 @@
+<HTML><HEAD><TITLE>lab 3</TITLE></HEAD>
+<CENTER>
+<H2>lab 3 - vigenere and frequency analysis (feb 14)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<P>so that you do not have to code everything yourself, i have written some
+helper code and auxiliary data in this file <a href="codes.py">codes.py</a>.  
+you can either cut and paste the necessary code into your program window/file, 
+or load
+the whole module with the command <code>import codes</code> (after saving the
+file in your working directory).  if you do import my code, functions can be
+called by <code>codes.functionname(inputs)</code>.  for example, if you want
+to use the <code>slice</code> function, the usage would be 
+<code>codes.slice('abcdefg', 3)</code>.  alternatively, if you type 
+<code>from codes import slice</code> you can call the function without the
+<code>codes.</code> prefix.
+
+here is a summary of the functions included in my code--not all of them
+are necessarily help for this lab:
+<ul>
+<li>shift(s,k) - the caesar shift function as in <a href="lab2.html">lab 2</a>
+
+<li>onlyalpha(s) - strips nonalphabetic characters from a string s
+
+<li>slice(s,n) - slices a string s into n substrings---useful for vigenere
+and columnar transposition ciphers
+
+<li>freq_count(s) - performs a frequency count on the letters in s
+
+<li>freq_dist(s) - computes the a frequency distribution of the letters in s
+
+<li>digrams(s) - count repeated digrams in a string s
+
+<li>trigrams(s) - count repeated trigrams in a string s
+
+<li>subst(C,sub) - makes substitutions in a ciphertext to help you break
+substitution ciphers (may be useful for homework 5)
+</ul>
+
+here are also some pre-defined objects for you:
+<ul>
+<li>letter - letter[i] is the i-th lower-case letter (i between 0 and 25)
+<li>Letter - letter[i] is the i-th upper-case letter (i between 0 and 25)
+<li>EF - a list of relative frequencies of the English letters
+<li>C1 - ciphertext encoded with caesar shift
+<li>C2 - ciphertext encoded with vigener cipher
+<li>C32 - substitution ciphertext from homework 5
+</ul>
+
+<P>
+<B>task 1:</b> 
+write a function <code>splice(l)</code>, where <code>l</code> is a list of
+strings.  this should be the inverse function of slice.  namely, if you
+write each string vertically as a column, <code>splice</code> should return 
+the string you get from reading through the rows.  test this to make sure this 
+gives you the inverse of the slice function, e.g., 
+<code>splice(slice('abcdefgh', 3))</code> should result in 
+<code>'abcdefgh'</code>.
+
+
+<P>
+<B>task 2:</b> 
+write a function <code>vigenere(s,key, decode=False)</code>
+that performs a vigenere encryption (or decryption if decode is set to True)
+on the string <code>s</code> with key <code>key</code>.  (here key should
+also be a string, e.g., 'vigenere'.)
+test out encoding and decoding with a couple of different messages and keys.
+
+<P>
+<B>task 3:</b>
+write a function <code>MSE(F1,F2)</code> which given a pair of frequency
+distributions <code>F1</code> and <code>F2</code>, returns the mean square
+error between them, i.e., the sum of the squares of the differences F2[i]-F1[i]
+over all list positions.  you may assume F1 and F2 are lists of numbers of
+the same length, but do not assume their length is 26.
+
+<P>
+<B>task 4:</b>
+write a function <code>test_shifts(s)</code>
+that takes in a string s, computes the frequency distribution,
+and calculates the mean square error of all cyclic shifts of the frequency
+distribution with the standard English frequency distribution (stored in the
+list EF).  this function should return a list of tuples (k,err), where
+k is the shift amount (between 0 and 25) and err is the corresponding MSE
+for that shift.  return the list sorted by MSE in ascending order (smaller 
+MSE's first).  you can make a sorted list of tuples, sorted by the i-th
+tuple entry, in python with the function <code>sorted(yourlist, key=lambda 
+item: item[i])</code> where <code>yourlist</code> is the name of your list.
+this returns a new sorted list.  here <code>item</code> is just a dummy name
+representing an item in the list.  see also <a href="https://docs.python.org/3/howto/sorting.html">the python 3 sorting how-to</a> for more information.
+test this function on the <code>loremipsum</code> string.
+
+<P>
+<B>task 5:</b>
+write a function <code>breakcaesar(s)</code>, which outputs (prints or 
+returns, your choice) all possible shift keys and associated Caesar shifts
+of the string s, which are ordered from mostly likely English plaintext to
+least likely by making use of your <code>test_shifts</code> function.
+test this function on the included ciphtertext C1, which was encrypted with
+a Caesar cipher.
+
+<P>
+<B>task 6:</b>
+write a function <code>kasiski(s,n)</code>, which implements the kasiski 
+test as follows.  for each substring t of s of length n, count how many times
+it appears in s.  make and return a list <code>repeated</code> of tuples 
+<code>(t,diff)</code> where diff is the difference in relative positions of
+2 distinct occurrences of t.  test your function on the string
+<code>s='abcdeabcdabc'</code> for n=3,4,5.
+in case it helps, you can access the substring of s of length n starting
+at the i-th position with <code>s[i:i+n]</code>, and you can test for
+equality of two strings with <code>s1 == s2</code>.
+
+
+<P>
+<B>task 7:</b>
+using a combination of the above, determine the key length, key and plaintext 
+for the included ciphertext C2, which was encoded using a vigenere cipher.  
+if you like, you can call <code>from math import gcd</code> to use 
+python's gcd function.
+
+<P>
+<B>lab 3 homework</b>: complete the above tasks (due fri feb 21)
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

@@ -1,0 +1,81 @@
+<HTML><HEAD><TITLE>Project 1</TITLE></HEAD>
+<CENTER><H2>Project Notting Hill</H2>
+Deadline: Mar 27, 2009</CENTER>
+<P>
+
+<H3>Debriefing</H3>
+
+Your cohort is broken up into three teams:
+
+<P>
+<B>Team Alpha</B><BR>
+Scott Baker<BR>
+Jennifer Holt (Team Captain)<BR>
+Monica McDalton<BR>
+Rebekah Smith<BR>
+
+<P>
+<B>Team Bravo</B><BR>
+James Broda (Team Captain)<BR>
+David Lamoureux<BR>
+Billy Smith<BR>
+Jody Shackford<BR>
+
+<P>
+<B>Team Omega</B><BR>
+Riley Abel<BR>
+Shawn Bass<BR>
+Ben Harris<BR>
+Kjell Sawyer<BR>
+Joe Waterbury (Team Captain)
+
+<H3>Task</H3>
+<P>
+Your task is to plan a strike on enemy territory.  For this, it is crucial
+that you obtain aerial images, however a flight into this territory is 
+extremely risky.  You can expect that a plane sent over will not return,
+and any transmissions it sends before crashing will be thoroughly garbled
+(transmitter jammed and/or damaged).
+
+<P>
+Design (or choose) and program the best code you can 
+assuming you have a binary symmetric channel with error probability P=0.3.
+For ease of programming, we will work with bitmap images.  
+<a href="map.bmp">Here</a> is the image you are to use your code on,
+and <a href="ecc.py">here</a> is code I have written that you may use.
+Your code may or may not be linear, but the information rate should be 
+no less than 1/6.  
+
+<P>
+First, use the ecc.corruptbmp() function from my code to see what your
+image looks like without an error-correcting code.  Then encode the image,
+apply the noise with P=0.3 using my ecc.addbscnoise() function (you
+may skip the header if you wish--either before the encoding or while adding
+noise--as I do in the corruptbmp function).  Then decode the image and
+compare to the original, and the garbled image without any error-correction.
+
+<H4>Analysis</H4>
+
+Provide a detailed explanation of why you chose your code and 
+do a theoretical analysis of the expectation probability of a bit error
+in decoding (along this P=0.3 channel), and
+compare that with what seems theoretically best possible in this situation
+(information rate at least 1/6).
+Write up your analysis including printouts of the images for all codes
+you may have tried.  You are to turn in a typed printed report and email
+your code to me.
+
+<H4>Bonuses</H4>
+
+The team to finish first will earn a bonus of 10 points. <BR>
+The team to finish second will earn a bonus of 5 points. <P>
+
+The team with the best code will earn a bonus of 10 points. <BR>
+The team with the second best code will earn a bonus of 5 points.<BR>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

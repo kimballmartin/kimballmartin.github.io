@@ -1,0 +1,110 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 8 - Elliptic Curves (Apr 11 and 18)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+<P>
+
+<P>
+<B>Task 1:</b> 
+Write a function <code>ECtest(A,B,p)</code>
+that tests if y^2 = x^3 + Ax + B is an elliptic curve
+mod p.  That is, return True if the discriminant is nonzero
+mod p, and False otherwise.
+
+<P>
+<B>Task 2:</b>
+Write a function <code>ECpoints(A,B,p)</code>
+that returns a list of all points <code>(x,y)</code>
+on the curve y^2 = x^3 + Ax + B mod p.  Include the point
+at infinity O represented as the pair <code>(0,-1)</code>.
+
+<P>
+<B>Task 3:</b> 
+Write a function <code>ECorders(p)</code>
+that runs through all (Weierstrass) elliptic curves modulo
+a prime p and returns a list consisting of their orders.  Here
+the order of an elliptic curve means the number of points.
+
+<P>
+<B>Task 4:</b> 
+Write a function <code>ECaverageorder(p)</code>
+that returns the average order of a (Weierstrass) elliptic 
+curve mod p.
+
+<p>
+<B>Task 5:</b>
+For primes p between 5 and 50, count the number of elliptic curves
+mod p, determine their average order, and upper and lower bounds
+on their order (for a given p).  Can you predict the behavior
+of these quantities for arbitrary p > 3.
+
+<p>
+<B>Task 6:</b>
+Write a function <code>ECadd(P,Q,A,B,p)</code> which returns the sum
+of two points P=(x1,y1) and Q=(x2,y2) on the 
+elliptic curve y^2 = x^3+Ax+B mod p.  You can use <a href="inv.py">my
+code for inversion mod p</a>.  
+If your algorithm fails because
+something is not invertible mod p, return that number.
+
+<p>
+Check your code with A=B=4 and p=59 to make sure you get the following sums:
+<ul>
+<li> (0,2)+(4,5) = (15,31)
+
+<li> (4,5)+(4,5) = (45,6)
+
+<li> (1,3)+(1,56) = O = (0, -1)
+</ul>
+
+<p>
+Also check with with A=B=4, p=55 and P=(1,3), Q=(45,3).  This should fail
+because 11 is not invertible mod 55 and return the number 44.  
+
+<P>
+Note: you can test if the output of this function is a point rather than
+a number with the code <code>if type(R) == type((0,0))</code> where
+<code>R = ECadd(P,Q,A,B,p)</code>.
+
+<p>
+<B>Task 7:</b>
+Write a function <code>ECPorder(P,A,B,p)</code> to find the order of the
+point P=(x,y) on the elliptic curve y^2 = x^3+Ax+B mod p.
+If your algorithm fails because
+something is not invertible mod p, return that number.
+
+<p>
+<B>Task 8:</b>
+Consider the elliptic curve E given by y^2=x^3+4x+4 with the point P=(1,3).
+Compute the order of P on E mod p=47.  Compute the order of P on E mod q=59.
+Try to compute the order of P on E mod n=pq=2773, explain <i>why</i>
+this fails, and how this failure
+leads to the factorization n=pq.
+
+<p>
+<B>Task 9:</b>
+Using the elliptic curve E and the point P from the previous task,
+factor n=42857766101 by trying to compute the order of P mod n.
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

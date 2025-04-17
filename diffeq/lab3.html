@@ -1,0 +1,163 @@
+<HTML><HEAD><TITLE>diff eq (honors) - lab 3</TITLE></HEAD>
+<CENTER><H2>diff eq (honors) - lab 3<br>phase portraits</H2></CENTER>
+<P>
+
+<BR><BR>
+<CENTER>
+<TABLE WIDTH = 90% CELLPADDING=8>
+<TR><td>
+
+<h4><font color=red>NOTE: revised equations in problem 5 on th 4/21
+</font></h4>
+
+<h3>demonstration (follow along)</h3>
+<ol>
+<li>(a) plot phase portrait and a few
+trajectories for system x' = 3x, y' = y
+
+<pre>
+phaseport = StreamPlot[{3x, y}, {x, -5, 5}, {y, -5, 5}]
+traj1 = ParametricPlot[{Exp[3 t], Exp[t]}, {t, -10, 5}, PlotRange -> 5]
+traj2 = ParametricPlot[{5 Exp[3 t], - 2 Exp[t]}, {t, -10, 5}, PlotRange -> 5]
+traj3 = ParametricPlot[{- Exp[3 t], - 4 Exp[t]}, {t, -10, 5}, PlotRange -> 5]
+Show[phaseport, traj1, traj2, traj3]
+</pre>
+
+(b) describe the eventual behavior of the system
+
+<br>
+(c) sketch-guess by hand possible shapes of solutions for x, y using only phase
+portrait for the following sets of initial conditions: x(0)=1 and y(0) = 0;
+x(0) = 0 and y(0) = 1; x(0) = 1 and y(0) = 4.
+
+<br>
+(d) compare guesses with actual solutions.
+<p>
+
+<li> (a) plot phase portrait for pendulum y'' = -sin y
+given as system: x' = -sin y, y' = x
+
+<br>
+(b) describe the eventual behavior of the system
+
+</ol>
+
+<h3>for homework</h3>
+these problems are a mix of mathematica exercises and problems to do by
+hand.  for the mathematica part, include printouts of your mathematica
+worksheets, with code and graphs clearly labeled with the associated
+problem number.
+the due date will be listed on the <a href="homework.html">homework page</a>.  
+though you may get help
+from me or your classmates, all of your code should be typed in (not copied) by
+yourself.  
+
+<ol>
+<li> (example from lecture).  consider the system x'=2x+y, y' = x+2y.
+
+<br>
+(a) plot the phase portrait.
+
+<br>
+(b) describe the eventual behavior of the system.
+
+<br>
+(c) use the phase portrait to sketch-guess by hand shapes of the solutions
+x, y for the following sets of initial conditions: x(0) = 1 and y(0) = 0;
+x(0) = -1 and y(0) = 0; x(0) = y(0) = 1.
+
+<br>
+(d) compare your sketch-guesses in (c) with the actual graphs
+using the solutions we found in lecture:
+x = c_1 e^(3t) + c_2 e^t, y = c_1 e^(3t) - c_2 e^t
+
+<li>  consider the system x' = x+y, y' = 4x+y.
+
+<br>
+(a) plot the phase portrait.
+
+<br>
+(b) describe the eventual behavior of the system.
+
+<br>
+(c) find the general solution to the system using the method from lecture.
+
+<br>
+(d) graph the solutions x(t) and y(t) for the following sets of initial
+conditions: x(0) = 1 and y(0) = 0; x(0) = 1 and y(0) = 2; x(0) = 0 and
+y(0) = -1.
+
+<li>  consider the system x' = x-2y, y' = y.
+
+<br>
+(a) plot the phase portrait.
+
+<br>
+(b) describe the eventual behavior of the system.
+
+<br>
+(c) find the general solution to the system by reducing to a first-order
+single ODE for x.
+
+<br>
+(d) graph the solutions x(t) and y(t) for the following sets of initial
+conditions: x(0) = 1 and y(0) = 0; x(0) = 2 and y(0) = 1; x(0) = 0 and
+y(0) = 1.
+
+<li> (mixing with two tanks example from lecture)
+ consider the system x' = -0.4x + 0.1y + 3, y' = 0.4x - 0.4y.
+
+<br>
+(a) plot the phase portrait.
+
+<br>
+(b) describe the eventual behaviour of the system.  
+(you may assume x, y >=0, and may need to vary the range of your portrait.)  
+are there equilibrium solutions?  if so, find them.
+
+
+<li> (predator-prey example from lecture, with modified coefficients)
+consider the system
+x' = 2x - 0.1xy, y' = 0.005xy - 0.3y.
+here x(t) represents
+the rabbit population and y(t) represents the fox population.
+
+<br>
+(a) plot the phase portrait.
+
+<br>
+(b) describe the eventual behaviour of the system.  
+(you may assume x, y >=0, and may need to vary the range of your portrait.)  
+are there equilibrium solutions?  if so, find them.
+
+<br>
+(c) interpret your answer for (b) to determine for what initial populations
+(at least roughly) the rabbit or fox populations will all die off.
+
+</ol> 
+
+<p>
+<h3>help</h3>
+see the <a href="lab1.html">lab 1 </a> and 
+<a href="lab2.html">lab 2</a> pages for reminders on how to do some things
+in mathematica and pointers to documentation.
+
+</td>
+</TR>
+
+</TABLE>
+</CENTER>
+
+<BR><BR>
+<a href="labs.html">labs page</A>
+<br>
+<a href=".">course home</A>
+</HTML>
+
+<!--
+<TR> 
+<td> </td>
+<td> </td>
+<td> </td>
+</TR>
+-->

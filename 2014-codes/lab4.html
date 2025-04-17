@@ -1,0 +1,132 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 4 - Classical Ciphers and Frequency Analysis (Feb 7 - Feb 14, 2014)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<P>So that you do not have to code everything yourself, I have written some
+helper code in this file <a href="codes.py">codes.py</a>.  You can
+either cut and paste the necessary code into your program window, or load
+the whole module with the command <code>import codes</code> (after saving the
+file in your working directory).  If you do import my code, functions can be
+called by <code>codes.functionname(inputs)</code>.  For example, if you want
+to use the <code>slice</code> function, the usage would be 
+<code>codes.slice('abcdefg', 3)</code>.  (Alternatively, if you type 
+<code>from codes import slice</code> you can call the function without the
+<code>codes.</code> prefix.
+
+Here is a summary of the functions you may want to use in this lab:
+<ul>
+<li>shift(s,k) - the shift function from <a href="lab3.html">Lab 3</a>
+
+<li>onlyalpha(s) - strips nonalphabetic characters from a string s
+
+<li>slice(s,n) - slices a string s into n substrings---useful for Vigenere
+or columnar transposition ciphers
+
+<li>freq_count(s) - performs a frequency count on the letters in s
+
+<li>freq_dist(s) - computes the a frequency distribution of the letters in s
+
+<li>aug_freq(freq) - given a frequency count list, augments it with the 
+associated letters.  can set optional parameter to True to sort by
+frequency
+
+<li>vig_keylength(s, N) - tests for key lengths of Vigenere ciphers, up to 
+length N
+
+<li>dot(v1,v2) - computes the dot product of 2 vectors v1 and v2
+
+<li>trysub(c, subs) - given ciphertext c, try making a set of substitutions
+subs.  helpful for breaking substitution ciphers
+
+<li>randsub(s) - performs a random substitution cipher on a string s
+
+<li>digrams(s) - count repeated digrams in a string s
+
+<li>trigrams(s) - count repeated trigrams in a string s
+</ul>
+
+<P>
+<B>Task 1:</b> 
+Write a function <code>weave(l)</code>, where <code>l</code> is a list of
+strings.  This should be the inverse function of slice.  Namely, if you
+write each string vertically as a column, weave should return the string
+you get from reading through the rows.  Test this to make sure this gives
+you the inverse of the slice function, e.g., 
+<code>weave(slice('abcdefgh', 3))</code> should result in 
+<code>'abcdefgh'</code>.
+
+
+<P>
+<B>Task 2:</b> 
+Write a function <code>vigenere(s,key, decode=False)</code>
+that performs a Vigenere encryption (or decryption if decode is set to True)
+on the string <code>s</code> with key <code>key</code>.  (Here key should
+also be a string, e.g., 'vigenere'.)
+Test out encoding and decoding.
+
+<P>
+<B>Task 3:</b>
+Write a function <code>test_shifts(s)</code>
+that takes in a string s, computes the frequency distribution,
+and calculates the dot products of all cyclic shifts of the frequency
+distribution with the standard English frequency distribution (stored in the
+variable EF).  Print out the amount of each possible shift, the corresponding
+letter, and the dot product.  The highest dot product is the most likely
+shift.  (Note: depending which way you shift, left or right, you might get
+the encryption shift key or decryption shift key.)
+
+<P>
+<B>Task 4:</b>
+Determine the key and plaintext for ciphertext C0a, which was encoded
+using a Vigenere cipher.  You can use the vig_keylength function and
+either direct frequency counts (aug_freq may be useful here)
+or the test_shifts function.  Personally I think the test_shifts function
+is a more accurate way to find the amount to shift by.
+
+<P>
+<B>Task 5:</b>
+Using the functions for frequency counts, digrams, trigrams and testsub 
+functions, decode the ciphertext C0b, which was encodes using a
+substitution cipher (with the randsub function).
+
+<P>
+<B>Lab 4 Homework</b> (due with <a href="homework.html">Homework 3</a>)
+<ol>
+<li>Turn in your code for the <code>vigenere</code> function.  Test
+encryption on the plaintext 'aaabbbzzzy' with the key 'abc'.
+Test decryption on the resulting ciphertext.
+
+<li>Turn in your code for the <code>test_shifts</code> function.  Test
+it on the string 'a'.
+
+<li>For the ciphertext C1 in the codes.py file, guess the method of 
+encryption, determine the key and original plaintext using the above
+functions in Python.  You should not 
+print out your whole decryption session, but rather explain in words
+what you did and how you got the answer, possibly including a couple of key
+snippets from your Python decryption session.
+
+<li>Do the same as the previous exercise for C2.
+</ol>
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

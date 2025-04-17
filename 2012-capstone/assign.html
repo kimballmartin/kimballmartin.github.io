@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+<TITLE>assignments</TITLE>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22762606-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<P>
+<DIV ALIGN="CENTER">
+<H2>
+<CENTER>
+math capstone assignments
+</CENTER>
+</H2>
+<BR><BR>
+<center>
+<table width=750><tr>
+<td>
+<b>Guidelines:</b>
+While you are welcome to work on assignments together and use
+resources such as books and websites to help you figure out solutions or
+check your work, all assignments turned in should be written by yourself, 
+including any computer code.  Further, your solutions and code should not be
+copied from any references or other people's work.  In summary, your solutions
+should represent your understanding of the assignments.
+
+<p>
+<b>For programming problems:</b> Please provide
+a printout of your source code, input and output.  When appropriate, include
+comments/explanation and a summary of your answer.
+
+<H3>
+<CENTER>
+Homeworks
+</CENTER>
+</H3>
+
+<p>
+<B>Homework 1 (Due Fri 8/31, in class)</B>
+<BR> 
+
+<ol>
+<li> Read the above guidlines.
+
+<li> Figure out how to get <a href="http://www.python.org/download/releases/2.7.3/">Python 2.7</a> running, either on a personal computer or a university
+computer.  (We are not using Python 3, because there are
+some things we may want to use later which are not yet 
+compatible with Python 3.)  Go through Sections 1-4 of the <a href="http://docs.python.org/tutorial/">tutorial</a>.
+
+<li> Write a function in Python
+which takes in an adjacency matrix A for a
+graph with vertices 1,2,..., n, and prints a list
+of all edges.  Here we represent a matrix as a list of the row vectors, e.g.,
+<p>
+A = [ [0,1,0,0,1], [1,0,0,1,0], [0,0,0,0,1], [0,1,0,0,1], [1,0,1,1,0] ]
+<p>
+Then your function should print the following list of edges 
+(order and formatting may be slightly different): 
+<p>
+{1,2}, {1,5},
+{2,4}, {3,5}, {4,5}.  
+<p>
+Turn in a print out of your source code together and the output from testing
+it on the above example.
+
+<li> Complete the determination of all graphs on 5 vertices up to isomorphism
+(you do not need to write a proof),
+say how many there are, and draw them all.
+</ol>
+
+
+<p>
+<B>Homework 2 (Due Fri 9/7, in class)</B>
+<BR> 
+
+<p>
+Note: you may use any code you have written for previous assignments 
+in your current assignment (both for Homework 2 and subsequent homeworks).
+
+<ol>
+<li> Write a function called nvert(A) in Python which takes in an
+adjacency matrix and returns the number of vertices.
+
+<li> Write a function called nedge(A) in Python which takes in an
+adjacency matrix and returns the number of edges.
+
+<li> Write a function called iskreg(A,k) in Python which takes in an
+adjacency matrix an a number k and returns True if the graph for A is
+k-regular and False otherwise.
+
+<li> Write a function called isreg(A) in Python which takes in an
+adjacency matrix and returns True if the graph is regular and False otherwise.
+
+<li> Test your functions on several A's and k's.
+
+<li> For n=5,6,7 and 8, can you construct a graph which is 4-regular and 
+4-connected?  Do you think this is possible for any n>4?
+
+</ol>
+
+<p>
+<B>Homework 3 (Due Fri 9/21, in class)</B>
+<BR> 
+
+<p>
+<ol>
+<li> Write a <b>recursive</b> function in Python, called binom(n,k), 
+which returns the binomial coefficient "n choose k" 
+for any nonnegative integers n and k.  Here the recursion should make
+use of method of adding two adjacent entries of Pascal's triangle to get
+an element of the next row.
+Determine the number of steps
+required to run your algorithm in terms of n in the worst case scenario.
+Test your function on several inputs.  Compare the running time of
+this algorithm 
+with the method of computing n choose k as a quotient of factorials.
+
+<li> Write a function in Python, called binrep(n), which given a 
+nonnegative integer n, prints out the binary representation of n.
+Test your function on several inputs.  (There are various ways to do this---one
+way is to use bit operations---here the you may find the command & useful.)
+
+<li> 
+For a fixed natural number d, pick three random d-digit positive 
+integers x, n and m.
+Try computing x^n mod m in Python via the native command x ** n % m
+as well as with our recursive modexp function using repeated squaring 
+(see my coding solutions below for an instance of the code).  For what
+values of d do each of these algorithms become slow (i.e., take a long time
+to compute on your computer)?
+</ol>
+
+<p>
+<B>Homework 4 (Due Fri 10/5, in class)</B>
+<BR> 
+
+<ol>
+<li>In Python, using the built-in random.py module, write a function 
+randlist(m,n) which returns a list of n random numbers between 0 and m.
+Test it.
+
+<li>In Python, write a function is_sorted(list), which, given a list of
+integers, returns True if the list is sorted in decreasing order, and False
+otherwise.  Test it on several sorted and unsorted randoms lists.  (Use
+your randlist function above and sorting function below to make sorted 
+random lists.)
+
+<li>In Python, write functions lsearch(list,key) and bsearch(list, key)
+which perform linear and binary searches for the object "key" 
+on a list of numbers.  These functions should return the index (position)
+of key in the list if key is in the list, and -1 otherwise.  
+Test these on several random sorted and unsorted lists.
+
+<li>In Python, write an implementaion of implement bubblesort which prints
+the number of swaps made.  Run this on several random lists of size 100, 200,
+300, 400, 500 and 1000.  What does this suggest about the average number of
+swaps required by bubblesort in terms of the size of the list?
+
+<li>Go learn about a sorting algorithm (your choice)
+that runs in average case O(n log n) time.  
+Explain the algorithm, with one or two examples.  
+Then find existing or write your own Python code for this search algorithm
+and implement it in Python.   By testing on random lists of various sizes,
+after what size of list does bubblesort
+perform noticably slower than this O(n log n) algorithm you chose?
+
+</ol>
+
+<p>
+<B>Homework 5 (Due Mon 11/19, in class)</B>
+<BR> 
+
+<ol>
+<li>Write a function randadjmat(n,p) in Python which returns an adjacency
+matrix for a "random graph" on n vertices.  Here p is the probability
+of having an edge between any pair of vertices.
+
+<li>Write a function transmat(A) which, given an adjacency matrix A, returns
+the transition matrix P.
+
+<li>Using the ranadjmat(n,p) function, compute several examples of 
+<i>connected</i> graphs on 5 and 6 vertices.  Draw these graphs, and
+for each such graph, guess whether or not the stable distribution should
+exist and what it should be.  
+Using the <a href="http://docs.scipy.org/doc/numpy-dev/reference/routines.linalg.html">numpy.linalg</a> (get it <a href="http://www.scipy.org/Download">here</a>) package to compute eigenvalues and eigenvectors, 
+check to see if your guesses are correct.
+
+<li>Again, using the numpy.linalg package, find the eigenvalues for many
+random graphs with n=20 and p = .2, .4, .6, .8 (at least 5 of each type---do
+more examples if you need to to answer the following question).
+Can you observe any trends in the largest and second largest (in
+absolute value) eigenvalues as p varies?
+</ol>
+
+<center>
+<h3>
+Projects 
+</h3>
+</center>
+
+<p>
+In this course, you will be required to do a project which involves
+a report as well as present to the class at the end of the semester.
+Your final report will be due at the final exam period.  Each project should
+be different and involve a programming component.  You are required to clear
+the topic with me well in advance, and consult with me on the details
+of the project.  Here is a suggested list of topics
+which will be updated throughout the semester:
+
+<p>
+<ul>
+<li> Design a network for a given scenario
+
+<li> Do a computational analysis of the traffic flows of certain graphs
+
+<li> Modeling behaviour of social networks [claimed: Ra]
+
+<li> The Konigsberg bridge problem and generalizations [claimed: Am]
+
+<li> The four color theorem [claimed: T]
+
+<li> The traveling salesman problem [claimed: E]
+
+<li> Random walks on graphs and Google's PageRank algorithm
+
+<li> Explain and implement RSA [claimed: J]
+
+<li> Analyze and implement factoring or primality test algorithms
+
+<li> Complexity classes (e.g., P versus NP) [claimed: D]
+
+<li> Random number generators [claimed: Ri]
+
+<li> Ranking algorithms [claimed: Al]
+
+<li> The chromatic polynomial [claimed: L]
+
+</ul>
+<b>Rough draft/outline due:</b> November 28, in class
+
+</td></tr></table>
+
+<table width=750> <tr>
+<td>
+<p>
+<br>
+<a href="capstone.py">My coding solutions</A> (so far)
+<table width=750> <tr>
+
+<td>
+<p>
+<br>
+<a href="index.html">Course Home</A> 
+</td></tr></table>
+</center>
+
+</BODY>
+</HTML>

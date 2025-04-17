@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<link rel="shortcut icon" href="favicon.ico" >
+<TITLE>
+Data and Code
+</TITLE>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22762606-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</HEAD>
+
+<BODY>
+<CENTER>
+<H2>
+Data and Code
+</H2>
+</CENTER>
+
+Here is a selected collection of data and code related to some of my projects.
+Feel free to contact me with questions, and/or requests for additional
+data/code.  
+
+<H3>
+Galois orbits in weight 2 with prime level
+</H3>
+
+The following data tells you the size of every Galois orbit in S<sub>2</sub>(N)
+(S<sub>2</sub>(&Gamma;<sub>0</sub>(N)) for N &lt 60000 prime.  
+
+
+
+<ul>
+<li><a href="galorbs-6e4.txt">text file</a> - each line is of the form
+N: d<sub>1</sub>, d<sub>2</sub>, ..., d<sub>r</sub> where N is a prime level, and the d<sub>i</sub>'s are sizes
+of the Galois orbits
+<li><a href="galorbs-6e4.sobj">sage object file</a> - this is a saved
+dictionary in sage (version 8.7); the keys are the levels N, and the 
+associated values are lists of the sizes of the Galois orbits
+</ul>
+
+This data was generated in Sage using the OU Supercomputing Center
+(OSCER) for my paper:
+<ul>
+<li> <a href="../papers/maeda.pdf">
+An on-average Maeda-type conjecture in the level aspect</a>
+<BR><I>Proceedings of the AMS</I>, Vol. 149, No. 4 (2021), 1373-1386
+</ul>
+This paper explains how this data was generated.
+
+<H3>
+Dimensions of modular forms
+</H3>
+
+Here is code to compute dimensions of newspaces of (elliptic) modular forms of 
+squarefree level, as well as the dimensions of individual Atkin-Lehner 
+eigenspaces.
+
+<ul>
+<li><a href="refdim.sage">sage 8 code</a> (python 2 syntax)
+<li><a href="refdim2.sage">sage 9 code</a> (python 3 syntax)
+</ul>
+
+The full newspace dimension is given in a formula by Greg Martin (JNT, 2005),
+and the Atkin-Lehner eigenspace dimensions are given in my paper:
+
+<ul>
+<LI>
+<a href="https://doi.org/10.1016/j.jnt.2018.01.015">
+Refined dimensions of cusp forms, and equidistribution and bias of signs</a>
+<a href="../papers/refined-dim.pdf">preprint version</a>]
+<BR><I>Journal of Number Theory</I>, Vol. 188 (2018), 1-17.
+</ul>
+
+
+<H3>
+Quaternionic modular forms code
+</H3>
+
+Here is some code to compute examples of definite quaternionic modular 
+eigenforms of trivial weight and character, which are the subject of a number 
+of my papers from 2017-2020+, especially papers 20, 23 and 26 listed
+on <a href="../math.html">my math page</a>.  
+The nonconstant eigenforms here correspond the newforms of weight 2 
+and squarefree levels N (with an odd number of prime factors).
+
+<ul>
+<li> <a href="qmfs.sage">sage code</a> - this is only for prime levels,
+and the focus is on ordering the values of the so you see the symmetry of
+the atkin-lehner operator with respect to the root number, rather than 
+efficiency
+<li> <a href="qmfs.magma">magma code</a> - this applies to maximal orders
+in definition rational quaternion algebras, and so works for levels N which
+are squarefree products of an odd number of primes
+</ul>
+
+<p>
+<B>Acknowledgements:</B>
+Much of the above code/data was produced while I was supported in part by
+by grants from the Simons Foundation.  See my papers for more precise
+acknowledgements.
+
+
+<HR WIDTH=98%>
+<I>Kimball Martin</i>
+[<A HREF="../index.html">main</a>]
+[<a href="../math.html">math</a>]
+<BR>
+<I>
+Last updated:
+Thu Aug  6 15:39:41 CDT 2020
+<BR> <A HREF="mailto:kimball.martin@ou.edu">kimball.martin@ou.edu</A>
+</I>
+
+</BODY>
+</HTML>

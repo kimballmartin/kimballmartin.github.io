@@ -1,0 +1,73 @@
+# return the transition matrix for a graph G
+def tm(G):
+    A = G.am()
+    n = G.order()
+    T = []
+    for i in xrange(n):
+        d = sum(A[i])
+        if d > 0:
+            rowi = []
+            for j in xrange(n):
+                rowi.append(quotient(A[i][j],d))
+        else:
+            rowi = [0 for j in xrange(n)]
+            rowi[i] = 1
+        T.append(rowi)
+    return matrix(T).transpose()
+
+# print a real matrix with less precision
+def matprint(A, precis = 5):
+    n = len(A.rows())
+    for i in xrange(n):
+        print "[",
+        for x in A[i]:
+            print (str(x)+'      ')[:precis],
+        print "]"
+
+
+# generate random directed graph on n vertices with probability p
+# of edge formation
+def diGNP(n,p):
+    A = []
+    for i in xrange(n):
+        rowi = []
+        for j in xrange(n):
+           if random() < p and i != j:
+               rowi.append(1)
+           else:
+               rowi.append(0)
+        A.append(rowi)
+    m = matrix(A)
+    return DiGraph(m)
+
+
+# 2013 Big 12 Football Win-Loss Matrices
+V = ["Baylor", "Iowa State", "Kansas State", "Kansas", "Oklahoma State",\
+"Oklahoma", "TCU", "Texas Tech", "Texas", "West Virginia"]
+
+# Win-Loss matrix
+# (i,j) coefficient is 1 if team j beat team i
+m1 = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+ [1, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+ [1, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+ [1, 1, 1, 0, 1, 1, 1, 1, 1, 0],
+ [0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+ [1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+ [1, 0, 1, 0, 1, 1, 0, 1, 1, 1],
+ [1, 0, 1, 0, 1, 1, 0, 0, 1, 0],
+ [1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+ [1, 1, 1, 1, 0, 1, 0, 1, 1, 0]]
+
+# Win-Loss matrix weighted by score differentials
+# (i,j) coefficient is score by which team j beat team i
+m2 = [[0, 0, 0, 0, 32, 0, 0, 0, 0, 0],
+ [64, 0, 34, 0, 31, 38, 4, 7, 1, 0],
+ [10, 0, 0, 0, 4, 10, 0, 0, 0, 0],
+ [45, 34, 21, 0, 46, 15, 10, 38, 22, 0],
+ [0, 0, 0, 0, 0, 9, 0, 0, 0, 9],
+ [29, 0, 0, 0, 0, 0, 0, 0, 16, 0],
+ [3, 0, 2, 0, 14, 3, 0, 10, 23, 3],
+ [29, 0, 23, 0, 18, 8, 0, 0, 25, 0],
+ [20, 0, 0, 0, 25, 0, 0, 0, 0, 0],
+ [31, 8, 23, 12, 0, 9, 0, 10, 7, 0]]
+

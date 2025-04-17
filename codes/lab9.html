@@ -1,0 +1,88 @@
+<HTML><HEAD><TITLE>Lab 9</TITLE></HEAD>
+<CENTER>
+<H2>Lab 9 - The [7,4,3]-Hamming Code (May 2)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+<P>
+<a href="hamming.py">My code for this lab</a>
+
+<ul>
+<li>G is the generator matrix---the codewords are the span of the rows of G
+
+<li>H is the parity check matrix: you can test if a word x has an error by looking at y = xHT, where HT = <code>transpose(H)</code>
+
+<li>R is the decoding matrix---if y is a matrix of codewords, yR will decode
+each 7-bit codeword to the original 4-bit block
+
+<li>the function <code>matmult(A,B)</code> does the matrix multiplication AB;
+calling <code>matmult(A,B,2)</code> will do this mod 2---all our matrix 
+multiplications will be mod 2 today.
+
+<li><code>strtobits(s,4)</code> will converts into a string of 4-bit blocks,
+i.e., a 0-1 matrix matrix of bits with 4 columns and some number of rows
+
+<li><code>bitstostr(b)</code> will convert a bit matrix b back to a string
+
+<li><code>noise(x,p)</code> will apply noise (uniform with probability p
+of a bit error) to a bit matrix x
+</ul>
+
+<P>
+<B>Task 1:</b> (go through the encoding/decoding process with no 
+noise/no corrections) <br>
+
+Take the test string s, and convert it into a string b of 4-bit blocks.
+Encode b with the generator matrix G with the product x = bG.
+Now one decodes with y = xR.  Recovert to a string and check you get
+s back.
+
+<P>
+<B>Task 2:</b> Write a function <code>pos(u)</code> that takes in a 3-bit
+vector and returns the corresponding integer between 0 and 7 so u is
+the binary representation of this number.  Here low order
+bits are to the left, i.e., u = [1, 0, 0] corresponds to 1 and u = [0, 0, 1] 
+corresponds to 4.)
+
+<P>
+<B>Task 3:</b> 
+Write a function <code>correct(y)</code> that takes a list y of 7-bit words
+and applies nearest neighbor decoding as follows.  For each word w in y,
+compute the "syndrome" u = wHT, where
+HT is the transpose of H.  Flip the bit of w in position pos(u)-1
+(since position are indexed starting at 0, not at 1---if u = [0, 0, 0], 
+then do nothing).  Here, feel free to modify the
+list y itself, so this function does not need to return anything.
+Test this out by taking a codeword w, say w = G[0][:7] (this will copy
+the first row of G---if you just set w = G[0], modifying w will
+modify G), modifying a single bit, and calling <code>correct([w])</code>.
+
+<p>
+<b>Task 4:</b>
+Take the test string s, and encode it as a bit matrix x.  Apply noise
+to x with probability p=0.05 to get a garbled bit matrix y.  
+Try to decode both without and with error
+correction, i.e., look at the string for yR first without correcting y,
+then with correcting y.  How much of the string is readable in each case?
+Try experimenting with different values of p.  What's approximately the
+smallest value of p for which the message becomes unreadable?
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

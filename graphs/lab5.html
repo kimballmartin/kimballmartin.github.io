@@ -1,0 +1,156 @@
+<HTML><HEAD><TITLE>Lab 5</TITLE></HEAD>
+<CENTER>
+<H2>Lab 5 - Graphs with Sage (Feb 28/Mar 7, 2014)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<H3>Getting Sage Running</H3>
+
+<a href="http://sagemath.org/">Sage</a> is a free open-source mathematics 
+package.  Here are the basic ways to run sage for our course:
+
+<ul>
+<li> Online: either with <a href="https://cloud.sagemath.com/">SageMath 
+Cloud</a> or the <a href="http://www.sagenb.org/">Sage Notebook</a>.
+For these you need to login, but you can save your worksheets.  There
+is also the <a href="https://sagecell.sagemath.org">Sage Cell Server</a>,
+where you don't need to login in.
+
+<li> Download it and install it on your machine.  The current version on my
+Mac is about 3GB, though the download is only about half a gig or so.
+The easiest thing seems to be to <a href="http://www.sagemath.org/doc/installation/binary.html">install a pre-built binary</a>, though on Windows this
+involves installing VirtualBox, which I have no experience with.
+
+<li> Run Sage using VirtualBox on the machines in the lab.  See
+<a href="http://www.math.ou.edu/~kmartin/graphs/SageGuide.pdf">instructions</a>.  
+</ul>
+
+<H3>A little graph theory in Sage</H3>
+
+<P>
+First, Sage uses Python, so your familiarity with Python will give you a good
+start.  You can do things in Sage the same was as in Python, but it has
+a whole bunch more built in so we can do lots of things more easily.
+If you like, you can go through a bit of the 
+<a href="http://sagemath.org/doc/tutorial/index.html">tutorial</a>.
+
+For graph theory in Sage, the pages <a href="http://www.steinertriples.fr/ncohen/tut/Graphs/">Sage in Graph Theory</a> and <a href="http://buzzard.pugetsound.edu/sage-practice/index.html">Algebraic Graph Theory with Sage</a> contain
+some instructions, and when all else fails, you can check the 
+<a href="http://sagemath.org/doc/reference/graphs/index.html">Sage Graph Theory
+Reference Manual</a>.
+
+<P>
+We'll just go through a sample of some simple things you can do.
+
+<P>
+<b>Constructing Graphs:</b>
+
+<ul>
+<li>Use built-in <a href="http://sagemath.org/doc/reference/graphs/sage/graphs/graph_generators.html">graph constructors</a>, such as 
+<code>graphs.CycleGraph(8)</code> or <code>graphs.CompleteGraph(5)</code>.
+
+<li>Create a matrix A in Sage, e.g., <code>A = matrix([[0,1], [1,0]])</code>.
+The associated graph is <code>G = Graph(A)</code>.
+
+<li>Graph modifiers <code>G.add_edge</code>, <code>G.add_vertex</code>,
+<code>G.delete_edge</code>, <code>G.delete_vertex</code>, 
+<code>G.union(H)</code>, etc.
+
+</ul>
+
+<P>
+<b>Graph Details:</b> Given a graph G, you can get the
+
+<ul>
+<li>adjacency matrix with <code>G.am()</code>
+
+<li>drawing with <code>G.plot()</code> or
+<code>G.plot3d()</code>
+
+<li>vertices with <code>G.vertices()</code>
+
+<li>edges with <code>G.edges()</code>
+
+<li>distances with <code>G.distance(u,v)</code>
+
+<li>a shortest path with <code>G.shortest_path(u,v)</code>
+
+<li>connected components with <code>G.connected_components()</code>
+</ul>
+
+<P>
+<b>Graph Invariants:</b>
+Given a graph G, you can get the
+
+<ul>
+<li>order with <code>G.order()</code>
+
+<li>size with <code>G.size()</code>
+
+<li>average degree with <code>G.average_degree()</code>
+
+<li>degree sequence with <code>G.degree_sequence()</code>
+
+<li>diameter with <code>G.diameter()</code>
+
+<li>average distance with <code>G.average_distance()</code>
+
+<li>size with <code>G.size()</code>
+</ul>
+
+<P>
+Here is a <a href="http://sagemath.org/doc/reference/graphs/sage/graphs/generic_graph.html">comprehensive list</a> of generic (directed or undirected) graph
+functions.
+
+<P>
+Here are <a href="socialex.txt">two examples of social networks</a>
+you can play with.
+
+<p>
+<b>Task 1:</b> Using the <code>graphs.RandomGNP(n,p)</code>
+generate and plot several random graphs for n=20, p = 0.1.  
+Here n is the number of vertices, and p is the probability of
+an edge between any pair of distinct vertices (i,j).  (The probability p
+are identical and independent for all pairs of vertices.)
+What do you notice about the structure of such graphs?  
+Do the same thing for various some different values of p,
+e.g., p=.05, .15, .2, .3, .5. 
+Now what do you notice?  How large should p be for this to
+usually be connected?  Does this change if you take n=100?
+(You can use the function <code>G.is_connected()</code>.)
+
+<p>
+<B>Task 2:</b> Write a function <code>ddplot(G)</code>
+that will graph the degree distribution of G.
+We can do this with a <a href="http://www.sagemath.org/doc/reference/plotting/sage/plot/line.html">line plot</a> or a bar chart, 
+but let's
+use a <a href="http://www.sagemath.org/doc/reference/plotting/sage/plot/bar_chart.html">bar chart</a>.  Use the <code>bar_chart</code> function
+on <code>G.degree_histogram()</code>.
+
+Now graph the degree distribution for 
+<a href="http://www.math.ou.edu/~kmartin/graphs/socialex.txt">our two social
+networks</a>, as well as some random graphs.  What do the degree distributions
+look like?  Can you get similar degree distributions to the social network ones
+by using random graphs?  (Use the same n, and figure out what p should be
+based on the number of edges to try to model these social networks.)
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

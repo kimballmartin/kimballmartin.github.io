@@ -1,0 +1,96 @@
+<HTML><HEAD><TITLE>Lab 7</TITLE></HEAD>
+<CENTER>
+<H2>Lab 7 - Random Walks (Apr 18)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+<a href="lab7.txt">My code for this lab</a>
+
+<H3>Matrices in Sage</H3>
+
+Here we'll be working with matrices in Sage.  Some points to keep in mind are:
+
+<ul>
+<li>You can multiply matrices
+in Sage like numbers, e.g., <code>A*B</code> or <code>T*v</code>.
+You can also exponentiate via <code>A**10</code>
+
+<li>You can generate column vectors with the <code>column_matrix</code>
+command, e.g., <code>column_matrix([1,2,3])</code>
+
+<li>You can access Sage matrix rows and elements just like when we worked with
+matrices in Python, e.g., <code>A[i]</code> for the i-th row or 
+<code>A[i][j]</code> for the (i,j) entry.
+
+<li>However, you cannot easily modify individual Sage matrix entries.
+Consequently, if you want to modify a matrix, it is often easiest to make a
+new one.  For instance, to make a transition matrix T from A, it's probably 
+easiest to build T as a list of lists, as we made our matrices in Python, then 
+convert it to a Sage matrix with the <code>matrix</code> command.
+This is what I did for my <code>tm</code> function.
+
+<li>If you want to format some of your results differently,
+you can use my <code>matprint</code> to print matrices
+with less precision.  You can also transform a column vector <code>v</code>
+to a row vector with <code>v.transpose()</code>.
+</ul>
+
+<H3>Tasks</H3>
+
+
+<p>
+<B>Task 1:</b> For each of the following graphs G, compute the
+transition matrix T and use this to study the behavior of a
+random walk starting at vertex 0.  Try to determine the limiting
+behavior of the random walk.  Discuss with your neighbors the
+meaning of these results.
+
+<ol>
+<li>The path graph of length 3
+
+<li>The path graph of length 4
+
+<li>The cycle graph of order 3
+
+<li>The cycle graph of order 4
+
+<li>The star graph of order 4
+
+<li>The complete graph of order 4
+
+</ol>
+
+<p>
+<b>Task 2:</b> Let C5 be the cycle graph of order 5, and K5
+be the complete graph of order 5.  For each of these graphs,
+about how many steps does it take for a random walk starting at vertex 0
+to approach of the limiting value (say, for each coordinate to
+get within 0.01 of the limiting value)?  Which converges faster?  Why
+do you think that is?  Discuss with your neighbors.
+
+<p>
+<b>Task 3:</b> Repeat task 1 for the Florentine families and karate club
+graphs.  What does this tell you about which nodes are most important?
+Discuss with your neighbors.
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

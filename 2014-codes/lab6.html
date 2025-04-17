@@ -1,0 +1,71 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 6 - Primality Tests (Mar 28)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+
+<P>
+<B>Task 1:</b> 
+Write a function <code>isprime(n)</code>
+that tests if n is prime by trial division up to sqrt(n).
+This function should return <code>True</code> or <code>False</code>.
+You can get the square root function in python by importing
+with <code>from math import sqrt</code> and calling
+<code>sqrt(n)</code>.  Test your code for n up to 20.
+
+<P>
+<B>Task 2:</b>
+Write a function <code>fermattest(n, a=2)</code>
+that returns <code>True</code> if n is a Fermat pseudoprime
+(with respect to a, default: a=2), and <code>False</code>
+otherwise.  Code the Fermat primality test with your function
+<code>modexp(a,n,m)</code> using repeated squaring
+from Lab 5.  Test your code for n up to 20, and n = 341
+(the first non-prime pseudoprime for a=2).  Is 341 pseudoprime
+with respect to a=3 or a=5?
+
+<P>
+<B>Task 3:</b>
+Write a function <code>countpseudoprimes(n)</code>
+which prints out the number of primes and pseudoprimes up to n,
+and the probability that a pseudoprime is not prime.
+(Here by pseudoprime we mean Fermat pseudoprimes with respect to 2.)
+Try to make your algorithm as efficient as possible.
+Run this function for n = 1000, 10000, 100000 and 1000000.
+(You should gather 2 things from your findings---there are lots of
+primes and pseudoprimes are almost always prime.)
+
+<P>
+<B>Task 4:</b>
+Write a function <code>MRtest(n, a=2)</code>
+to implement the Miller-Rabin primality test.
+
+<P>
+<B>Task 5:</b>
+Write a function <code>countMRpseudoprimes(n)</code>
+to do the same as Task 3 for Miller-Rabin pseudoprimes (with
+repsect to a=2).
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

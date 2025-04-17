@@ -1,0 +1,138 @@
+// Some Magma code for computing quaternionic modular forms as in my paper
+// on zeroes of quaternionic modular forms with Jordan Wiebe (JNT 2020)
+//
+// Author: Kimball Martin
+// Updated: May 2020
+//
+// The main functions are eigbasis(N) and cuspbasis(N), which compute
+// quaternionic modular eigenforms of trivial weight for a maximal order
+// in a definite quaternion algebra of discriminant N
+
+
+/* Input:  polynomial f
+   Output: true if f has a repeat factor, false otherwise */
+repeatfactor:=function(f)
+        f:=Factorization(f);
+        marker:=false;
+        for i in [1 .. #f] do
+                if f[i][2] ne 1 then
+                        marker:=true;
+                end if;
+        end for;
+
+        return marker;
+end function;
+
+
+/* Input:  vector v
+   Output: multiple of v which has integral elements */
+intscale:=function(v)
+        d:=[];
+        for j in [1 .. #v] do
+                d:=Append(d,Denominator(v[j]));
+        end for;
+        l:=LCM(d);
+
+        for k in [1 .. #v] do
+                v[k]:=l*v[k];
+        end for;
+
+        return v;
+end function;
+
+/* input an n-by-n matrix T and an n-by-n permutation matrix W of order 2
+   output T wrt a reordered basis e1, ..., en so that e1, ..., er are fixed
+   points of W and W permutes successive pairs of e_(r+1) ... e_n
+ */
+function changebasis(T,W)
+  n := NumberOfRows(T);
+  w := [];
+  for i in [1..n] do
+    for j in [1..n] do
+      if W[i][j] eq 1 then w[i] := j; end if;
+    end for;
+  end for;
+
+  neword := [];
+  for i in [1..n] do
+    if w[i] eq i then neword:=Append(neword,i); end if;
+  end for;
+  for i in [1..n] do
+    if w[i] gt i then neword:=Append(neword,i); neword:=Append(neword,w[i]); end if;
+  end for;
+
+  newpos := [<neword[i],i,1>: i in [1..n]];
+  U := Matrix(n, n, newpos);
+  return Transpose(U)*T*U;
+end function;
+  
+
+/* Input:  level N (disc of def quat alg/Q)
+   Output: a basis of eigen QMFs of level N 
+
+  if ordered is set to true, the values of the eigenforms are ordered to be 
+  eigenfunctions of Hecke operators T which are the output of changebasis(T,T_N)
+  in the ordered case, QMFs are returned as tuples (phi,poly,N,root no,Tr T_N)
+  where phi is the sequence of values of the form in terms of a root of poly
+
+  in the unordered (default) case, return (phi,poly,N)
+*/
+function eigbasis(N: ordered := false)
+        B:=BrandtModule(N);
+        p:=2;
+        h:=CharacteristicPolynomial(HeckeOperator(B,p));
+        while repeatfactor(h) do
+                p:=NextPrime(p);
+                h:=CharacteristicPolynomial(HeckeOperator(B,p));
+        end while;
+
+        T:=Transpose(HeckeOperator(B,p));
+	if ordered then
+        	W := HeckeOperator(B,N);
+		T := changebasis(T,W);
+                W := changebasis(W,W);
+        end if;
+
+        f<x>:=CharacteristicPolynomial(T);
+        g:=Factorization(f);
+        counter:=0;
+
+	QMFs:=[];
+        for i in [1 .. #g] do
+                if Degree(g[i][1]) ne 1 then
+                        K<a>:=NumberField(g[i][1]);
+                else
+        		K:=RationalField();
+                	a:=-ConstantCoefficient(g[i][1]);
+		end if;
+                TK:=Matrix(K,T);
+                U:=Eigenspace(TK,a);
+                phi:=intscale(Eltseq(Basis(U)[1]));
+                if ordered then
+			v := ColumnMatrix(phi);
+			WK := Matrix(K,W);
+			if WK*v eq v then sgn := 1; end if;
+			if WK*v eq -v then sgn := -1; end if;
+                  	QMFs[i] := [* phi, g[i][1], N, sgn, Trace(W) *];
+		else
+                  	QMFs[i] := [* phi, g[i][1], N *];
+		end if;
+        end for;
+	return QMFs;
+end function;
+
+/* Input:  level N (disc of def quat alg/Q)
+   Output: a basis of cuspidal QMFs of level N 
+  see comments on eigbasis for more details
+*/
+function cuspbasis(N: ordered := false)
+  QMFs := eigbasis(N: ordered);
+  M0 := [];
+  one := [1: j in [1..#(QMFs[1][1])]];
+  for x in QMFs do
+    if x[1] ne one then
+      M0 := Append(M0,x);
+    end if;
+  end for;
+  return M0;
+end function;

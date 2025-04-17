@@ -1,0 +1,137 @@
+<HTML><HEAD><TITLE>lab 4</TITLE></HEAD>
+<CENTER>
+<H2>lab 4 - lfsrs (feb 21)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<P>some helper code for this lab is in this file
+<a href="fivebit.py">fivebit.py</a>.  
+
+here is a summary of the functions included in my code--not all of them
+are necessarily helpful for this lab:
+<ul>
+<li>encode(s) - encode the characters A-Z and 0-5 in a 5-bit encoding scheme;
+the result is a list of 0's and 1's
+
+<li>decode(bits) - give a list of bits (whose length is a multiple of 5),
+decode it into the appropriate string using our 5-bit scheme; i.e., do the
+inverse of encode
+
+<li>onlyalpha(s) - (from lab 3) strips nonalphabetic characters from a string s
+
+<li>freq_count(s) - (from lab 3) performs a frequency count on the letters in s
+
+<li>freq_dist(s) - (from lab 3) computes the a frequency distribution of the letters in s
+</ul>
+
+here are also some pre-defined objects for you:
+<ul>
+<li>code - a list of characters defining the 5-bit encoding scheme
+<li>EF - a list of relative frequencies of the English letters
+</ul>
+
+<p>
+<B>note:</b> for the purposes of this lab, we will work with an n-bit
+string as a list of 0's and 1's (of type <code>int</code>).  this is not
+the most efficient way to with bit strings, but it is convenient for us
+to (1) work with general n, and (2) doing arithmetic mod 2.  in practice,
+you would do the latter with bits with <a href="https://wiki.python.org/moin/BitwiseOperators">bitwise operators</a>
+
+<P>
+<B>task 1:</b> 
+write a function <code>xor(v,w)</code>, which returns the xor (addition
+mod 2) of 2 strings of the same length.  if the strings do not consist
+of 0s and 1s or are not of the same length, return or print an error.
+test your code out on a few strings of 0s and 1s of the same length and at
+least one input of different lengths.
+
+<P>
+<B>task 2:</b> 
+write a function <code>lfsr(a, seed, N)</code>, where <code>a</code> and
+<code>seed</code> are strings of 0s and 1s of the same length (say <i>n</i>),
+and <code>N</code> is an integer at least as big as <i>n</i>.
+this function shoud return a list of length N of 0's and 1's which are
+the first N bits b[0], b[1], ... , b[N-1] of the lfsr with initial value seed 
+and recurrence b[k] = a[0]b[k-n] + a[1]b[k-n+1] + ... a[n-1]b[k-1] (mod 2).
+test your function with coefficient lists a = [1,0,0], a = [1,0,1] and 
+a = [1,1,1] with seed = [0,0,1].  what is the period of the resulting sequence 
+in each case?
+
+<p>
+<B>task 3:</b>
+write a function <code>printstates(a,seed,N)</code> that prints out the
+first N states of the register for <code>lfsr(a,seed,*)</code>.  on each
+line, print out the state (n-bits where <code>n=len(a)</code> followed by
+the line number.  e.g., <code>printstates([1,1],[0,1],4)</code>
+should return something like
+
+<p>
+<code>
+0 1  | 0<br>
+
+1 1  | 1<br>
+
+1 0  | 2<br>
+
+0 1  | 3
+</code>
+
+<p>
+(you may format your printout a bit differently if you prefer).  then
+test this on the cases: (i)
+ <code>a = [1,1,0,0], seed = [1,1,0,0], N = 16</code>, (ii)
+ <code>a = [1,1,0,0], seed = [1,0,1,0], N = 16</code>
+and (iii)
+ <code>a = [1,0,1,1,1], seed = [1,0,0,0,0], N = 32</code>.
+what are the period lengths in each case?
+
+<p>
+<b>task 4:</b>
+write a function <code>maxlfsrs(n)</code> that returns a list of the
+coefficient lists (denote <code>a</code> in the previous task) for
+the <i>maximal length</i> n-bit lfsrs, i.e., those with period length
+2^n-1 for a nonzero seed.  determine how many maximal length lfsrs there
+are on n-bits for n = 2, 3, 4, 5, 6.
+compare this to the total number of n-bit lfsrs.
+
+<p>
+<b>task 5:</b>
+encrypt and decrypt the string <code>text</code> (included in the helper code 
+file) by xoring with the lfsr with parameters
+<code>a = [1,0,1,1,1], seed = [1,0,0,0,0]</code>.
+do a frequency analysis of the resulting ciphertext to compare
+(qualitatively) if the frequency count is closer to a uniform
+distribution than for a shift or substitution cipher.
+note: the included functions for frequency counting only count letters,
+whereas now some of your ciphertext may include digits.  you can
+count the number of times, say <code>'3'</code> occurs in a string 
+<code>s</code> with the command <code>s.count('3')</code>.
+how do you think the distribution of frequency counts compares
+to that of a vigenere cipher of appropriate length?  what security advantages, 
+if any, does this scheme have over a vigenere cipher?  (in particular,
+think about bits of data for the key (seed) and the period of the lfsr.)
+are there any apparent disadvantages?
+
+
+<P>
+<B>lab 4 homework</b>: complete the above tasks (due fri feb 28)
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

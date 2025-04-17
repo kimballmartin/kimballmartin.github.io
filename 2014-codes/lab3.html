@@ -1,0 +1,85 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 3 - Shift and Affine Ciphers (Jan 31, 2014)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+
+
+<P>
+<B>Task 1:</b> 
+Write a function <code>shift(s,k)</code> that takes in a string s and an
+integer k (the key) and shifts each alphabetic character in s by k mod 26.  
+Return this ciphertext in upper case.  Test encryption and decryption for a 
+couple messages and keys of your choice.  (Your messages should exclude 
+punctuation, but may include spaces after every 5th character.  Your program 
+should not modify the spaces.)
+
+<p>
+Here are some Python commands that may be helpful, though not all are
+necessary. You can access each element of a 
+of a string s the same way you would access elements of a list---either
+<code>for x in s</code> or individually by, e.g., <code>s[5]</code>.
+Given a character (string of length 1) x, you can obtain the numerical ASCII
+representation (e.g., 65 for A, 66 for B, etc) with the command 
+<code>chr(x)</code>.  Then you can go from the ASCII representation y to the
+character with <code>ord(y)</code>.  You can also test if a character x
+(or a whole string) is alphabetic by <code>x.isalpha()</code>.
+Lastly, you can cover an entire string
+s to uppercase by <code>s.upper()</code>.
+
+<p>
+<b>Task 2:</b> 
+Write a function <code>all_shifts(s)</code> that takes in a ciphertext s
+and prints out all possible shifts mod 26 in lowercase, along with the 
+amount of the shift (i.e., the key).  (You can convert a string s to lowercase
+by <code>s.lower()</code>.)  Use this to decode the message
+XPPEL EXTOY TRSE.
+
+<p>
+<b>Task 3:</b> Write a function <code>affine(s,a,b)</code>
+that takes in a string s and applies the affine shift x -> ax+b mod 26
+to each alphabetic character x in s.
+
+<p>
+<b>Task 4:</b> Write a function <code>affine_dkey(a,b)</code>
+that takes in an invertible affine shift encryption key (a,b) and 
+returns the coefficients
+[c,d] of the inverse transformation x -> cx+d mod 26.  If x -> ax+b mod 26
+is not invertible, display an error message saying this.
+Using this and the previous task, test affine cipher encryption and 
+decryption of some messages and keys of your choice.
+
+<p>
+<b>Task 5:</b> Write a function <code>all_affine(s)</code>
+that prints out all possible invertible affine transformations x -> ax+b 
+mod 26 in lower case, along with the coefficients a and b.  Use this to
+decode the message RMIKZ MNHMO FMGET QKZYH.
+
+
+
+<P>
+<B>Lab 3 Homework (due Fri Feb 7):</b>  
+Complete the above tasks.
+
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

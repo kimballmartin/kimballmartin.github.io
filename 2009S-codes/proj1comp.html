@@ -1,0 +1,55 @@
+<HTML><HEAD><TITLE>Project 1 - Results</TITLE></HEAD>
+<CENTER><H2>Project Notting Hill Results</H2>
+</CENTER>
+<P>
+
+After reviewing your write-ups,
+I tested and compared your code on the following 
+<H3>Test Image</H3>
+<CENTER> <img src = "ax.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<H3>Corrupted (uncorrected) Image</H3>
+<CENTER> <img src = "axcorrupt.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<H3>Team Alpha's Repetition 5 Code</H3>
+<CENTER> <img src = "axrep5.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<P>A simple repetition 5 code.  It is the best you can do in
+a maximum entropy situtation (assume uniform random distribution
+of 0's and 1's in data) in terms of number of bits correct.
+
+<H3>Team Bravo's Enhanced Repetition 6 Code</H3>
+<CENTER> <img src = "axbravo.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<P>Team Bravo used a repitition 6 code, but instead of guessing randomly
+in the case of 3 errors/6 bits, they guess intelligently, using the idea
+that for an image, neighboring pixels tend to have similar colors.  This
+works considerably better than a straight repetition 5 or 6 code, as you
+can see by comparing with the previous image.
+
+<H3>Team Omega's Faulty Repetition 5 Code</H3>
+<CENTER> <img src = "axdigrep.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<P>Team Omega tried to program a repetition 5 code in a clever way, and to their
+credit it was quick, however it was not correct and they do not have
+as many errors as they should.  (If programmed correctly, it 
+should give something like Team Alpha's code.)
+
+<H3>The Dark Horse (my code)</H3>
+<CENTER> <img src = "ax-darkhorse.bmp" WIDTH=192 HEIGHT=192></CENTER>
+
+<P>
+My code was a [13,11,9,7,5,3,0,0] "weighted repetition" code:  For each 
+byte, I repeat the highest order bit 13 times (or rather 12),
+the next highest order bit 11 times, and so on, and just ignored the
+two smallest order bits.  This capitalizes on the fact that we are working
+with <i>images</i>, and the highest order bits are most important.
+One can potentially do even better by combining this with ideas from image 
+processing, as in Team Bravo's code.
+
+<HR WIDTH="80%">
+
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

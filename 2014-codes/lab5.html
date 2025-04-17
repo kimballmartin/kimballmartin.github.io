@@ -1,0 +1,85 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 5 - A little number theory (Feb 28/Mar 7)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+
+
+<P>
+<B>Task 1:</b> 
+Write Python functions 
+<code>modexp1(a,n,m)</code>,
+<code>modexp2(a,n,m)</code>,
+and
+<code>modexp(a,n,m)</code>
+to compute a^n mod m using the 3 algorithms
+we described in class.  Namely 
+<code>modexp1</code>
+just computes a^n first with n-1 multiplications and takes it mod m,
+<code>modexp2</code>
+computes a^j mod m for each j up to n, and
+<code>modexp</code>
+uses repeated squaring (and takes this mod m at each step).
+
+<p>
+In addition, here is a fourth way to compute a^n mod m: you can use
+Python's native exponentiation function (don't in the above algorithms)
+<code> a**n % m</code>, where the double asterisk denotes exponentiation
+and the percent is mod.  
+
+<p>
+For the repeated squaring method, you will need to determine the binary
+representation of n.  You can either do this by using division by 2 and mod 2,
+or you can use <a href="https://wiki.python.org/moin/BitwiseOperators">bitwise
+operations</a>.
+
+<p>
+For each of these 4 methods, compute 3^m mod m various values of m, and 
+determine around what point (in terms of the number of digits of m) this method
+becomes slow (say, takes more than a couple of seconds).
+
+<P>
+<B>Task 2:</b> 
+Design an algorithm for and write a function <code>isprime(n)</code>,
+which will return True if n is prime and False otherwise.  Test this on 
+various n, in particular, n of the form 11, 101, 1001, 10001, ...  After
+about how many digits does this algorithm become slow?
+
+<p>
+<b>Task 3:</b>
+Recall the function <code>randint(a,b)</code>, which returns a random
+integer between a and b (inclusive).  Using this, and the isprime function,
+estimate the probability that a random k-digit number is prime, for 
+k between 2 and 10.  (For small you can test all the possibilities.  
+For larger k, sample a sizable number of random k-digit integers.)
+
+<P>
+<B>Task 4:</b> 
+Design and algorithm for and write a function <code>factor(n)</code>
+that will factor a positive integer n.  Return the factors of n as a list.
+Repeat factors to represent prime powers.  For instance, if n = 60, you should
+return the list [2, 2, 3, 5].  If your list does not come out in order by
+nature of your algorithm, you can use the <code>sorted</code> function
+to sort your list before you return it.
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

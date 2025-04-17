@@ -1,0 +1,32 @@
+# partitioning karate club graph
+V1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 16, 17, 19, 21]
+V2 = [9, 14, 15, 18, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+
+# large component of OU Math collaboration graph
+G = Graph()
+V = ["Pitale", "Schmidt", "Stewart", "Martin", "Shankar", "Brady", \
+"Forester", "Clay", "Dani", "Barnard", "Rafi", "Tao", "Miller", "McCullough", \
+"Rubin", "McKee", "Basmajian", "Walschap", "Lee", "Ozaydin", "Przebinda", \
+"Protsak"]
+G.add_vertices(V)
+
+G.add_cycle(["Pitale", "Schmidt", "Stewart"])
+G.add_cycle(["Shankar", "Brady", "Forester"])
+G.add_cycle(["Brady", "Forester", "Clay"])
+G.add_cycle(["Brady", "Dani", "Clay"])
+G.add_cycle(["Brady", "Dani", "Barnard"])
+G.add_edge("Pitale","Martin")
+G.add_edge("Shankar","Martin")
+G.add_edge("Brady","Miller")
+G.add_edge("Miller", "McCullough")
+G.add_edge("McCullough", "Rubin")
+G.add_edge("Clay", "Rafi")
+G.add_edge("Rafi", "Tao")
+G.add_edge("Martin", "McKee")
+G.add_edge("McKee", "Przebinda")
+G.add_edge("Protsak", "Przebinda")
+G.add_edge("Ozaydin", "Przebinda")
+G.add_edge("Ozaydin", "Lee")
+G.add_edge("Ozaydin", "Walschap")
+G.add_edge("Basmajian", "Walschap")
+

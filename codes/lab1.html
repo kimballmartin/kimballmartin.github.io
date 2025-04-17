@@ -1,0 +1,198 @@
+<HTML><HEAD><TITLE>lab 1</TITLE></HEAD>
+<CENTER>
+<H2>lab 1 - getting started with python (jan 17)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+
+
+<DIV class="indented">
+
+in this course, we will be using the programming language python 3.  
+the current version as of early jan 2020 is 3.8.1.  earlier versions
+of python 3 are acceptable to use, though you may not have the
+exact same functionality as everyone else.  however, we will not be
+doing very advance things in python, so it should not be a real issue.
+(if you are curious, you can read about
+<a href="https://docs.python.org/3/whatsnew/index.html">the main differences between different versions of python 3</a>.)
+
+<p>
+note that python 3 is not entirely compatible with python 2 due to some 
+different syntax.  for the labs and lab homeworks, and any programming
+questions on exams, you must use python 3, not python 2 (and consequently
+not <a href="https://www.sagemath.org/">sage</a>) or other languages.
+
+<p>
+<b>warning:</b> i use python 2 all the time, so inevitably i will accidentally
+use python 2 syntax from time to time.  please be understanding.
+
+
+<p>
+the first lab session is to get you up and running with python and 
+started on some very basic programming.  
+
+<h2>run, python, run!</h2>
+
+there are many ways you can run python.  
+python is an interpreted language, and when you run python 
+in interactive mode it executes commands as you type, like a calculator.
+this is sufficient for today's lab, but soon you will want to write programs
+in an editor and save them as files, both so you can edit/debug/fix your 
+programs and so that you can use functions you've written in previous sessions.
+
+here are some directions for how to run python both just in interactive
+mode and also with an editor.
+if you are already familiar with python, just get started.
+otherwise, pick one of the following:
+
+<p>
+<b>option 1: run python online.</b>
+
+<p>
+this is easy in terms of initial set up, but might be less
+convenient than option 2 for serious use, depending on what you have and how 
+you like to work.
+there are various sites you can use to write and run python programs.
+here are 3 possibilities, each with different features:
+
+<ul>
+<li>
+<a href = "https://repl.it/languages/python3">repl.it</a> - relatively fast
+and streamlined.  you can run python with an editor immediately without an 
+account, and if you make an account you can save your files
+online.  however the documentation is not super user-friendly (though
+may be super-user friendly).  (challenge: find the documentation from the
+above link!  shortcut: it's 
+<a href="https://docs.repl.it/">https://docs.repl.it/</a>)
+
+
+<li>
+<a href="https://jupyter.org/try">jupyter</a> - a bit slow starting up but
+has better documentation than repl.it.  
+again, you can run the python without an account
+in a "notebook", and you can also load/save your sessions 
+to your machine without an account.  the notebook has "cells" that you can
+edit and run separately, so it's kind of a blend in-between pure interactive 
+mode and using an editor.
+however, if you want to save your files online, it's not as automatic
+as with repl.it and you need to you use something like 
+<a href="https://github.com/">github</a>.
+see <a href="https://nbviewer.jupyter.org/github/MartyWeissman/Python-for-number-theory/blob/master/My%20First%20Python3%20Notebook.ipynb">here</a>
+for a quick introduction to jupyter notebooks.
+
+<li>
+<a href="https://www.pythonanywhere.com/try-ipython/">pythonanywhere</a> -
+provides an online console to run python in interactive mode.  if you prefer,
+you can also run this from the <a href="https://www.python.org/shell/">official
+python page</a>.
+
+
+</ul>
+
+<p>
+<b>option 2: run python on your computer.</b> 
+
+
+<ul>
+<li>if you are running mac/linux or have an hp computer, 
+there's a good chance python 3 is already installed.
+for mac/linux, try typing <tt>python3</tt> or <tt>python</tt> from the terminal.
+(have a mac and don't know what terminal is?  <a href="https://www.macworld.co.uk/how-to/mac-software/how-use-terminal-on-mac-3608274/">see here</a>)
+note <tt>python</tt> may by default run python2, not python3 so check what
+version it is.
+
+<li>otherwise, <a href = "https://wiki.python.org/moin/BeginnersGuide/Download">dowload python 3</a> (windows/mac/linux).  
+
+<li>now you can run python in interactive mode, but eventually you will also
+want an editor that can load and save your sessions.
+one option is
+<a href="https://www.jetbrains.com/education/download/#section=pycharm-edu">pycharm edu</a>.
+see <a href="https://swaroop-c-h.gitbook.io/byte-of-python/first_steps">here</a> and <a href="https://swaroop-c-h.gitbook.io/byte-of-python/basics#how-to-write-python-programs">here</a> for how to get started with pycharm edu.
+</ul>
+
+<h2>python basics</h2>
+
+
+<p>
+<ol>
+<li>go through this <a href="https://nbviewer.jupyter.org/github/MartyWeissman/Python-for-number-theory/blob/master/P3wNT%20Notebook%201.ipynb">python tutorial part 1</a>
+to learn some basics of python and do the exercises.  while you can
+copy-paste some things to save some time, if you are new to python 
+you should type in most of the
+example code by hand yourself to help you learn it better.
+
+<li>if you finish that, start going through the first half of this
+<a href="https://nbviewer.jupyter.org/github/MartyWeissman/Python-for-number-theory/blob/master/P3wNT%20Notebook%202.ipynb">python tutorial part 2</a> (the sections on python functions and control
+statements) and go through the exercises.  
+</ol>
+
+<p>
+you may not finish this all during the lab period, but 
+you are expected to finish this on your own before the first homework.
+
+<h2>lab homework 1 (due fri jan 24)</h2>  
+here are some simple exercises with lists, loops and functions.
+
+<ol>
+<li> write a function called "count_vec(n)" that uses a while loop
+to return (not print) a vector (list of numbers) [1, 2, 3, ..., n].  
+(do not use the range function)
+test this for n=1, 2, 10, 0, -3, 2.5.
+(it's okay if your function results in an error for "unexpected"
+inputs like 0, -3, 2.5.  but you should understand how it behaves
+and why for unexpected inputs.  if you like, you may use control
+statements to return an error message if the input is invalid,
+but this is not necessary.)
+
+<li> write a function called "squares(n)" that uses a for loop
+and the range function to return the vector  [1, 4, 9, ..., n^2]. 
+ test this for n=1, 2, 10, 0, -3, 2.5.
+
+<li> write a function called "scale_vec(v,c)" that takes in a vector (list
+of numbers) v and number c returns the vector c times v (i.e., each
+element of the list should be multiplied by c).  test this for v=squares(5)
+ and the values c=-1, 0, 0.5, 1, 2, 10.
+
+<li> write a function called "shift_vec(v,c)" that takes in a vector (list
+of numbers) v and number c returns the vector v+c (i.e., each
+element of the list should be added to by c).  test this for v=squares(5)
+ and the values c=-1, 0, 0.5, 1, 2, 10.
+
+<li> write a function called "count_mat(n)" that returns an n by n matrix
+whose coefficients are the integers from 1 to n^2, in order.  Here we
+represent a matrix as a list of n row vectors.  for example count_mat(2)
+should return the list [[1, 2], [3, 4]], which we view as the 2x2 matrix
+with top row [1 2] and bottom row [3 4].  test this for n=0, 1, 2, 5.
+</ol>
+
+<P>
+<B>further references:</b> 
+for various assignments, including possibly the above one, you may need to 
+learn a little more python
+on your own.  check out the <a href="https://wiki.python.org/moin/BeginnersGuide">official python beginner's guide</a> for more resources.
+in particular, this
+<a href="https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3">wikibooks tutorial</a>
+for non-programmers looks good.  i also like the <a href="https://docs.python.org/3/tutorial">official python tutorial</a>, though it assumes some familiarity
+with programming.  also, feel free to ask others (possibly me) for help.  
+and i hear the internet knows everything.
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

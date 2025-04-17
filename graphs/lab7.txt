@@ -1,0 +1,26 @@
+# return the transition matrix for a graph G
+def tm(G):
+    A = G.am()
+    n = G.order()
+    T = []
+    for i in xrange(n):
+        d = sum(A[i])
+        if d > 0:
+            rowi = []
+            for j in xrange(n):
+                rowi.append(1.0*A[i][j]/d)
+        else:
+            rowi = [0 for j in xrange(n)]
+            rowi[i] = 1
+        T.append(rowi)
+    return matrix(T).transpose()
+
+
+# print a Sage real matrix with less precision
+def matprint(A, precis = 5):
+    n = len(A.rows())
+    for i in xrange(n):
+        print "[",
+        for x in A[i]:
+            print (str(x)+'      ')[:precis],
+        print "]"

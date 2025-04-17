@@ -1,0 +1,119 @@
+<HTML><HEAD><TITLE>lab 5</TITLE></HEAD>
+<CENTER>
+<H2>lab 5 - basic number theory</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+this lab involves some basic number theory that is relevant to rsa.
+
+<P>
+<B>task 1:</b> 
+write a function <code>binrep(n)</code>, which given a non-negative integer
+n returns the binary representation of n as a list of bits.  e.g.,
+<code>binrep(6)</code> should return the list <code>[0,1,1]</code>.
+(the lowest order bits should come first).  you may implement this
+using division and mod or using <a href="https://wiki.python.org/moin/BitwiseOperators">bitwise operators</a>.
+
+<p>
+<B>task 2:</b>
+write a function <code>bintab(N)</code> which prints a table of the 
+non-negative integers up to N together with their binary representations.
+e.g., <code>bintab(4)</code> should print something like
+
+<p>
+<pre>
+0    0
+1    1
+2   10
+3   11
+4  100
+</pre>
+
+<p>
+you format things a bit differently, but try to make the table look reasonably
+nice and right align both columns.  note that you can print k spaces with 
+<code>print(' '*k)</code>.  test your function for N=20.
+
+<p>
+<B>task 3:</b>
+write a function <code>bits2int(b)</code> which is the inverse
+of <code>binrep(n)</code>, i.e., given a list of bits b, this should
+return the corresponding integer.  using a loop, check that 
+<code>bits2int(binrep(n)) == n</code> for n between 0 and 1,000,000.  
+
+
+<p>
+<b>task 4:</b>
+write a function <code>gcd(a,b)</code> that implements the euclidean
+algorithm with division (the euclidean algorithm as presented in section 7.3
+of the text) that returns the gcd of two integers not both 0.  if a and
+b are both zero, either return 'infinity' or an error.  test out
+<code>gcd(14,7)</code>, <code>gcd(14,21)</code>, <code>gcd(-14,21)</code>,
+<code>gcd(12,0)</code> and <code>gcd(2**200+1, 10**100+1)</code>.  
+
+try timing the last example using
+<a href="https://docs.python.org/3/library/timeit.html">timeit</a>.  e.g.,
+in interactive mode the following will tell you how many seconds it takes to 
+run that example 1000 times:
+
+<p>
+<code>
+from timeit import timeit<br>
+timeit(lambda: gcd(2**200+1, 10**100+1), number = 1000)
+</code>
+
+
+
+<p>
+<b>task 5:</b>
+write a function <code>extendgcd(a,b)</code> that implements the
+extended euclidean algorithm to return a triple <code>(x,y,d)</code>
+where d is the gcd and x and y are some integers such that
+ax+by=d.  test your code on the examples (a,b) = (14,7), 
+(a,b) = (14,21), (a,b) = (201, 37) and (a,b) = (2**200+1, 10**100+1).
+
+<p>
+<b>task 6:</b>
+write a function <code>modinv(a,n)</code> that uses your extendgcd function
+to quickly compute and return the inverse of a mod n.  if a is not invertible
+mod n, either return -1 or raise an error.  recall or rewrite
+your function <code>invert(a,n)</code> from <a href="lab2.html">lab 2</a>
+which computes the same thing by trial and error (brute force).
+check that both functions give the same result for some small values of
+a and n.  then time both functions for a=2 and n=2**m+1 where
+m = 5, 10, 15, 20, 25, 30.
+
+<p>
+remark: the invert function should get slow so you can run timeit with number = 1 or something like 3 or 5 if you prefer.  the point in general of timing many 
+repetitions of code is to get an average runtime--if you try timeit on a 
+function with number = 1 several times, you should see some variation due to 
+what else is going on in the computer, etc.  if the actual runtime of your 
+function is fast (fractions of a second), then these small variations will 
+percentage-wise affect your timing by quite a bit.  but if the actual 
+runtime of your function is quite slow (say, on the order of seconds or 
+longer), than the variation will be relatively small, so there is less meaning
+in averaging the time over 10000 trials, say.
+
+
+<P>
+<B>lab 5 homework</b>: complete the above tasks (due fri mar 6)
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">labs page</A>
+<BR>
+<a href=".">course home</A>
+</HTML>
+

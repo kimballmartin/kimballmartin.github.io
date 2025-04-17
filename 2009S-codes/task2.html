@@ -1,0 +1,50 @@
+<HTML><HEAD><TITLE>Task 2</TITLE></HEAD>
+<CENTER><H2>Task 2</H2></CENTER>
+
+<H3>RSA</H3>
+
+<P>6. (corrected c) You discover that a phone number with crucial information is
+encrypted with RSA.  The public key used by Bob is modulus n=61640471 and 
+exponent e=3575.   The encrypted phone number you recover is c=44807459.  
+Break the code by finding the private key d, and decode the phone number.  
+Call the number and write down what you learned.
+
+<P>7. Continuing the example from 6, suppose you want to pose as Bob and
+send the message m=12345 to Alice.  You want to convince her this message
+is indeed from Bob, so you will use his RSA Digital Signature (with his
+modulus and keys from the last problem).  What should you send her?
+Explain how Alice would use the digital signature to "check" that this message
+is from Bob.
+
+<H3>Elliptic Curves</H3>
+
+<P>8. Let E_n = E(Z/nZ) denote the elliptic curve over a Z/nZgiven by 
+y^2 = x^3 + x + 1 (coefficients to be taken in Z/nZ).  
+(One can use elliptic curves over Z/nZ to factor n.)
+For each 1 < n < 100, count the number of points on E_n.
+Do you notice anything about how the number of points are on E_n 
+is related to n (e.g., along the lines of Hasse's bound)?
+
+<P>9. (Exercise 5.8 from Stinson) 
+Let E be the elliptic curve y^2 = x^3+x+28 defined over Z/71Z.
+
+(a) Determine the number of points on E.
+
+(b) Show that E is not a cyclic group.
+
+(c) What is the maximum order of an element in E?  Find an element having this
+order.  (This will be an analogue of a primitive element for Z/nZ (whose
+multiplicative group is cyclic).  Thus finding such an element is the
+first step in elliptic curve cryptography.)
+
+<P>10.  Explain how you can use the the elliptic curve and your element
+of maximal order from 9 in the context of the ElGamal public-key
+cryptosystem.  Also explain how you can use this system as a digital 
+signature scheme.
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="proj2.html">Project 2 Main Page</A>
+</HTML>
+

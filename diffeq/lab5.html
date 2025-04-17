@@ -1,0 +1,105 @@
+<HTML><HEAD><TITLE>diff eq (honors) - lab 5</TITLE></HEAD>
+<CENTER><H2>diff eq (honors) - lab 5<br>series solutions</H2></CENTER>
+<P>
+
+<BR><BR>
+<CENTER>
+<TABLE WIDTH = 90% CELLPADDING=8>
+<TR><td>
+<h3>demonstration (follow along)</h3>
+consider the IVP
+y'' + y = 0, y(0) = 1, y'(0) = 0.  
+here the coefficients for the series satisfy (n+2)(n+1)a_{n+2} + a_n = 0,
+i.e., a_n = -a_{n-2}/(n*(n-1)).
+
+<p>
+look at approximation up to t^10 term:
+<pre>
+For[a = List[1, 0]; f = 1;
+  i = 2, i <= 10, i++, a = Append[a, -a[[i - 1]]/(i*(i - 1))];
+  f = f + a[[i+1]]*t^i];
+p1 = Plot[f, {t, 0, 10}, PlotRange -> {{0, 10}, {-2, 2}}]
+</pre>
+now compare with approximations using up to t^20, t^50.
+
+<h3>do on your own</h3>
+
+<ol>
+<li> use series to approximate solutions to the IVP
+y'' - y = 0, y(0) = 1, y'(0) = 0.  
+here the coefficients for the series satisfy (n+2)(n+1)a_{n+2} - a_n = 0. 
+how many terms do you need to take to determine the shape of the solution?
+
+<li> use series to approximate solutions to the IVP
+y'' - y = 0, y(0) = 0, y'(0) = 1.  
+here the coefficients for the series satisfy (n+2)(n+1)a_{n+2} - a_n = 0. 
+how many terms do you need to take to determine the shape of the solution?
+
+<li> use series to approximate solutions to the IVP
+y'' + y' + t y = 0, y(0) = 1, y'(0) = 0.  
+how many terms do you need to take to determine the shape of the solution?
+
+<li> use series to approximate solutions to the IVP
+y'' + y' + t y = 0, y(0) = 0, y'(0) = 1.
+how many terms do you need to take to determine the shape of the solution?
+</ol>
+
+<h3>extra: convergence issues</h3>
+Remember that series approximations are only good in the region of convergence.
+Suppose you want to make a Taylor series for f(t) = log t.  First,
+the function is not defined at t=0, so you cannot expand around t=0.
+If you expand around t=x for some positive x, then the radius of convergence
+can only be x.  Here is code to generate Taylor approximations to log t
+about x.  Try varying the values of x and see what happens. 
+<pre>
+For[a = List[0]; x = 1; f = Log[x];
+  i = 1, i <= 10, i++, a = Append[a, (-1)^(i + 1)/(i*x^i)];
+  f = f + a[[i + 1]]*(t - x)^i];
+Plot[f, {t, 0, 10}, PlotRange -> {{0, 10}, {-5, 5}}]
+</pre>
+
+<h3>course evaluations</h3>
+
+after i leave a few minutes early, please the complete course evaluations.  
+while the university looks at the numerical responses,
+for me personally, the most useful feedback are the written comments.
+here are the instructions i received:
+
+<ol>
+
+<li>click on the following link: <a href="http://eval.ou.edu">http://eval.ou.edu</a>.
+
+<li>
+    Type your OUNet ID (4+4) and your password into the login window and click Log In. This is the same login information that you would use to check your OU email or log into oZone.
+
+<li>
+    After your login information has been authenticated, you will see a list of all the classes in which you are enrolled this Spring.
+
+<li>
+    Click the Evaluate Now link next to each course to evaluate it.
+
+<li>
+    When you are finished evaluating a course, click Submit Evaluation at the bottom of the evaluation form to save it.
+
+<li>
+    You will then be returned to the course list page. From here you can evaluate another course or log out. 
+<ol>
+
+</TR>
+
+</TABLE>
+</CENTER>
+
+<BR><BR>
+<a href="labs.html">labs page</A>
+<br>
+<a href=".">course home</A>
+</HTML>
+
+<!--
+<TR> 
+<td> </td>
+<td> </td>
+<td> </td>
+</TR>
+-->

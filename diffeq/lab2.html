@@ -1,0 +1,91 @@
+<HTML><HEAD><TITLE>diff eq (honors) - lab 2</TITLE></HEAD>
+<CENTER><H2>diff eq (honors) - lab 2<br>direction fields</H2></CENTER>
+<P>
+
+<BR><BR>
+<CENTER>
+<TABLE WIDTH = 90% CELLPADDING=8>
+<TR><td>
+<h3>in lab</h3>
+<ol>
+<li>(follow along with demonstration)
+plot a direction field for y'=y using <a href="http://reference.wolfram.com/language/ref/VectorPlot.html"><code>VectorPlot</code></a>.  (this is an example of
+the malthusian growth rate equation from hw 1)
+overlay the graph of e^t on the on the direction field.
+plot trajectories for y'=y using <a href="http://reference.wolfram.com/language/ref/StreamPlot.html"><code>StreamPlot</code></a>.  identify equilibrium 
+solutions and asymptotic behaviour based on an initial condition y'(0).
+given any initial condition y(t_0) = y_0, does there exist a solution?  if
+so, for what values of t?
+</ol>
+
+<h3>for homework</h3>
+turn in print outs of your mathematica worksheets, with any extraneous work
+cut out, on the due date listed on the <a href="homework.html">homework page</a>.  write your name and the lab number at the top.  though you may get help
+from me or your classmates, all of your code should be typed in (not copied) by
+yourself.  where appropriate, write problem numbers
+and explanations/comments by hand on your
+printouts (namely, parts (b) and (c) should be written by hand.)
+
+<ol>
+<li>consider a logistic equation y'= y - 0.2 y^2.  (you may think of y as
+representing population at time t, with y being birth rate and 0.2 y^2 being
+death rate as in hw 1.)  for this ode, do the following:<br>
+(a) plot a direction field (you may use <code>VectorPlot</code> or
+<code>StreamPlot</code> or both, 
+and you may want to experiment with the x,y (or t,y) ranges of the plot to
+get a good picture).
+<br>
+(b) explain the asymptotic behaviour of the solutions in terms of an intial 
+value of y(0).  identify equilibrium solutions.
+<br>
+(c) does there exist a solution for any initial condition y(t_0) = y_0, and
+if so, is it unique and does the solution exist for all values of t?  
+if not, why not?
+
+<li> do (a), (b) and (c) as above for this case of
+torricelli's law (again from hw 1): y'=-sqrt(y)
+
+<li> do (a), (b) and (c) as above for ode: y'=-y/t
+
+<li> do (a), (b) and (c) as above for ode: y'=-t/y
+
+<li> overlay your plots from lab 1 hw question 2 with a direction field
+(for this I'd prefer you to use <code>VectorPlot</code>) for the ode: y'=2t.
+</ol>
+
+<p>
+<h3>help</h3>
+see the <a href="lab1.html">lab 1 page</a> for general mathematica resources.
+for the topics for today, see <a href="http://reference.wolfram.com/language/howto/PlotAVectorField.html">the relevant how to</a> or <a href="http://mathematica.stackexchange.com/q/8841">examples on mathematica stack exchange</a>
+
+<p>
+<h3>addendum</h3>
+here is some mathematica code for how to plot several trajectories on top
+of the direction field for our example of y'=y:
+
+<pre>
+dirfield = VectorPlot[{1, y}, {x, -5, 5}, {y, -5, 5}];
+Do[p[i] = Plot[i*Exp[x], {x, -5, 5}, PlotRange -> {-5, 5}], {i, -5, 5}];
+tab1 = Table[p[i], {i, -5, 5}];
+tab2 = Append[ptab, dirfield];
+Show[tab2]
+</pre>
+</td>
+</TR>
+
+</TABLE>
+</CENTER>
+
+<BR><BR>
+<a href="labs.html">labs page</A>
+<br>
+<a href=".">course home</A>
+</HTML>
+
+<!--
+<TR> 
+<td> </td>
+<td> </td>
+<td> </td>
+</TR>
+-->

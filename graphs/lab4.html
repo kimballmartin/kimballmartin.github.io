@@ -1,0 +1,109 @@
+<HTML><HEAD><TITLE>Lab 4</TITLE></HEAD>
+<CENTER>
+<H2>Lab 4 - Connectedness, Distance and Random Trees (Feb 14/21, 2014)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+Based on what we discussed in class, write Python code for the following
+algorithms, representing graphs as adjacency matrices.  You may use
+the code in my <a href="graphs.py">graphs.py</a> file.  In particular,
+the <code>spheres</code> function will be very useful, as well as graph
+constructors for testing your code.
+
+<P>
+<B>Exercise 0:</B>
+Using the graph constructors in <a href="graphs.py">graphs.py</a>, construct
+the following adjacency matrices.
+<ul>
+<li> C5 - a cycle graph of order 5
+<li> C10 - a cycle graph of order 5
+<li> DC4 - a directed cycle graph of order 4
+<li> K5 - a complete graph of order 5
+<li> E3 - an empty graph on 3 vertices
+<li> G1 - the sum (union) of K5 with E3
+<li> G2 - the sum of C5 with DC4
+<li> G3 - the sum of DC4 with DC4, with a directed edge from 0 to 4
+</ul>
+
+<P>
+<B>Exercise 1:</B> 
+Write a function <code>undirected(A)</code> that returns the
+undirected graph associated with A.  Do not modify A, but build a
+new matrix.  Test this on DC4 and C5.
+
+<P>
+<B>Exercise 2:</B> 
+Write a function <code>component(A,i)</code> that returns the connected
+component of vertex i (as a Python set) for a directed or undirected graph
+A.  Test this on (G1,0), (G3,0) and 
+(G3, 7).
+
+<P>
+<B>Exercise 3:</B>
+Write a function <code>components(A)</code> that returns all connected
+components of A (directed or undirected), as a list of sets.  Test this 
+on G1, G2 and G3.
+
+<P>
+<B>Exercise 4:</B>
+Write a function <code>is_connected(A)</code> that returns True if
+A is connected and False otherwise.  Test this on G1, G2 and G3.
+
+
+<P>
+<B>Exercise 5:</B> 
+Write a function <code>distance(A,i,j)</code> that returns the
+distance from vertex i to vertex j.  If the distance is infinite, return -1.
+Test this on (C10,0,6), (G3, 1, 5) and (G3, 5, 1).
+
+<P>
+<B>Exercise 6:</B>
+Write a function <code>diameter(A)</code> that returns the diameter
+of A (directed or undirected).  If the diameter is infinite, return -1.  
+Test this on C5, C10, DC4, K5, G1 and G3.
+
+<P>
+<B>Exercise 7:</B>
+Write a function <code>randtree(n)</code> that returns the adjacency matrix
+of a random tree on n vertices.  
+Here we generate a tree randomly by starting with 1 vertex,
+and at each stage add an new vertex and an edge from the new vertex to
+one of the previous vertices, chosen at random.  To choose a vertex at
+random, use the function <code>randint(a,b)</code>, which returns a random
+integer between a and b (inclusive).  This function is in the 
+<code>random</code> module, and you first need to input <code>from random
+import randint</code> to call it.  Test this for n=5 a few times.
+
+<P>
+<B>Exercise 8:</B>
+Recall there are 3 possibilities for a tree of order 5 up to isomorphism.
+One can distinguish among these trees by looking at diameter (or 
+other things, such as maximum degree, or number of leaves).  Generate
+100 random trees on 5 vertices, and count the number of times each type
+of tree occurs.  Use this to estimate the probability for generating
+each type of tree.  With these probabilities, estimate the expected diameter.
+
+<p>
+<B>Exercise 9:</B>
+For each of the following values of n, generate 100 random trees of order n,
+and compute the average diameter: n = 5, 10, 20, 50, 100.
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

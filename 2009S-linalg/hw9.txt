@@ -1,0 +1,16 @@
+Section 4.8 (p. 267): 10
+
+Section 6.3 (p. 397): 1(a)(d)
+
+Section 6.5 (p. 413): 5, 6
+
+Problem A. (from old HW 13)
+
+Problem B. Let A and B be two $2 \times 2$ matrices.
+Prove $\det(AB) = \det(A)\det(B)$ in two different ways:
+
+(i) Use the formula for a $2 \times 2$ determinant.
+
+(ii) Use the geometric interpretation of the determinant
+(cf. notes or Example 6 and Remark on p. 163).
+

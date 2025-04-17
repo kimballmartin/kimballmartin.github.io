@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="favicon.ico" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimball Martin--the math</title>
+    <style>
+        body {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #607080;
+        }
+        .navbar a {
+            padding: 8px 12px;
+            display: block;
+            color: white; /* White text color */
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+        }
+        .navbar a:hover {
+            background-color: #ccc;
+            color: black; /* Black text color on hover */
+        }
+    </style>
+
+<script>
+function ExpandCollapse(theDiv) { el = document.getElementById(theDiv); if(el.style.display == 'none'){ el.style.display = ''; }else { el.style.display = 'none'; } return false; } 
+
+function Expand(theDiv) { el = document.getElementById(theDiv); el.style.display = ''; return false; } 
+
+function Collapse(theDiv) { el = document.getElementById(theDiv); el.style.display = 'none'; return false; } 
+</script>
+
+<STYLE TYPE = "text/css">
+<!--
+EC
+{color:silver; font-size:10pt; font-weight:normal}
+-->
+</STYLE>
+
+<STYLE TYPE = "text/css">
+<!--
+CO
+{color:darkred; font-size:12pt; font-variant:normal; font-weight:normal}
+-->
+</STYLE>
+
+<STYLE TYPE = "text/css">
+<!--
+ABS
+{color:gray; font-size:10pt; font-weight:normal}
+-->
+</STYLE>
+
+
+</head>
+
+<body>
+<div style="font-size: 60px; font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #607080; text-align: center; margin-top: 20px;">
+Kimball Martin</div>
+
+    <div class="navbar" width=90%>
+        <a href="index.html">HOME</a>
+        <a href="math.html">MATH</a>
+        <a href="courses.html">TEACHING</a>
+        <a href="writings.html">WRITING</a>
+    </div>
+
+<center>
+
+<table width=90%>
+<tr><td>
+
+<EC align = left onClick = "Expand('feat'); Expand('papers');
+Expand('notes'); Expand('links')">
+[expand all]</EC>
+
+<EC align = left onClick = "Collapse('feat'); Collapse('papers');
+Collapse('notes'); Collapse('links')">
+[collapse all]</EC>
+
+</tr></td></table>
+
+
+<table width="90%" border="0">
+
+  <tr>
+
+    <td align=left><h3 onClick = "ExpandCollapse('feat')">Collections
+<EC>[click to expand/collapse]</EC></h3>
+<div id = "feat" style = "display:">
+      <ul>
+<LI><A HREF="mr.html">Exceptional MathReviews</A>
+<LI><A HREF="afrefs.html">Automorphic Forms Online Resources</A>
+<LI><A HREF="ntpeople.html">Some Number Theorists</A>
+</ul>
+
+<h4>Academic advice &#8594; <a href="writings.html">Writings page</a></h4>
+</div>
+    </td></tr>
+
+<tr>
+    <td align=left><h3 onClick = "ExpandCollapse('papers')">Research
+<EC>[click to expand/collapse]</EC></h3>
+
+<div id = "papers" style = "display:">
+<b>Topics:</b> My primary interests lie at the intersection of
+number theory and algebra, particularly understanding and discovering
+algebraic structures in arithmetic, and connecting different types
+of objects (modular forms, automorphic representations, representations of 
+<i>p</i>-adic groups, <i>L</i>-functions, quaternion algebras, 
+algebraic groups, elliptic curves, genus 2 curves, ...).
+Much of this is done with group theory,
+representation theory, harmonic analysis, and/or computations.
+I've also done a bit with graph theory, combinatorial
+optimization and spectral geometry.
+
+<p>
+<ul>
+<li>
+<a href="data/">Data and code</a> related to some of my research
+</ul>
+
+<p>
+Links in <font color="green">green</font> are from conference proceedings.
+Please <a href="index.html">contact me</a> for a copy of any paper you cannot
+download.
+
+
+<p>
+
+<!--
+<EC align = left onClick = "Expand('wabs')"; "Collapse('woabs')">
+[with descriptions]</EC>
+
+<EC align = left onClick = "Collapse('wabs')"; "Expand('woabs')">
+[without descriptions]</EC>
+-->
+
+<div id = "wabs" style = "display:">
+
+<p>
+<ol reversed>
+
+<LI>
+<a href="papers/Wqbias.pdf">Distribution of local signs of modular forms and murmurations of Fourier coefficients</a> 
+<BR><I>submitted</I> 
+<BR>
+<ABS>
+We determine how local root numbers of modular forms are distributed, and show the local root numbers are correlated with Fourier coefficients.  This is an analogue of earlier work on global root numbers.  We also conjecture the existence of murmurations beyond the context of global root numbers.
+</ABS>
+<P>
+
+<LI>
+<a href="papers/RMfamilies.pdf">Generic models for genus 2 curves with real multiplication</a> with <CO>Alex Cowan</CO> and <CO>Sam Frengley</CO>
+<BR><I>submitted</I> 
+<BR>
+<ABS>
+We give generic models for genus 2 curves with real multiplication by the ring of integers in <b>Q</b>(<span>&#8730;</span>D) for all fundamental discriminants <i>D</i> < 40, and <i>D</i> = 44, 53, 61 by algorithmically minimizing conics over function fields.  This is a sequel to my <i>Bordeaux</i> paper with Cowan.
+</ABS>
+<P>
+
+
+<LI>
+<a href="papers/mfbyrat.pdf">Counting modular forms by rationality field</a> with <CO>Alex Cowan</CO>
+<BR><I>submitted</I> 
+<BR>
+<ABS>
+We make conjectures about the distribution of degrees and rationality fields of weight 2 newforms, and provide some evidence toward these conjectures.
+</ABS>
+<P>
+
+<LI>
+<a href="https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.1286/">Moduli for rational genus 2 curves with real multiplication for discriminant 5</a> with <CO>Alex Cowan</CO>
+<BR><I>Journal de Théorie des Nombres de Bordeaux</I>, Vol. 32, No. 2 (2024), 493-525.
+<BR>
+<ABS>
+The Hilbert modular surface Y(5) parametrizes prinicipally polarized
+abelian surfaces with real multiplication (RM) by the ring of integers of 
+<b>Q</b>(<span>&#8730;</span>5).
+We determine which moduli correspond to genus 2 curves defined over <b>Q</b>. 
+</ABS>
+<P>
+
+<LI>
+<a href="https://www.impan.pl/en/publishing-house/journals-and-series/acta-arithmetica/all/212/4/115461/local-conductor-bounds-for-modular-abelian-varieties">
+Local conductors bounds for modular abelian varieties</a>
+[<a href="papers/modav-cond.pdf">preprint version</a>]
+<BR><I>Acta Arithmetica</I>, Vol. 212, No. 4 (2024), 325-336.
+<BR>
+<ABS>
+We improve on the Brumer-Kramer bounds for local conductors of abelian
+varieties of GL(2)-type.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.jnt.2023.10.004">
+Mass formulas and Eisenstein congruences in higher rank</a> 
+with <CO>Satoshi Wakatsuki</CO>
+[<a href="papers/masscong.pdf">preprint version</a>]
+<BR><I>Journal of Number Theory</I>, Vol. 257 (2024), 249-272.
+<BR>
+<ABS>
+We generalize the approach to constructing Eisenstein congruences 
+from my 2017 MRL paper to groups of higher rank, with a focus on unitary groups,
+though we also extend some earlier results on Hilbert modular 
+forms.  
+The relevant Eisenstein series here are associated to minimal parabolic
+subgroups.
+</ABS>
+<P>
+
+<LI>
+<a href="papers/rootno.pdf">Root number bias for newforms</a>
+<BR><I>Proceedings of the AMS</I>, Vol. 151 (2023), 3721-3736.
+<BR>
+<ABS>
+We determine the number of newforms of a given weight and level with given
+root number, and find that typically more newforms have root number +1 than
+-1.  This generalizes
+earlier results about levels which are squarefree or cubes of squarefree
+numbers.
+</ABS>
+<P>
+
+<LI>
+<a href="https://msp.org/involve/2022/15-4/p09.xhtml">
+Rank bias for elliptic curves mod <i>p</i></a>
+with <CO>Thomas Pharis</CO>
+[<a href="papers/aprank.pdf">preprint version</a>]
+[<a href="papers/aprank-err.pdf">errata</a>]
+<BR><I>Involve</I>, Vol. 15, No. 4 (2022), 709-726.
+<BR>
+<ABS>
+We conjecture that for a fixed prime p, elliptic curves with higher ranks
+tend to have more points mod p, and we prove an analogous statement for
+modular forms.  (See errata for a sign correction.)
+</ABS>
+<P>
+
+<LI>
+<a href="https://rdcu.be/cU5Ue">
+Exact double averages of twisted <i>L</i>-values</a>
+<BR><I>Mathematische Zeitschrift</I>, Vol. 302 (2022), 1821-1854.
+<BR>
+<ABS>
+We prove simple formulas for a double average of twisted central <i>L</i>-values 
+over both modular forms and twisting characters.  This leads to generalizations
+of stable (single) average formulas by Michel-Ramakrishnan and Feigon-Whitehouse.
+<br>
+
+<font color=black>
+<b>Errata:</b> Springer introduced several errors during production:
+the submission date was Jun 8 2020, not Jun 8 2022; the first and last names of authors are swapped in bib items 17, 20 and 29; a reference to the appendix correctly links to the appendix but the text says section 1</font>
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1080/10586458.2019.1596849">
+Refined Goldbach conjectures with primes in progressions</a>
+[<a href="papers/goldbach.pdf">preprint version</a>]
+<BR><I>Experimental Mathematics</I>, Vol. 31, No. 1 (2022), 226-232.
+<BR>
+<ABS>
+We present some refinements of Goldbach's conjectures by restricting
+to primes in arithmetic progressions.
+</ABS>
+<P>
+
+<LI>
+<A HREF="https://doi.org/10.1090/proc/15328">An on-average Maeda-type conjecture in the level aspect</a>
+[<a href="papers/maeda.pdf">author version</a>]
+<BR><I>Proceedings of the AMS</I>, Vol. 149, No. 4 (2021), 1373-1386.
+[<a href="data/">data</a>]
+<BR>
+<ABS>
+We present a conjecture about the average number of Galois orbits
+of newforms for fixed weight and varying level.  This has implications
+about average ranks of L-functions.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.jnt.2020.05.008">
+Zeroes of quaternionic modular forms and central <I>L</I>-values</a>
+with <CO>Jordan Wiebe</CO>
+[<a href="papers/qmf-zeroes.pdf">preprint version</a>]
+<BR><I>Journal of Number Theory</I>, Vol. 217 (2020), 460-494.
+<BR>
+<ABS>
+We study, theoretically and computationally, zeroes of 
+modular forms on definite quaternion algebras, and the relation to
+non/vanishing of <I>L</I>-values.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1090/tran/8077">The basis problem revisited</a>
+[<a href="papers/basis-prob.pdf">preprint version</a>]
+<BR><I>Transactions of the AMS</I>, Vol. 373, No. 7 (2020), 4523-4559.
+<BR>
+<ABS>
+We explicitly describe the Jacquet-Langlands correspondence at the level
+of modular forms.  This gives a simpler and more flexible solution 
+to Eichler's basis problem for general level than earlier work of 
+Hijikata-Pizer-Shemanske for elliptic modular forms, and solves the
+basis problem for Hilbert modular forms.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1007/s40316-019-00116-3">Rationality of Darmon points over genus fields of non-maximal orders</a>
+with <CO>Matteo Longo</CO> and <CO>Yan Hu</CO>
+[<a href="papers/LMH.pdf">preprint version</a>]
+<BR><I>Annales mathématiques du Québec</I>, Vol. 44, No. 1 (2020), 173-195.
+<BR>
+<ABS>
+We extend work of Bertolini-Darmon---proving rationality of twists of 
+Stark-Heegner points, aka Darmon points, for elliptic curves---from 
+the case of genus characters to quadratic ring class characters.
+This uses my 2009 <i>IMRN</i> paper with Whitehouse.
+</ABS>
+<P>
+
+<LI>
+<a href="http://dx.doi.org/10.4153/CJM-2017-019-1">
+Congruences for modular forms mod 2 and quaternionic <I>S</I>-ideal classes
+</a>
+[<a href="papers/congmod2.pdf">preprint version</a>]
+<BR><I>Canadian Journal of Mathematics</I>, Vol. 70, No. 5 (2018), 1076-1095.
+<BR>
+<ABS>
+We use quaternionic modular forms to prove various congruences mod 2 
+between modular forms with differing Atkin-Lehner eigenvalues.  The proofs 
+are related to the distribution of Atkin-Lehner signs (making use of my
+"Refined dimensions..." paper below) and
+the notion of quaternionic <I>S</I>-ideal classes.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.jnt.2018.01.015">
+Refined dimensions of cusp forms, and equidistribution and bias of signs</a>
+[<a href="papers/refined-dim.pdf">preprint version</a>]
+[<a href="data/">sage code</a>]
+<BR><I>Journal of Number Theory</I>, Vol. 188 (2018), 1-17.
+<BR>
+<ABS>
+We give dimensions of new spaces of squarefree level with prescribed 
+Atkin-Lehner eigenvalues or global root numbers, and find these signs are
+equidistributed with a strict bias in the weight but perfectly equidistributed
+in the level.  This is used in my paper above on congruences mod 2.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1007/s11856-018-1657-5">
+Periods and nonvanishing of central <i>L</i>-values for GL(2<i>n</i>)</a>,
+with <CO>Brooke Feigon</CO> and <CO>David Whitehouse</CO>
+[<a href="papers/fmw.pdf">preprint version</a>]
+<BR><I>Israel Journal of Mathematics</I>, Vol. 225, No. 1 (2018), 223-266.
+<BR>
+<ABS>
+Under some local hypotheses, we prove a relation between the nonvanishing
+of twisted central <i>L</i>-values for GL(2<i>n</i>) and periods over 
+GL(<i>n</i>, <i>E</I>), where <i>E</i> is a quadratic extension.
+We also deduce analogous local results for supercuspidal representations.
+</ABS>
+<p>
+
+<LI><A HREF="http://dx.doi.org/10.4310/MRL.2017.v24.n6.a11">The Jacquet-Langlands
+correspondence, Eisenstein congruences, and integral <i>L</i>-values in
+weight 2</A> [<A HREF="papers/JLcong-err.pdf">errata</a>, <A HREF="papers/JLcong-cor.pdf">corrected version</a>]
+<BR>
+<i> 
+Mathematical Research Letters,
+</I> Vol. 24, No. 6 (2017), 1775-1795.
+<BR>
+<ABS>
+We use the Jacquet-Langlands correspondence to generalize 
+congruence results of Mazur to non-prime level and to 
+Hilbert modular forms.
+</ABS>
+<P>
+
+
+<LI>
+<a href="https://doi.org/10.4064/aa170120-1-5">Distinguishing 
+finite group characters and refined local-global phenomena</a>,
+with <CO>Nahid Walji</CO>
+[<a href="papers/dist-artin.pdf">preprint version</a>]
+<BR><I>Acta Arithmetica</I>, Vol. 179, No. 3 (2017), 277-300.
+<BR>
+<ABS>
+We study the question of how often two finite group characters can agree,
+and use this to say how many Euler factors of distinct primitive Artin L-functions
+can agree in degree 2 or 3.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.2140/ant.2017.11.253">Test vectors and central <i>L</i>-values for GL(2)</a>,
+with <CO>Daniel File</CO> and <CO>Ameya Pitale</CO>
+[<a href="papers/FMP.pdf">preprint version</a>]
+<BR><I>Algebra and Number Theory</I>, Vol. 11, No. 2 (2017), 253-318.
+<BR>
+<ABS>
+We extend work of Gross and Prasad on test vectors for GL(2) to cases of joint 
+ramification, and use this to generalize the <i>L</i>-value formula of my
+2009 <i>IMRN</i> paper with Whitehouse, an average-value formula of 
+Feigon-Whitehouse, and a nonvanishing mod <i>p</i> result of 
+Michel-Ramakrishnan.
+</ABS>
+<P>
+
+
+<LI>
+<a href="papers/comparing-artin.pdf">A comparison of automorphic and
+Artin L-series of GL(2)-type agreeing at degree one primes</a>, 
+with <CO>Dinakar Ramakrishnan</CO>
+<BR><I>Contemporary Mathematics</I> 664, <a href="http://bookstore.ams.org/conm-664/">Advances
+in the Theory of Automorphic Forms and their <i>L</i>-functions</a>
+(Cogdell volume) (2016), 339-350.
+<BR>
+<ABS>
+We show that if a 2-dimensional Artin representation corresponds to an 
+automorphic
+representation outside of a density 0 infinite set of places of a certain 
+form, then they correspond everywhere.
+</ABS>
+<P>
+
+<LI><A HREF="papers/rims2015.pdf"><font color = green>Strong local-global
+phenomena for Galois and automorphic representations</font></A>
+<BR>
+<i> <a href="http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/1973.html"><font color=green>
+RIMS K&ocirc;ky&ucirc;roku 1973, Modular forms and automorphic representations
+(2015)</font></a></i>, 120-130.
+<BR>
+<ABS>
+An exposition of strong multiplicity one type results and refinements, 
+with an aim to explain the results of my <i>Contemp. Math.</i>
+paper with Ramakrishnan.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.laa.2015.04.028">Distinguishing graphs with zeta functions
+and generalized spectra</a>,
+with <CO>Christina Durfee</CO>
+[<a href="http://arxiv.org/abs/1410.1610">arXiv version</a>]
+<BR><I>Linear Algebra and its Applications</I> 481 (2015), 54-82.
+<BR>
+<ABS>
+A fundamental problem in graph theory is: when is a graph determined by its
+spectrum?  We investigate analogues of this question with zeta functions
+in place of spectrum.  Our work suggests that zeta functions are more 
+effective at
+distinguishing graphs than the usual types of spectra studied.
+</ABS>
+<P>
+
+<LI>
+<a href="http://www.dmtcs.org/dmtcs-ojs/index.php/dmtcs/article/view/2754/0.html">How often should you clean your room?</a>
+with <CO>Krishnan (Ravi) Shankar</CO>
+<BR><I>Discrete Mathematics & Theoretical Computer Science</I>, Vol. 17, No. 1
+(2015), 413-442.
+<BR>
+<ABS>
+We introduce and study a combinatorial optimization problem motivated by
+the question, "How often should you clean your room?"
+See also popular write-ups by <a href="http://www.microbiohydro.com/mathematics-proves-that-it-pays-to-be-lazy/">Francis Woodhouse</a> and 
+<a href="http://www.3quarksdaily.com/3quarksdaily/2015/06/how-often-should-you-clean-your-room.html">Jon Kujawa</a>.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.jnt.2013.07.001">
+Local root numbers, Bessel models, and a conjecture of Guo and Jacquet</a>,
+with <CO>Masaaki Furusawa</CO>
+<BR><I>Journal of Number Theory, Special Issue in Honor of
+Steve Rallis,</I> 
+Vol. 146
+(2015), 150-170.
+<BR>
+<ABS>
+We make a conjecture about the transfer of global SO(2)-Bessel periods on 
+SO(2<i>n</i>+1) to GL(<i>n</i>, <i>E</i>) periods on GL(2<i>n</i>), where
+<i>E</i> is the quadratic extension associated to the relevant form of SO(2),
+and prove this when <i>n</i> = 2.
+</ABS>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1007/s00209-013-1248-4">On 
+central critical values of the degree four <I>L</I>-functions for GSp(4): 
+a simple trace formula</a>,
+with <CO>Masaaki Furusawa</CO>
+[<a href="papers/fm-simple.pdf">preprint version</a>]
+<BR><I>Mathematische Zeitschrift,</I> Vol. 277, No. 1 (2014), 149-180.
+<BR>
+<ABS>
+As an application of our fundamental lemma I and III papers, we 
+prove a global Bessel identity for cuspidal automorphic representations of 
+GSp(4) which are supercuspidal at some component (plus some other local 
+hypotheses).
+In particular, one obtains the global Gross-Prasad Conjecture (a nonvanishing 
+theorem) for such representations.
+</ABS>
+<P>
+
+<LI>
+<a href="http://www.ams.org/books/memo/1057/">
+On central critical values of the degree four <I>L</I>-functions for GSp(4): the fundamental lemma III</a>,
+with <CO>Masaaki Furusawa</CO> and <CO>Joseph Shalika</CO>
+[<a href="papers/fms-mams.pdf">preprint version</a>]
+<BR><I>Memoirs of the AMS,</I> Vol. 225, No. 1057 (2013), x+134pp. 
+<BR>
+<ABS>
+We extend the fundamental lemma from  our 
+<I>American Journal</I> paper below, as well as one due to Furusawa-Shalika,
+ to the full Hecke algebra.
+</ABS>
+<P>
+
+<LI><A HREF="https://doi.org/10.1090/S0002-9939-2011-11053-0">Nonunique factorization and principalization
+in number fields</A>
+<BR><I>Proceedings of the AMS, </I>Vol. 139, No. 9 (2011), 3025-3038. 
+<BR> 
+<ABS>
+This describes the number and structure of irreducible factorizations of
+an algebraic integer in the ring of integers of a number field, using 
+what were essentially Kummer's ideas.
+</ABS>
+<p>
+
+<LI><a href="https://doi.org/10.1142/S1793042111004101">A 
+relative trace formula for a compact Riemann surface</A>, 
+with <CO>Mark McKee</CO> and <CO>Eric Wambach</CO> [<A href="papers/mmw-errata.pdf">errata</a>, <A HREF="http://arxiv.org/abs/1504.05684">corrected version</a>]
+<BR><I>International Journal of Number Theory</I>, Vol. 7, No. 2 (2011), 389-429.
+<BR>
+<ABS>
+We interpret a relative trace formula on a hyperbolic compact Riemann
+surface as a relation between the <I>period spectrum</I> and <I>ortholength
+spectrum</I> of a given closed geodesic.  This leads to various asymptotic
+results on periods and ortholengths, as well as some simultaneous nonvanishing
+results for two different periods.
+</ABS>
+<P>
+
+<LI>
+<A HREF="https://doi.org/10.1353/ajm.2011.0007">On central critical 
+values of the degree four
+<I>L</I>-functions for GSp(4): the fundamental lemma II</A>, with <CO>Masaaki
+Furusawa</CO> [<A HREF="papers/fl2.pdf">preprint version</a>]
+<BR><I>American Journal of Mathematics,</I> Vol. 133, No. 1 (2011), 197-233.
+<BR>
+<ABS>
+We propose a different kind of relative trace formula than Furusawa-Shalika
+to relate central spinor <I>L</I>-values to Bessel periods, and prove the
+corresponding fundamental lemma.  This relative trace formula has several
+advantages over the previous ones.
+</ABS>
+<P>
+
+<LI><A HREF="papers/mw-imrn.pdf">Central <I>L</I>-values and toric periods 
+for GL(2)</A>, with <CO>David Whitehouse</CO>
+<BR> <I>International Mathematics Research Notices (IMRN)</I> <B>2009</B>, No. 1 (2009), 141-191.
+<BR>
+<ABS>
+Using Jacquet's relative trace formula, we get a formula for the central value
+of a GL(2) <I>L</I>-function, refining results of Waldspurger.
+<BR>[<A HREF="papers/mw.pdf">Old version</A> (Nov. 13, 2006).  This uses a simpler trace formula but is much less general.]
+</ABS>
+<P>
+
+<LI><A HREF="papers/rims-upd.pdf"><font color = green>Central 
+<I>L</I>-values and toric periods for GL(2)</font></A>
+<BR>
+<i><a href="http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/1617.html"><font color=green>RIMS K&ocirc;ky&ucirc;roku 1617,
+Automorphic Representations, Automorphic
+Forms, <I>L</I>-functions and Related Topics (2008)</font></a></I>, 126-137.
+<BR>
+<ABS>
+This is basically an extended introduction to the above paper, ending with
+an outline of the relative trace formula approach to proving special value
+formulas.
+</ABS>
+<P>
+
+
+<LI><A HREF="http://dx.doi.org/10.2140/pjm.2007.233.341">Shalika periods on GL(2,D) and GL(4)</A>, 
+with <CO>Herv&eacute; Jacquet</CO>
+[<a href="papers/shalper.pdf">preprint version</a>]
+<BR><I>Pacific Journal of Mathematics</I>, Vol. 233, No. 2 (2007), 341-370.
+<BR>
+<ABS>
+Here we use a relative trace formula
+to study period integrals, which yield results about exterior-square <I>L</I>-functions, and thus about transfer to GSp(4).  
+</ABS>
+
+<P>
+<LI><A HREF="papers/hakuba.pdf"><font color = green>
+Transfer from GL(2,D) to GSp(4)</font></A>
+<BR><I><A HREF="http://math01.sci.osaka-cu.ac.jp/~furusawa/Hakuba2006/Proceedings.html"><font color = green>
+Proceedings of the 9th Autumn Workshop on Number Theory,
+Hakuba, Japan (2006)</font></A></I>, 10pp.<BR>
+<ABS>
+These are notes from a talk explaining an application of my work with Jacquet
+(above) to the question of transferring representations to GSp(4).
+</ABS>
+<p>
+
+<LI><A HREF="http://resolver.caltech.edu/CaltechETD:etd-05272004-224316">Four-dimensional Galois representations of solvable type and automorphic forms</A>
+[<A HREF="papers/thesis-abstract.pdf">abstract</A>] 
+<BR><I>Ph.D. Thesis, Caltech,</i> 2004, 81pp.
+<BR>
+<ABS>
+This contains the results in the two papers below, as well as a
+classification of representations into GSp(4,C) of solvable type and 
+minor additional modularity results.
+I  wrote an informal note about 
+<A HREF="papers/laythesis.pdf">my thesis for
+the layman</A> 
+(by which I mean the mathematically- or scientifically- minded layman).
+</ABS>
+<P>
+
+<LI><A HREF="http://dx.doi.org/10.1016/j.crma.2004.05.003">Modularity 
+of hypertetrahedral
+representations</A>
+[<a href="papers/CR-kmartin.pdf">preprint version</a>]
+<BR>
+<I>Comptes Rendus Mathematique, Vol. 339, No. 2 (2004), 99-102.</I> <BR>
+<ABS>
+This proves a new case of modularity 
+for four-dimensional Galois representations induced from a <I>non-normal</I>
+quartic extension.  In particular, one obtains examples of modular
+representations which are not essentially self-dual.
+</ABS>
+<P>
+
+<LI>
+<A HREF="https://dx.doi.org/10.4310/MRL.2003.v10.n4.a7">A symplectic case of Artin's conjecture</A> 
+<BR><I>Mathematical Research Letters, Vol. 10, No. 4 (2003), 483-492.</I> 
+<BR> 
+<ABS>
+This gives a new case of Artin's conjecture in GSp(4,C) by establishing 
+the more general Langlands' reciprocity law in this case.
+</ABS>
+
+	</ol>
+
+
+<h4>PhD Students Supervised</h4>
+	  <ul>
+
+<LI>Jordan Wiebe (PhD 2019, University of Oklahoma; subsequent position: Lockheed Martin)
+<br>Thesis:
+<a href="https://shareok.org/handle/11244/319651">Arithmetic in Quaternion Algebras and Quaternionic Modular Forms</a>
+<LI><a href="https://math.ou.edu/profile?sramakrishnan">Siddharth Ramakrishnan</a> (current, University of Oklahoma)
+<LI><a href="https://about.sayantansantra.com/">Sayantan Santra</a> (current, University of Oklahoma)
+
+</ul>
+
+
+<h4>Undergraduate Research Supervised</h4>
+	  <ul>
+
+<LI>
+<a href="https://msp.org/involve/2022/15-4/p09.xhtml">
+Rank bias for elliptic curves mod <i>p</i></a>, by Kimball Martin and
+Thomas Pharis
+[<a href="papers/aprank.pdf">preprint version</a>]
+[<a href="papers/aprank-err.pdf">errata</a>]
+<BR><I>Involve</I>, Vol. 15, No. 4 (2022), 709-726.
+<FONT COLOR=GREY SIZE=-1>
+<BR>Based on Thomas Pharis' 2019 Honors Thesis at the University of Oklahoma
+</FONT>
+<P>
+
+<LI><A href="http://dx.doi.org/10.2140/involve.2008.1.111">An 
+asymptotic for the representation of integers as sums of triangular numbers</A>,
+by Atanas Atanasov, Rebecca Bellovin, Ivan Loughman-Pawelko, Laura Peskin and 
+Eric Potash. <I>Involve</I>, Vol. 1, No. 1 (2008) 111-121.  
+<FONT COLOR=GREY SIZE=-1>
+<BR>Carried out in the 
+<A HREF="http://www.math.columbia.edu/programs-math/undergraduate-program/summer-undergraduate-research/2007-2/">
+2007 Summer Undergraduate Research Program at 
+Columbia University</A> (See the program page for an open access version of 
+their work.)
+</FONT>
+<P>
+
+<LI>
+<a href="https://doi.org/10.1016/j.disc.2004.06.015">The correct solution 
+to Berelekamp's switching game</a>, by Jordan Carlson and Daniel Stolarski. <I>Disc. Math.</I>
+Vol. 287, No. 1-3 (2004), 145-150.
+<FONT COLOR=GREY SIZE=-1>
+<BR>Carried out in the 2002 Caltech Freshman Summer Institute
+</FONT>
+
+</ul>
+</div>
+
+
+</div>
+</td></tr>
+
+  <tr>
+    <td align=left>
+<h3 onClick = "ExpandCollapse('notes')">Notes
+<EC>[click to expand/collapse]</EC></h3>
+
+<div id = "notes" style = "display:">
+<h4>Course notes &#8594; <a href="courses.html">Courses page</a></h4>
+
+<div id = "notes" style = "display:">
+<h4>Notes on Number Theory and Representation Theory</h4>
+	  <ul>
+
+<LI><A HREF="papers/shahidi-prep.pdf">An introduction to
+(principal) <i>L</i>-functions
+and <i>L</i>-groups</A>, from a prep session for grad students
+at <a href="http://math.okstate.edu/people/asgari/tora8.html">TORA VIII</a> 
+(19pp, Mar 2017).
+<P>
+
+<LI><A HREF="papers/quatcubforms.pdf">Sums of squares, sums of cubes, and
+modern number theory</A>, a sort of survey,
+aimed at graduate students (27pp, 2015; revised Jun 2016).
+<P>
+
+<LI><A HREF="papers/mfs.pdf">A brief overview of modular and automorphic
+forms</A>, aimed at graduate students (12pp, 2010; revised Jun 2016).
+<P>
+
+<LI><A HREF="papers/laythesis.pdf">My thesis for
+the layman</A>, an attempt to vaguely explain what I was working on to my
+friends/undergrad students from Caltech (4pp, 2004). 
+<P>
+
+<LI> <A HREF="papers/LTWF.pdf">
+Langlands, Tunnell, Wiles and Fermat</A>. This is an attempt to very briefly 
+(and informally) explain how L-functions and automorphic forms/representations 
+are involved in the proof of Fermat's Last Theorem (4pp, 2004).
+<P>
+
+<LI><A HREF="papers/tetoct.ps">Langlands' Conjecture for the Tetrahedral and 
+Octahedral Cases</A>, a short introduction to Langlands' reciprocity 
+conjecture
+with an exposition of the proof in the tetrahedral and octahedral cases, i.e.,
+the Langlands-Tunnell Theorem (7pp, 2002).
+<P>
+
+<LI><A HREF="papers/S3A4S4reps.ps">Representations of <I>S_3, A_4</I> and
+<I> S_4</I></A>, a simple exercise to write the irreducible representations
+as induced from one-dimensionals (2pp).
+	  </ul>
+
+<h4>Notes on Graph Theory and Algebraic Combinatorics</h4>
+      <ul>
+
+<LI><A HREF="papers/designs-codes2.pdf">Designs and Codes: Planes, Difference
+Sets and Hadamard Matrices</A>, from a talk to general math undergrads on 
+some research areas in algebraic combinatorics (5pp, revised 2009).
+<P>
+
+<LI><A HREF="papers/codes.ps">A Brief Introduction to Coding Theory</A>, aimed at introducing my Caltech Freshman Summer Institute 
+kids to a research project on <A HREF="http://www.research.att.com/~njas/doc/1218related.pdf">Berlekamp's light bulb game</A> (4pp, 2002).  You
+can see their work <a href="http://www.sciencedirect.com/science/article/pii/S0012365X04003218">here</a>.
+<P>
+<li><a href="papers/ds.ps">Difference
+Sets with Group Characters</A>,  a quick proof, shown to me by John Dillon, of Maschietti's theorem, which gave us a new construction for an infinite class of difference sets (6pp, 1997).
+	  </ul>
+</div>
+	</td>
+  </tr>
+
+  <tr>
+    <td align=left><h3 onClick = "ExpandCollapse('links')">Links
+<EC>[click to expand/collapse]</EC></h3>
+<div id = "links" style = "display:">
+      <ul>
+<li><a href="https://arxiv.org/archive/math">Math on the arXiv</a>
+<LI><A HREF="http://www.numbertheory.org/ntw/N3.html">Number Theory Conferences</A> from the Number Theory Web (new listings <A HREF="http://www.numbertheory.org/ntw/additions.html">here</A>)
+<LI><A HREF="https://mathmeetings.net/">MathMeetings.net</a>
+<LI><A HREF="https://researchseminars.org/">researchseminars.org</a>
+<LI><A HREF="http://www.math.unt.edu/~richter/TORA.html">TORA Conference Series</A>
+
+<P>
+<LI><A HREF="https://www.nsf.gov/crssprgm/reu/list_result.jsp?unitid=5044">NSF Math REU Listing</A>, good summer opportunities for math undergrads.
+<LI><A HREF="https://www.intelligencecareers.gov/nsa/nsastudents.html">
+NSA Summer Progams</A>, also excellent opportunities for high school, 
+undergrad and grad students
+      </ul>
+</div>
+    </td>
+  </tr>
+
+</table>
+
+<table width=90%>
+<tr><td>
+<EC align = left onClick = "Expand('feat'); Expand('papers');
+Expand('notes'); Expand('links')">
+[expand all]</EC>
+
+<EC align = left onClick = "Collapse('feat'); Collapse('papers');
+Collapse('notes'); Collapse('links')">
+[collapse all]</EC>
+
+</td></tr></table>
+
+</center>
+</body>
+</html>
+

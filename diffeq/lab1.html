@@ -1,0 +1,128 @@
+<HTML><HEAD><TITLE>diff eq (honors) - lab 1</TITLE></HEAD>
+<CENTER><H2>diff eq (honors) - lab 1<br>beginnings with mathematica</H2></CENTER>
+<P>
+
+<BR><BR>
+<CENTER>
+<TABLE WIDTH = 90% CELLPADDING=8>
+<TR><td>
+<h3>in lab</h3>
+<ol>
+<li>start mathematica; follow along with my mini-intro with fibonnaci numbers.
+
+<li>go through wolfram's  <a href="http://www.wolfram.com/language/fast-introduction-for-programmers/">fast introduction</a>, up to the "function definitions"
+section, including the "check your understanding" quizzes. 
+(don't just read the mathematica code, but type it in and try it out).
+(wolfram also has an <a href="http://www.wolfram.com/language/elementary-introduction">elementary introduction</a> which is more basic with more
+explanations if you
+feel like you need it, but it contains a lot of stuff we don't care about.)
+
+<li>graph the function y=e^x on [0,10] using mathematica's <a href="http://reference.wolfram.com/language/ref/Exp.html"><code>Exp</code></a>
+and
+<code><a href="http://reference.wolfram.com/language/ref/Plot.html">Plot</a></code>
+functions.  using the <code>PlotStyle</code> option in <code>Plot</code>, 
+redo the plot in red, and then redo the plot again used a dashed line.
+
+<li>define the factorial function g(x) = x! for a nonnegative integer x 
+recursively (without using the built-in factorial function), i.e., by g(0) = 1
+and g(x) = x*g(x-1).  make a table of g(0), ..., g(10) with the
+<code><a href="http://reference.wolfram.com/language/ref/Table.html">Table</a></code>
+function.
+plot the table values with
+<code><a href="http://reference.wolfram.com/language/ref/ListLinePlot.html">ListLinePlot</a></code>
+
+<li>put the previous two plots in different styles (different colors or solid vs
+dashed) on the same picture with
+<code><a href="http://reference.wolfram.com/language/ref/Show.html">Show</a></code>.
+see <a href="https://www.cs.purdue.edu/homes/ayg/CS590C/www/mathematica/math05.html">here</a> for a way to do this in stages.
+</ol>
+
+whatever you do not finish in lab, please try to finish on your own before our
+next lab.  on the other hand, if you finish early, you can get started on the
+homework. 
+
+<p>
+<b>get mathematica for home:</b>
+if you like, you can obtain a copy of mathematica for your own machine through
+the <a href="https://itstore.ou.edu">ou it store</a>.
+
+<h3>for homework</h3>
+
+turn in print outs of your mathematica worksheets, with any extraneous work
+cut out, on the due date listed on the <a href="homework.html">homework page</a>.  write your name and the lab number at the top.  though you may get help
+from me or your classmates, all of your code should be typed in (not copied) by
+yourself.  where appropriate, write problem numbers and explanations/comments 
+by hand on your
+printouts (esp. for #3).
+
+<ol>
+<li>consider the IVP y'(t) = 2t, y(0) = 0 and the approximate solution
+f(t) formed as follows: let f(0)=0 and inductively define f(t)
+to yield the line through f(n) of slope y'(n) for t in [n,n+1], for n = 0, 1, 2,
+... 
+(this is <a href="https://en.wikipedia.org/wiki/Euler_method">euler's 
+method</a> and is essentially the construction described on pp 17-18 of the 
+text.  euler's method is also described in stewart's calculus book, and i will
+briefly describe it in the next lab.) define the function f(t)
+in mathematica at nonnegative integers t.
+using <code>Table</code>, output the values of f(0), ..., f(10).
+plot the graph of f(t) against the graph of y(t) = t^2 on [0, 10] (plot y as
+a dashed line, and f as a solid line to distinguish).
+
+<li>let f(t) now denote the approximate solution to the IVP in the previous
+problem but instead of using line segments with change in x (Delta x) equals 1,
+using line segments with change in x being some arbitrary step size denoted
+<code>step</code>.  define a function <code>g[n_,step_]</code> which is 0 when
+n=0 and the y-value of the n-th endpoint of the line segment for f(t) for
+n=1, 2, 3, ...  using this function, plot on the same graph the different f(t)'s
+for step sizes 2, 1, 0.5, 0.2, 0.1 against the graph for y(t)=t^2 (again using
+dashed lines for the latter, and you may want to use different colors for the
+different f(t)'s.  all the graphs should go from 0 to 10 on the t-axis).  
+for these graphs, it might be helpful to use the <code>Table</code> function to create a list of pairs of (x,y) coordinates
+as in one of the <code><a href="http://reference.wolfram.com/language/ref/ListLinePlot.html">ListLinePlot</a></code> examples.
+
+<li>say you know a guy who knows a guy, and you invest $1,000 in this fund,
+with a (nominal) annual return rate of 10% (meaning 10% annual return without
+compounding).  let f(t) be the amount of money in your investiment assuming 
+automatic reinvestments and no withdrawals after t years.  
+graph f(t) for t in [0,10] in each of the following
+situations: (i) compounding (once) annually, i.e., your returns are reinvested
+once a year at the same return rate;
+(ii) compounding monthly; (iii) compounding weekly; (iv) compounding daily.
+(for ease of graphing, you may assume your returns are continuous at a uniform
+rate, so the
+graph for f(t) on [0,1] in case (i) is just the line from (0,1000) to (1,1010),
+rather than a straight line from (0,1000) to (1,1000) with a jump at 1 to 1010.)
+place all the graphs in a single plot.  are they approaching the graph of a
+function you know?  if so, determine what function, and explain why, and 
+plot them against this function.
+</ol>
+
+<p>
+<h3>other resources</h3>
+if you want/need some additional learning tools, there is 
+<a href="http://mathematica.stackexchange.com/a/259">a pretty comprehensive
+list of mathematica learning resources</a> on mathematica stackexchange,
+rannging from introductory to quite advanced.
+perhaps the most useful for you at this point might be introductory videos 
+(if you like videos; i do not) and wolfram's 
+<a href="http://reference.wolfram.com/language/guide/HowToTopics.html">how to's</a>.
+</td>
+</TR>
+
+</TABLE>
+</CENTER>
+
+<BR><BR>
+<a href="labs.html">labs page</A>
+<br>
+<a href=".">course home</A>
+</HTML>
+
+<!--
+<TR> 
+<td> </td>
+<td> </td>
+<td> </td>
+</TR>
+-->

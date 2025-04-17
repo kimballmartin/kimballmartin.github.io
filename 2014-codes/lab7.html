@@ -1,0 +1,77 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 7 - RSA (Apr 4)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+<P>
+<a href="RSAlab.py">My helper code for this lab</a>
+
+<P>
+These tasks are due as part of the next <a href="homework.html">homework</a>.
+
+<P>
+<B>Task 1:</b>
+Using your <code>modexp</code> function from before, verify
+my RSA digital signature <code>sig</code> of my message <code>m</code>
+listed in my code above.
+
+<P>
+<B>Task 2:</b> 
+Write a function <code>findprime(k)</code>
+that finds a random (pseudo)prime of at least k digits.
+You may use the <code>randint</code> function, and your choice
+of primality test from Lab 6.  Test this a couple of times for k=2.
+
+<P>
+<B>Task 3:</b>
+Write a function <code>inv(a,n)</code>
+that efficiently computes a inverse mod n.  If a is not invertible
+mod n, print an error message to that effect, and return -1.
+Test this for (a,n) = (2,7) and (6,15).
+
+<P>
+<B>Task 4:</b>
+Write a function <code>RSAprivatekey(p,q,e=65537)</code>
+which generates the RSA private key d for n=pq and public
+key e.  
+
+<P>
+<B>Task 5:</b>
+Using the above functions, generate your own random primes p
+and q which are both 10-15 digit numbers.  Generate
+a public key (n,e) and private key d.  Test encryption and decryption
+on the message 'rsa'.
+
+<P>
+<B>Task 6:</b>
+Exchange your public key with one other person in the class. <br>
+
+(a) Encrypt a short text message of your choice with their RSA public key
+and send them (only) the encrypted message (as a number, or as a
+sequence of numbers if your message is longer than the block size for
+their n). <br>
+
+(b) Decrypt the encrypted message you receive from your partner. <br>
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

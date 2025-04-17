@@ -1,0 +1,64 @@
+<HTML><HEAD><TITLE>Lab 8</TITLE></HEAD>
+<CENTER>
+<H2>Lab 8 - PageRank (Apr 25)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+<div class="indented">
+
+<a href="lab8.txt">My code for this lab</a>
+
+<H3>Tasks</H3>
+
+
+<p>
+<B>Task 1:</b> Write a Sage function <code>PageRank(G, alpha)</code>
+that returns the PageRank transition matrix of a (di)graph G
+with random restart parameter alpha.
+
+<p>
+<b>Task 2:</b> Using my <code>diGNP(n,p)</code> function, generate
+random G(n,p) directed graphs with n=20 and p = 0.1, 0.15, 0.2.  For
+these graphs, use PageRank (with alpha=.15) to rank the vertices.  Plot
+the graphs and identify the vertices with the highest PageRank scores.  
+Is this the different from ranking vertices by in degree?
+Roughly how many times do you need to iterate the matrix multiplication
+to perform this ranking?
+Do these seem like reasonable rankings to you?
+
+<p>
+<b>Task 3:</b> Turn the win-loss matrix <code>m1</code> in the file above into
+a Sage matrix <code>M1</code>, and then into a digraph with the command
+<code>DiGraph(M1)</code>.  
+Apply PageRank to this directed graph to rank
+the teams in the Big 12 2013 football season.  Experiment with this
+ranking for different values of alpha (0, .05, .15, .5, .85), and see how it 
+compares to
+the <a href="http://www.big12sports.com/standings/Standings.dbml?SPID=13139">official rankings</a>.  (The vertex ordering corresponds to the schools
+in the list <code>V</code>.)
+
+<p>
+<b>Task 4:</b> 
+Repeat Task 3 with the win-loss score-differential matrix <code>m2</code>
+in the file above.
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+

@@ -1,0 +1,138 @@
+<HTML><HEAD><TITLE>Computer Lab Exercises</TITLE></HEAD>
+<CENTER>
+<H2>Lab 1 - Getting Started with Python (Jan 17, 2014)</H2>
+</CENTER>
+<P>
+
+<STYLE TYPE="text/css">
+<!--
+.indented
+   {
+   padding-left: 20pt;
+   padding-right: 20pt;
+   }
+-->
+</STYLE>
+
+
+
+<DIV class="indented">
+
+In this course, we will be using the programming language Python 2.  
+The current version (as of Dec 2013) is
+<a href="http://www.python.org/download/releases/2.7.6/">Python 2.7.6</a>,
+which you can freely install on your personal computer.  (NOTE: Python 3,
+which was the Python of the future 5 years ago, is still the Python of the
+future, which means you shouldn't use it yet.  The syntax is a bit different
+from Python 2, so most code in Python 2 will not work in Python 3 without
+some tweaking, and vice versa.)
+
+<p>
+The first lab session is designed to get you acquainted with Python 2 and
+some basic programming.  Python 2 is already installed on the lab machines
+(both in PHSC and Dale Hall),
+which run some version of Windows.  There are different ways of interfacing
+with Python---the default way on Windows is to use Python's
+interpreter/editor called IDLE, which is what we will do in the lab.  The
+default way on Mac/Un*x, where Python should already be installed (though
+your version may need to be updated) is from the command line 
+(either running the interpreter or executing scripts).  For assignments,
+you may interface with Python however you like.
+
+<p>
+Note: Python is sensitive to indentation when working with a block of multiple
+lines of code.  Since the IDLE interpreter does automatic indentation, you
+may have difficulties doing a direct copy-paste into the IDLE interpreter 
+window, even though copy-paste into the IDLE program window (or
+command line interpreter) may work.  One issue is whether spaces
+are properly preserved in the source you copy from.  (However, don't use
+copy-paste for this assignment, or you will learn nothing.)
+
+
+<P>
+<B>Task 1:</b> Go through <a href="https://hkn.eecs.berkeley.edu/~dyoo/python/idle_intro/index.html">One Day of IDLE Toying</a> to get familiar with IDLE.
+(At the part where he tells you to start playing around, you can
+try a couple of examples from <a href="http://docs.python.org/2/tutorial/introduction.html#numbers">here</a>, but don't spend more than 2
+minutes on this.)  
+Note: the comma at the end of the code <code>print i,</code> in this
+tutorial
+tells Python not to print a carriage return (newline), so everything will
+be printed on the same line.  If you instead use the code
+<code>print i</code> without the comma, all the numbers will appear on
+different lines.
+
+<p>
+<b>Task 2:</b> Go through the <a href="http://hetland.org/writing/instant-hacking.html">Instant Hacking</a> tutorial to get familiar with the basics
+of programming and Python 2. 
+The last section (More Abstraction...) is not
+too important for us, and you can skip it if you like.
+The author of this page says not to type directly into the interpreter,
+but it looks to me like everything works fine.  You may either work directly
+in the Interpreter window or in the Program window, whichever you prefer.
+
+The tutorial is not designed for
+interpreter mode, but I think you can use interpreter mode for almost,
+if not, everything.  Note: when defining functions, include an empty line 
+(hit enter/return again) to finish the function definition.  Also, don't
+waste minutes of lab time calling the <code>sleep</code> function, as
+appealing as that might be.
+
+<p>
+You may not finish this during the lab period,
+but you are expected to finish this on your own before next Friday.
+Also it will help for the... 
+
+<P>
+<B>Lab Homework 1 (due Fri Jan 24):</b>  
+This assignment is meant to get us familiar with
+lists and some basic linear algebra in Python.
+(Clarification: for each exercise, use loops, e.g. a for or while loop,
+to write your functions.  E.g., don't just use <code>range(1,n+1)</code> for the
+first exercise.)
+
+<ol>
+<li> Write a function called "count_vec(n)" that returns (not prints)
+a vector (list of numbers) [1, 2, 3, ..., n].  Test this for n=0, 1, 5, 10.
+
+<li> Write a function called "scale_vec(v,c)" that takes in a vector (list
+of numbers) v and number c returns the vector c times v (i.e., each
+element of the list should be multiplied by c).  Test this for v=count_vec(5)
+ and the values c=-1, 0, 0.5, 1, 2, 10.
+
+<li> Write a function called "shift_vec(v,c)" that takes in a vector (list
+of numbers) v and number c returns the vector v+c (i.e., each
+element of the list should be added to by c).  Test this for v=count_vec(5)
+ and the values c=-1, 0, 0.5, 1, 2, 10.
+
+<li> Write a function called "count_mat(n)" that returns an n by n matrix
+whose coefficients are the integers from 1 to n^2, in order.  Here we
+represent a matrix as a list of n row vectors.  For example count_mat(2)
+should return the list [[1, 2], [3, 4]], which we view as the 2x2 matrix
+with top row [1 2] and bottom row [3 4].  Test this for n=0, 1, 2, 5.
+</ol>
+
+<P>
+<B>Further references:</b> 
+For various assignments, including possibly the above one, you may need to 
+learn a little more Python
+on your own.
+The <a href="http://docs.python.org/2/tutorial/index.html">Official Python Tutorial</a> is a good place to learn about the basics
+in more detail, though this assumes you are familiar with some
+programming terms and concepts.  The <a href="https://wiki.python.org/moin/BeginnersGuide">Beginner's Guide</a> has more references, including lists
+of Python intros for those with programming
+experience and those without (this is how I found the tutorial above).
+In particular, this <a href="http://en.wikibooks.org/wiki/Non-Programmer's_Tutorial_for_Python_2.6">WikiBook Tutorial for Non-programmers</a> seems 
+like a good tutorial, which is considerably more detailed than the one in Task 
+2.  Last, when all else fails, you can just do a web search for "How do I do 
+XXX in Python?"  
+
+</div>
+
+<HR WIDTH="80%">
+
+<BR>
+<a href="labs.html">Labs Page</A>
+<BR>
+<a href=".">Course Home</A>
+</HTML>
+
