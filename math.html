@@ -43,22 +43,48 @@ function Collapse(theDiv) { el = document.getElementById(theDiv); el.style.displ
 <!--
 EC
 {color:silver; font-size:10pt; font-weight:normal}
--->
-</STYLE>
 
-<STYLE TYPE = "text/css">
-<!--
 CO
 {color:darkred; font-size:12pt; font-variant:normal; font-weight:normal}
--->
-</STYLE>
 
-<STYLE TYPE = "text/css">
-<!--
+.CO
+{color:darkred; font-size:12pt; font-variant:normal; font-weight:normal}
+
 ABS
 {color:gray; font-size:10pt; font-weight:normal}
 -->
 </STYLE>
+
+
+<script>
+        // Define the links as variables
+        const links = {
+            alex: "https://www.math.uwaterloo.ca/~a2cowan/",
+            sam: "https://samfrengley.github.io/",
+            satoshi: "https://wakatsuki.w3.kanazawa-u.ac.jp/english.html",
+            matteo: "https://www.math.unipd.it/~mlongo/",
+            brooke: "https://bfeigon.ccny.cuny.edu/",
+            nahid: "https://personal.math.ubc.ca/~nwalji/",
+	    ameya: "https://math.ou.edu/~apitale/",
+            dinakar: "https://www.its.caltech.edu/~dinakar/",
+            ravi: "https://www.jmu.edu/mathstat/people/faculty-full-time/shankar-ravi.shtml",
+        };
+
+
+
+        // Function to insert links into all instances of co-author mentions
+        function insertLinks() {
+            for (const [id, url] of Object.entries(links)) {
+                const elements = document.querySelectorAll(`a[id="${id}"]`);
+                elements.forEach(element => {
+                    element.href = url;
+                });
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = insertLinks;
+    </script
 
 
 </head>
@@ -152,7 +178,7 @@ download.
 
 <LI>
 <a href="papers/murm-var.pdf">Variations on murmurations</a> 
-<BR><I>preprint</I> 
+<BR><I>submitted</I> 
 <BR>
 <ABS>
 We explore several variations on the recently discovered phenomena of
@@ -160,17 +186,9 @@ murmurations for elliptic curves and modular forms.
 </ABS>
 <P>
 
-<LI>
-<a href="papers/Wqbias.pdf">Distribution of local signs of modular forms and murmurations of Fourier coefficients</a> 
-<BR><I>submitted</I> 
-<BR>
-<ABS>
-We determine how local root numbers of modular forms are distributed, and show the local root numbers are correlated with Fourier coefficients.  This is an analogue of earlier work on global root numbers.  We also conjecture the existence of murmurations beyond the context of global root numbers.
-</ABS>
-<P>
 
 <LI>
-<a href="papers/RMfamilies.pdf">Generic models for genus 2 curves with real multiplication</a> with <CO>Alex Cowan</CO> and <CO>Sam Frengley</CO>
+<a href="papers/RMfamilies.pdf">Generic models for genus 2 curves with real multiplication</a> with <a id="alex" class="CO" target="_blank">Alex Cowan</a> and <a id="sam" class="CO" target="_blank">Sam Frengley</a>
 <BR><I>submitted</I> 
 <BR>
 <ABS>
@@ -178,9 +196,8 @@ We give generic models for genus 2 curves with real multiplication by the ring o
 </ABS>
 <P>
 
-
 <LI>
-<a href="papers/mfbyrat.pdf">Counting modular forms by rationality field</a> with <CO>Alex Cowan</CO>
+<a href="papers/mfbyrat.pdf">Counting modular forms by rationality field</a> with <a id="alex" class="CO" target="_blank">Alex Cowan</a>
 <BR><I>submitted</I> 
 <BR>
 <ABS>
@@ -189,7 +206,16 @@ We make conjectures about the distribution of degrees and rationality fields of 
 <P>
 
 <LI>
-<a href="https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.1286/">Moduli for rational genus 2 curves with real multiplication for discriminant 5</a> with <CO>Alex Cowan</CO>
+<a href="papers/Wqbias.pdf">Distribution of local signs of modular forms and murmurations of Fourier coefficients</a> 
+<BR><I>Mathematika</I>, to appear
+<BR>
+<ABS>
+We determine how local root numbers of modular forms are distributed, and show the local root numbers are correlated with Fourier coefficients.  This is an analogue of earlier work on global root numbers.  We also conjecture the existence of murmurations beyond the context of global root numbers.
+</ABS>
+<P>
+
+<LI>
+<a href="https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.1286/">Moduli for rational genus 2 curves with real multiplication for discriminant 5</a> with <a id="alex" class="CO" target="_blank">Alex Cowan</a>
 <BR><I>Journal de Théorie des Nombres de Bordeaux</I>, Vol. 32, No. 2 (2024), 493-525.
 <BR>
 <ABS>
@@ -215,7 +241,7 @@ varieties of GL(2)-type.
 <LI>
 <a href="https://doi.org/10.1016/j.jnt.2023.10.004">
 Mass formulas and Eisenstein congruences in higher rank</a> 
-with <CO>Satoshi Wakatsuki</CO>
+with <a id="satoshi" class="CO" target="_blank">Satoshi Wakatsuki</a>
 [<a href="papers/masscong.pdf">preprint version</a>]
 <BR><I>Journal of Number Theory</I>, Vol. 257 (2024), 249-272.
 <BR>
@@ -329,7 +355,7 @@ basis problem for Hilbert modular forms.
 
 <LI>
 <a href="https://doi.org/10.1007/s40316-019-00116-3">Rationality of Darmon points over genus fields of non-maximal orders</a>
-with <CO>Matteo Longo</CO> and <CO>Yan Hu</CO>
+with <a id="matteo" class="CO" target="_blank">Matteo Longo</a> and <CO>Yan Hu</CO>
 [<a href="papers/LMH.pdf">preprint version</a>]
 <BR><I>Annales mathématiques du Québec</I>, Vol. 44, No. 1 (2020), 173-195.
 <BR>
@@ -375,7 +401,7 @@ in the level.  This is used in my paper above on congruences mod 2.
 <LI>
 <a href="https://doi.org/10.1007/s11856-018-1657-5">
 Periods and nonvanishing of central <i>L</i>-values for GL(2<i>n</i>)</a>,
-with <CO>Brooke Feigon</CO> and <CO>David Whitehouse</CO>
+with <a id="brooke" class="CO" target="_blank">Brooke Feigon</a> and <CO>David Whitehouse</CO>
 [<a href="papers/fmw.pdf">preprint version</a>]
 <BR><I>Israel Journal of Mathematics</I>, Vol. 225, No. 1 (2018), 223-266.
 <BR>
@@ -406,7 +432,7 @@ Hilbert modular forms.
 <LI>
 <a href="https://doi.org/10.4064/aa170120-1-5">Distinguishing 
 finite group characters and refined local-global phenomena</a>,
-with <CO>Nahid Walji</CO>
+with <a id="nahid" class="CO" target="_blank">Nahid Walji</a>
 [<a href="papers/dist-artin.pdf">preprint version</a>]
 <BR><I>Acta Arithmetica</I>, Vol. 179, No. 3 (2017), 277-300.
 <BR>
@@ -419,7 +445,7 @@ can agree in degree 2 or 3.
 
 <LI>
 <a href="https://doi.org/10.2140/ant.2017.11.253">Test vectors and central <i>L</i>-values for GL(2)</a>,
-with <CO>Daniel File</CO> and <CO>Ameya Pitale</CO>
+with <CO>Daniel File</CO> and <a id="ameya" class="CO" target="_blank">Ameya Pitale</a>
 [<a href="papers/FMP.pdf">preprint version</a>]
 <BR><I>Algebra and Number Theory</I>, Vol. 11, No. 2 (2017), 253-318.
 <BR>
@@ -436,7 +462,7 @@ Michel-Ramakrishnan.
 <LI>
 <a href="papers/comparing-artin.pdf">A comparison of automorphic and
 Artin L-series of GL(2)-type agreeing at degree one primes</a>, 
-with <CO>Dinakar Ramakrishnan</CO>
+with <a id="dinakar" class="CO" target="_blank">Dinakar Ramakrishnan</a>
 <BR><I>Contemporary Mathematics</I> 664, <a href="http://bookstore.ams.org/conm-664/">Advances
 in the Theory of Automorphic Forms and their <i>L</i>-functions</a>
 (Cogdell volume) (2016), 339-350.
@@ -481,7 +507,7 @@ distinguishing graphs than the usual types of spectra studied.
 
 <LI>
 <a href="http://www.dmtcs.org/dmtcs-ojs/index.php/dmtcs/article/view/2754/0.html">How often should you clean your room?</a>
-with <CO>Krishnan (Ravi) Shankar</CO>
+with <a id="ravi" class="CO" target="_blank">Krishnan Shankar</a>
 <BR><I>Discrete Mathematics & Theoretical Computer Science</I>, Vol. 17, No. 1
 (2015), 413-442.
 <BR>
