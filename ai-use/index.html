@@ -1,0 +1,352 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI use in arXiv NT papers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EDEEF0; --surface:#FBFBFC; --surface-2:#F2F4F6;
+  --ink:#131820; --ink-2:#454E5A; --muted:#6E7884; --rule:#D3D6DC; --rule-soft:#E2E5EA;
+  --grid:#E6E9ED;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --neg:#c0392b; --red:#b02a1c;
+  --b0:#DDE1E6; --b1:#C0C7CF; --b2:#98A2AD; --b3:#eb6834; --b4:#a8380f;
+  --shadow:0 1px 2px rgba(19,24,32,.05), 0 8px 24px -18px rgba(19,24,32,.35);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",SFMono-Regular,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1318; --surface:#161B22; --surface-2:#1C222A;
+    --ink:#E4E8ED; --ink-2:#B6BEC8; --muted:#8A939F; --rule:#29303A; --rule-soft:#212831;
+    --grid:#242B34;
+    --s1:#3987e5; --s2:#e2703f; --s3:#199e70; --neg:#e0796a; --red:#e8836f;
+    --b0:#2A313B; --b1:#3D4650; --b2:#5A6674; --b3:#e2703f; --b4:#b8542c;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -20px rgba(0,0,0,.9);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1318; --surface:#161B22; --surface-2:#1C222A;
+  --ink:#E4E8ED; --ink-2:#B6BEC8; --muted:#8A939F; --rule:#29303A; --rule-soft:#212831;
+  --grid:#242B34;
+  --s1:#3987e5; --s2:#e2703f; --s3:#199e70; --neg:#e0796a; --red:#e8836f;
+  --b0:#2A313B; --b1:#3D4650; --b2:#5A6674; --b3:#e2703f; --b4:#b8542c;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -20px rgba(0,0,0,.9);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 24px 80px}
+a{color:var(--s1)}
+header{padding:52px 0 28px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,46px);line-height:1.08;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+.stand{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink-2);max-width:62ch;margin:0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;margin-top:30px;overflow:hidden}
+.tile{background:var(--surface);padding:15px 18px}
+.tile dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 5px}
+.tile dd{margin:0;font-family:var(--mono);font-size:23px;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.15;white-space:nowrap}
+.tile dd small{display:block;font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:0;margin-top:3px;white-space:normal}
+section{padding-top:46px}
+h2{font-family:var(--serif);font-weight:600;font-size:25px;margin:0 0 5px;letter-spacing:-.01em;text-wrap:balance}
+.note{color:var(--muted);font-size:14px;margin:0 0 20px;max-width:68ch}
+p{max-width:68ch}
+ul{max-width:68ch;padding-left:20px}
+li{margin:4px 0}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;box-shadow:var(--shadow);padding:18px 20px 12px}
+.cardnote{font-size:13px;color:var(--ink-2);margin:0 0 10px;font-family:var(--sans)}
+.chartwrap{overflow-x:auto}
+.hb{fill:var(--b2);transition:y .45s ease,height .45s ease}
+.hb.hi{fill:var(--b3)}
+.ref{fill:none;stroke:var(--muted);stroke-width:1.1;opacity:.42;stroke-dasharray:3 2.5}
+.thr{stroke:var(--ink-2);stroke-width:1.3;stroke-dasharray:4 3;opacity:.5}
+.thrtxt{fill:var(--muted);font-size:10.5px;font-family:var(--sans)}
+.hbmonth{fill:var(--ink);font-family:var(--serif);font-size:21px;font-weight:600}
+.hbat{fill:var(--b3);font-size:12.5px;font-family:var(--sans);font-weight:600}
+.anim{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 4px;font-size:13px}
+.anim button{font:inherit;font-size:13px;padding:4px 11px;border:1px solid var(--rule);border-radius:3px;background:var(--surface-2);color:var(--ink-2);cursor:pointer;line-height:1.4}
+.anim button:hover{border-color:var(--muted)}
+.anim input[type=range]{flex:1 1 180px;min-width:140px;accent-color:var(--b3)}
+@media (prefers-reduced-motion:reduce){.hb{transition:none}}
+svg{display:block;width:100%;min-width:560px;height:auto;font-family:var(--mono)}
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{fill:var(--muted);font-size:11px}
+.axlabel{fill:var(--muted);font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-family:var(--sans)}
+.ln{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.ln.s1{stroke:var(--s1)} .ln.s2{stroke:var(--s2)} .ln.s3{stroke:var(--s3)}
+.pt{stroke:var(--surface);stroke-width:1.5}
+.pt.s1{fill:var(--s1)} .pt.s2{fill:var(--s2)} .pt.s3{fill:var(--s3)}
+.bd{stroke:var(--surface);stroke-width:.75}
+.b0{fill:var(--b0)} .b1{fill:var(--b1)} .b2{fill:var(--b2)} .b3{fill:var(--b3)} .b4{fill:var(--b4)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 12px;font-size:13px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:7px}
+.sw{width:11px;height:11px;border-radius:2px;display:inline-block}
+.sw.s1{background:var(--s1)} .sw.s2{background:var(--s2)} .sw.s3{background:var(--s3)}
+.sw.b0{background:var(--b0)} .sw.b1{background:var(--b1)} .sw.b2{background:var(--b2)} .sw.b3{background:var(--b3)} .sw.b4{background:var(--b4)}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:3px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule-soft)}
+thead th{font-family:var(--sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap;vertical-align:bottom}
+thead tr:first-child th{border-bottom:1px solid var(--rule)}
+th[colspan]{text-align:center;color:var(--ink-2)}
+tbody th{font-weight:500;white-space:nowrap}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+th.num{font-family:var(--sans)}
+td.num small{color:var(--muted);font-size:11.5px;margin-left:5px}
+td.sep,th.sep{border-left:1px solid var(--rule-soft)}
+td.mid,th.mid{text-align:center}
+tr.grp td,tr.grp th{border-bottom:none;padding-bottom:2px}
+tr.avgrow td,tr.avgrow th{padding-top:0;font-size:12.5px;color:var(--red);font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+tr.avgrow th{text-align:left;font-family:var(--sans);font-weight:400;font-size:11.5px;letter-spacing:.03em;white-space:nowrap}
+.k-n{color:var(--ink);font-weight:500}
+.k-a{color:var(--red);font-weight:500}
+tr.grp:hover td,tr.grp:hover th,tr.avgrow:hover td{background:var(--surface-2)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+.cat{display:inline-block;font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:2px;background:var(--surface-2);border:1px solid var(--rule);white-space:nowrap}
+.dim{color:var(--muted)}
+.bnd{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:1px 8px;border-radius:2px;border:1px solid var(--rule);background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.bnd.hi1{border-color:var(--b3);color:var(--b3);background:transparent}
+.bnd.hi2{border-color:var(--b4);color:var(--b4);background:transparent;font-weight:500}
+.bnd.hi3{border-color:var(--b4);background:var(--b4);color:#fff;font-weight:500}
+dl.cats{margin:14px 0 0;font-size:14px;max-width:68ch}
+dl.cats div{display:flex;gap:12px;padding:5px 0;border-top:1px solid var(--rule-soft);align-items:baseline}
+dl.cats dt{flex:0 0 92px;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+dl.cats dd{margin:0;color:var(--ink-2)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 14px;font-size:13px}
+.filters label{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.filters label.chk{gap:5px}
+select,input[type=search]{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink)}
+input[type=search]{min-width:210px}
+.count{color:var(--muted);font-family:var(--mono);font-size:12px;margin-left:auto}
+.rec td{vertical-align:top;font-size:13.5px}
+.rec .id{font-family:var(--mono);font-size:12px;white-space:nowrap}
+.rec .who small{color:var(--muted)}
+.rec .sc{font-size:15px}
+.yes{color:var(--s3);font-size:15px} .no{color:var(--neg);font-size:15px}
+.tog{font:inherit;font-size:12px;padding:2px 9px;border:1px solid var(--rule);border-radius:3px;background:var(--surface-2);color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.tog:hover{border-color:var(--muted)}
+tr.det td{background:var(--surface-2);color:var(--ink-2);font-size:13px;padding-top:4px}
+tr.det .sec{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:3px}
+.foot{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);color:var(--muted);font-size:13px}
+.foot p{max-width:74ch}
+@media (max-width:620px){.wrap{padding:0 16px 60px}.count{margin-left:0}}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">arXiv &middot; math.NT &middot; January&ndash;August 2026</p>
+  <h1>AI use in arXiv NT papers</h1>
+  <p class="stand">How many new number theory preprints appear to be significantly written by AI, and how many say so.</p>
+  <dl class="tiles">
+    <div class="tile"><dt>Papers examined</dt><dd>2,364<small>January&ndash;August 2026</small></dd></div>
+    <div class="tile"><dt>Disclose AI use</dt><dd>24.6%<small>in August, from 3.6% in January</small></dd></div>
+    <div class="tile"><dt>Disclose AI writing</dt><dd>15.1%<small>in August, from 1.6% in January</small></dd></div>
+    <div class="tile"><dt>Apparent AI writing</dt><dd>20.4%<small>in August, from 3.2% in January</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2>Percentage of papers with disclosed and apparent AI use</h2>
+  <p class="note">Every preprint whose first version was submitted in the month, as a percentage of that month&rsquo;s submissions.</p>
+  <div class="card">
+    <div class="legend"><span><i class="sw s1"></i>Disclose AI use</span><span><i class="sw s3"></i>Disclose AI writing</span><span><i class="sw s2"></i>Apparent AI writing</span></div>
+    <div class="chartwrap"><svg viewBox="0 0 880 330" role="img" aria-label="Three rising lines, January to August 2026">
+<line class="gl" x1="48" y1="284.0" x2="862" y2="284.0"/>
+<text class="ax" x="39" y="287.5" text-anchor="end">0%</text>
+<line class="gl" x1="48" y1="232.8" x2="862" y2="232.8"/>
+<text class="ax" x="39" y="236.3" text-anchor="end">5%</text>
+<line class="gl" x1="48" y1="181.7" x2="862" y2="181.7"/>
+<text class="ax" x="39" y="185.2" text-anchor="end">10%</text>
+<line class="gl" x1="48" y1="130.5" x2="862" y2="130.5"/>
+<text class="ax" x="39" y="134.0" text-anchor="end">15%</text>
+<line class="gl" x1="48" y1="79.4" x2="862" y2="79.4"/>
+<text class="ax" x="39" y="82.9" text-anchor="end">20%</text>
+<line class="gl" x1="48" y1="28.2" x2="862" y2="28.2"/>
+<text class="ax" x="39" y="31.7" text-anchor="end">25%</text>
+<text class="ax" x="98.9" y="304" text-anchor="middle">Jan</text>
+<text class="ax" x="200.6" y="304" text-anchor="middle">Feb</text>
+<text class="ax" x="302.4" y="304" text-anchor="middle">Mar</text>
+<text class="ax" x="404.1" y="304" text-anchor="middle">Apr</text>
+<text class="ax" x="505.9" y="304" text-anchor="middle">May</text>
+<text class="ax" x="607.6" y="304" text-anchor="middle">Jun</text>
+<text class="ax" x="709.4" y="304" text-anchor="middle">Jul</text>
+<text class="ax" x="811.1" y="304" text-anchor="middle">Aug</text>
+<path class="ln s1" d="M98.9,247.6 L200.6,225.1 L302.4,237.8 L404.1,228.1 L505.9,196.0 L607.6,141.2 L709.4,132.4 L811.1,32.6"/>
+<circle class="pt s1" cx="98.9" cy="247.6" r="3.4"><title>Disclose AI use, January: 3.6%</title></circle>
+<circle class="pt s1" cx="200.6" cy="225.1" r="3.4"><title>Disclose AI use, February: 5.8%</title></circle>
+<circle class="pt s1" cx="302.4" cy="237.8" r="3.4"><title>Disclose AI use, March: 4.5%</title></circle>
+<circle class="pt s1" cx="404.1" cy="228.1" r="3.4"><title>Disclose AI use, April: 5.5%</title></circle>
+<circle class="pt s1" cx="505.9" cy="196.0" r="3.4"><title>Disclose AI use, May: 8.6%</title></circle>
+<circle class="pt s1" cx="607.6" cy="141.2" r="3.4"><title>Disclose AI use, June: 14.0%</title></circle>
+<circle class="pt s1" cx="709.4" cy="132.4" r="3.4"><title>Disclose AI use, July: 14.8%</title></circle>
+<circle class="pt s1" cx="811.1" cy="32.6" r="3.4"><title>Disclose AI use, August: 24.6%</title></circle>
+<path class="ln s3" d="M98.9,267.8 L200.6,267.2 L302.4,266.2 L404.1,258.2 L505.9,251.0 L607.6,219.4 L709.4,199.5 L811.1,129.7"/>
+<circle class="pt s3" cx="98.9" cy="267.8" r="3.4"><title>Disclose AI writing, January: 1.6%</title></circle>
+<circle class="pt s3" cx="200.6" cy="267.2" r="3.4"><title>Disclose AI writing, February: 1.6%</title></circle>
+<circle class="pt s3" cx="302.4" cy="266.2" r="3.4"><title>Disclose AI writing, March: 1.7%</title></circle>
+<circle class="pt s3" cx="404.1" cy="258.2" r="3.4"><title>Disclose AI writing, April: 2.5%</title></circle>
+<circle class="pt s3" cx="505.9" cy="251.0" r="3.4"><title>Disclose AI writing, May: 3.2%</title></circle>
+<circle class="pt s3" cx="607.6" cy="219.4" r="3.4"><title>Disclose AI writing, June: 6.3%</title></circle>
+<circle class="pt s3" cx="709.4" cy="199.5" r="3.4"><title>Disclose AI writing, July: 8.3%</title></circle>
+<circle class="pt s3" cx="811.1" cy="129.7" r="3.4"><title>Disclose AI writing, August: 15.1%</title></circle>
+<path class="ln s2" d="M98.9,251.6 L200.6,229.3 L302.4,234.3 L404.1,210.9 L505.9,159.3 L607.6,110.7 L709.4,109.1 L811.1,74.9"/>
+<circle class="pt s2" cx="98.9" cy="251.6" r="3.4"><title>Apparent AI writing, January: 3.2%</title></circle>
+<circle class="pt s2" cx="200.6" cy="229.3" r="3.4"><title>Apparent AI writing, February: 5.3%</title></circle>
+<circle class="pt s2" cx="302.4" cy="234.3" r="3.4"><title>Apparent AI writing, March: 4.9%</title></circle>
+<circle class="pt s2" cx="404.1" cy="210.9" r="3.4"><title>Apparent AI writing, April: 7.1%</title></circle>
+<circle class="pt s2" cx="505.9" cy="159.3" r="3.4"><title>Apparent AI writing, May: 12.2%</title></circle>
+<circle class="pt s2" cx="607.6" cy="110.7" r="3.4"><title>Apparent AI writing, June: 16.9%</title></circle>
+<circle class="pt s2" cx="709.4" cy="109.1" r="3.4"><title>Apparent AI writing, July: 17.1%</title></circle>
+<circle class="pt s2" cx="811.1" cy="74.9" r="3.4"><title>Apparent AI writing, August: 20.4%</title></circle>
+<text class="axlabel" x="48" y="324">2026</text></svg></div>
+  </div>
+  <p class="note" style="margin-top:14px"><em>Disclose AI use</em> counts papers that say anywhere in their text that an AI tool was used, for anything at all: code, computation, proof search, literature, language. <br><em>Disclose AI writing</em> counts the papers whose statement covers the writing itself. <br><em>Apparent AI writing</em> counts papers whose text carries the pattern that machine-drafted writing leaves, whether or not they say so. 
+<br>See <a href="#method">how this is measured</a> and <a href="#disclaimers">what it does not mean</a>.</p>
+</section>
+
+<section>
+  <h2>Score distributions for apparent AI use</h2>
+  <p class="note">Every paper gets a score from 0 to 18 based on selected markers of AI-style writing. A score of 5 or higher is classified as apparent AI writing.  The histogram shows one month at a time, as a share of the papers scored that month. Play it or step through it; the first month stays outlined behind for comparison.</p>
+  <div class="card">
+    <p class="cardnote"><strong>Higher score &rarr; more likely AI use.</strong> A paper counts as apparent AI writing at a score of 5 or more.</p>
+    <div class="chartwrap"><svg viewBox="0 0 880 360" role="img" aria-label="Histogram of rubric scores, one month at a time">
+<line class="gl" x1="52" y1="304.0" x2="862" y2="304.0"/>
+<text class="ax" x="43" y="307.5" text-anchor="end">0%</text>
+<line class="gl" x1="52" y1="241.7" x2="862" y2="241.7"/>
+<text class="ax" x="43" y="245.2" text-anchor="end">15%</text>
+<line class="gl" x1="52" y1="179.4" x2="862" y2="179.4"/>
+<text class="ax" x="43" y="182.9" text-anchor="end">30%</text>
+<line class="gl" x1="52" y1="117.1" x2="862" y2="117.1"/>
+<text class="ax" x="43" y="120.6" text-anchor="end">45%</text>
+<line class="gl" x1="52" y1="54.8" x2="862" y2="54.8"/>
+<text class="ax" x="43" y="58.3" text-anchor="end">60%</text>
+<line class="thr" x1="389.5" y1="28" x2="389.5" y2="304"/>
+<text class="thrtxt" x="395.5" y="23">threshold, 5 or more</text>
+<path class="ref" d="M62.8,304.0 L62.8,56.7 L108.7,56.7 L108.7,304.0 M130.3,304.0 L130.3,224.9 L176.2,224.9 L176.2,304.0 M197.8,304.0 L197.8,257.8 L243.7,257.8 L243.7,304.0 M265.3,304.0 L265.3,285.9 L311.2,285.9 L311.2,304.0 M332.8,304.0 L332.8,292.5 L378.7,292.5 L378.7,304.0 M400.3,304.0 L400.3,299.1 L446.2,299.1 L446.2,304.0 M467.8,304.0 L467.8,302.4 L513.7,302.4 L513.7,304.0 M535.3,304.0 L535.3,302.4 L581.2,302.4 L581.2,304.0 M602.8,304.0 L602.8,302.4 L648.7,302.4 L648.7,304.0 M670.3,304.0 L670.3,302.4 L716.2,302.4 L716.2,304.0 M737.8,304.0 L737.8,302.4 L783.7,302.4 L783.7,304.0 M805.3,304.0 L805.3,304.0 L851.2,304.0 L851.2,304.0"/>
+<rect id="hb0" class="hb" x="62.8" y="161.8" width="45.9" height="142.2"/>
+<text class="ax" x="85.8" y="324" text-anchor="middle">0</text>
+<rect id="hb1" class="hb" x="130.3" y="228.8" width="45.9" height="75.2"/>
+<text class="ax" x="153.2" y="324" text-anchor="middle">1</text>
+<rect id="hb2" class="hb" x="197.8" y="242.0" width="45.9" height="62.0"/>
+<text class="ax" x="220.8" y="324" text-anchor="middle">2</text>
+<rect id="hb3" class="hb" x="265.3" y="276.6" width="45.9" height="27.4"/>
+<text class="ax" x="288.2" y="324" text-anchor="middle">3</text>
+<rect id="hb4" class="hb" x="332.8" y="280.6" width="45.9" height="23.4"/>
+<text class="ax" x="355.8" y="324" text-anchor="middle">4</text>
+<rect id="hb5" class="hb hi" x="400.3" y="287.8" width="45.9" height="16.2"/>
+<text class="ax" x="423.2" y="324" text-anchor="middle">5</text>
+<rect id="hb6" class="hb hi" x="467.8" y="283.7" width="45.9" height="20.3"/>
+<text class="ax" x="490.8" y="324" text-anchor="middle">6</text>
+<rect id="hb7" class="hb hi" x="535.3" y="289.8" width="45.9" height="14.2"/>
+<text class="ax" x="558.2" y="324" text-anchor="middle">7</text>
+<rect id="hb8" class="hb hi" x="602.8" y="297.9" width="45.9" height="6.1"/>
+<text class="ax" x="625.8" y="324" text-anchor="middle">8</text>
+<rect id="hb9" class="hb hi" x="670.3" y="288.8" width="45.9" height="15.2"/>
+<text class="ax" x="693.2" y="324" text-anchor="middle">9</text>
+<rect id="hb10" class="hb hi" x="737.8" y="299.9" width="45.9" height="4.1"/>
+<text class="ax" x="760.8" y="324" text-anchor="middle">10</text>
+<rect id="hb11" class="hb hi" x="805.3" y="294.9" width="45.9" height="9.1"/>
+<text class="ax" x="828.2" y="324" text-anchor="middle">11+</text>
+<text class="axlabel" x="52" y="352">rubric score</text>
+<text class="hbmonth" id="hb-month" x="862" y="50" text-anchor="end">August 2026</text>
+<text class="hbat" id="hb-at" x="862" y="70" text-anchor="end">20.5% at 5 or more</text>
+</svg></div>
+    <div class="anim" role="group" aria-label="Step through the months"><button type="button" id="hb-prev" aria-label="Previous month">&#9664;</button><button type="button" id="hb-play" aria-label="Play through the months">&#9654; Play</button><button type="button" id="hb-next" aria-label="Next month">&#9654;</button><input type="range" id="hb-range" min="0" max="7" value="7" step="1" aria-label="Month"><span class="dim" id="hb-first">first month outlined behind</span></div>
+  </div>
+  <p class="note" style="margin-top:14px">The distribution moves to the right across the series. Papers showing almost no markers, scoring 0 or 1, fall from 79% of January to 52% of August, while those at 5 or more grow from 3% to 21%. See <a href="#method">how this is measured</a> and <a href="#disclaimers">what it does not mean</a>.</p>
+</section>
+
+<section>
+  <h2>Disclosure and apparent use by month</h2>
+  <div class="tablewrap"><table>
+    <thead>
+      <tr><th rowspan="2">Month</th><th rowspan="2" class="num">Papers</th><th rowspan="2" class="num">Disclose AI use</th><th colspan="3" class="sep">AI writing</th></tr>
+      <tr><th class="num sep">Disclosed</th><th class="num">Apparent</th><th class="num">Undisclosed apparent</th></tr>
+    </thead>
+    <tbody><tr><th scope="row">January</th><td class="num">253</td><td class="num ">9<small>(3.6%)</small></td><td class="num sep">4<small>(1.6%)</small></td><td class="num ">8<small>(3.2%)</small></td><td class="num ">7<small>(2.8%)</small></td></tr><tr><th scope="row">February</th><td class="num">243</td><td class="num ">14<small>(5.8%)</small></td><td class="num sep">4<small>(1.6%)</small></td><td class="num ">13<small>(5.3%)</small></td><td class="num ">12<small>(4.9%)</small></td></tr><tr><th scope="row">March</th><td class="num">288</td><td class="num ">13<small>(4.5%)</small></td><td class="num sep">5<small>(1.7%)</small></td><td class="num ">14<small>(4.9%)</small></td><td class="num ">12<small>(4.2%)</small></td></tr><tr><th scope="row">April</th><td class="num">238</td><td class="num ">13<small>(5.5%)</small></td><td class="num sep">6<small>(2.5%)</small></td><td class="num ">17<small>(7.1%)</small></td><td class="num ">13<small>(5.5%)</small></td></tr><tr><th scope="row">May</th><td class="num">279</td><td class="num ">24<small>(8.6%)</small></td><td class="num sep">9<small>(3.2%)</small></td><td class="num ">34<small>(12.2%)</small></td><td class="num ">30<small>(10.8%)</small></td></tr><tr><th scope="row">June</th><td class="num">301</td><td class="num ">42<small>(14.0%)</small></td><td class="num sep">19<small>(6.3%)</small></td><td class="num ">51<small>(16.9%)</small></td><td class="num ">43<small>(14.3%)</small></td></tr><tr><th scope="row">July</th><td class="num">351</td><td class="num ">52<small>(14.8%)</small></td><td class="num sep">29<small>(8.3%)</small></td><td class="num ">60<small>(17.1%)</small></td><td class="num ">45<small>(12.8%)</small></td></tr><tr><th scope="row">August</th><td class="num">411</td><td class="num ">101<small>(24.6%)</small></td><td class="num sep">62<small>(15.1%)</small></td><td class="num ">84<small>(20.4%)</small></td><td class="num ">55<small>(13.4%)</small></td></tr></tbody>
+  </table></div>
+  <p class="note" style="margin-top:14px"><em>Undisclosed apparent</em> counts the papers with apparent AI writing whose authors do not disclose using AI for the writing. Such a paper may still disclose AI use for something else, such as code or computation; it is the writing that goes undisclosed. Percentages are of the month&rsquo;s submissions. A handful of papers each month have no readable source and cannot be scored; they are counted here as not apparent.</p>
+</section>
+
+<section>
+  <h2>AI writing disclosure types</h2>
+  <p class="note">Papers that disclose using AI, sorted by what their authors say the model did to the text. Every month occupies two lines: <span class="k-n">the number of papers</span>, and beneath it <span class="k-a">the mean rubric score of those same papers</span>.</p>
+  <div class="tablewrap"><table>
+    <thead>
+      <tr><th rowspan="2">Month</th><th rowspan="2" class="num">Papers disclosing AI use</th><th colspan="5" class="sep">AI writing disclosure type</th></tr>
+      <tr><th class="num sep">AI</th><th class="num">AI*</th><th class="num">AI+Human</th><th class="num">Human</th><th class="num">No Statement</th></tr>
+    </thead>
+    <tbody><tr class="grp"><th scope="row">January</th><td class="num">9</td><td class="num sep">1<small>(11.1%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(33.3%)</small></td><td class="num ">2<small>(22.2%)</small></td><td class="num ">3<small>(33.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">1.4</td><td class="num avg sep">7.0</td><td class="num avg ">&mdash;</td><td class="num avg ">0.0</td><td class="num avg ">0.5</td><td class="num avg ">1.7</td></tr><tr class="grp"><th scope="row">February</th><td class="num">14</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(21.4%)</small></td><td class="num ">1<small>(7.1%)</small></td><td class="num ">10<small>(71.4%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">3.7</td><td class="num avg ">2.0</td><td class="num avg ">2.9</td></tr><tr class="grp"><th scope="row">March</th><td class="num">13</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">4<small>(30.8%)</small></td><td class="num ">2<small>(15.4%)</small></td><td class="num ">7<small>(53.8%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.6</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.5</td><td class="num avg ">2.5</td><td class="num avg ">3.4</td></tr><tr class="grp"><th scope="row">April</th><td class="num">13</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">6<small>(46.2%)</small></td><td class="num ">1<small>(7.7%)</small></td><td class="num ">6<small>(46.2%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.5</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">5.3</td><td class="num avg ">4.0</td><td class="num avg ">1.5</td></tr><tr class="grp"><th scope="row">May</th><td class="num">24</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">5<small>(20.8%)</small></td><td class="num ">3<small>(12.5%)</small></td><td class="num ">8<small>(33.3%)</small></td><td class="num ">8<small>(33.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">5.0</td><td class="num avg ">4.3</td><td class="num avg ">3.4</td><td class="num avg ">3.8</td></tr><tr class="grp"><th scope="row">June</th><td class="num">42</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">1<small>(2.4%)</small></td><td class="num ">7<small>(16.7%)</small></td><td class="num ">15<small>(35.7%)</small></td><td class="num ">19<small>(45.2%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">&mdash;</td><td class="num avg ">1.0</td><td class="num avg ">5.3</td><td class="num avg ">2.7</td><td class="num avg ">4.9</td></tr><tr class="grp"><th scope="row">July</th><td class="num">52</td><td class="num sep">1<small>(1.9%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">20<small>(38.5%)</small></td><td class="num ">9<small>(17.3%)</small></td><td class="num ">22<small>(42.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.5</td><td class="num avg sep">3.0</td><td class="num avg ">&mdash;</td><td class="num avg ">5.3</td><td class="num avg ">3.6</td><td class="num avg ">2.0</td></tr><tr class="grp"><th scope="row">August</th><td class="num">101</td><td class="num sep">2<small>(2.0%)</small></td><td class="num ">5<small>(5.0%)</small></td><td class="num ">44<small>(43.6%)</small></td><td class="num ">10<small>(9.9%)</small></td><td class="num ">40<small>(39.6%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">6.5</td><td class="num avg ">6.2</td><td class="num avg ">5.3</td><td class="num avg ">1.6</td><td class="num avg ">3.0</td></tr></tbody>
+  </table></div>
+  <dl class="cats">
+    <div><dt>AI</dt><dd>a model generated the text and no editing of it is claimed</dd></div>
+    <div><dt>AI*</dt><dd>a model generated the text and the authors then edited it</dd></div>
+    <div><dt>AI+Human</dt><dd>a model helped write: drafting parts, rewriting, translating, language editing</dd></div>
+    <div><dt>Human</dt><dd>the authors state the text is theirs, or that no AI was used, whatever else a model did</dd></div>
+    <div><dt>No Statement</dt><dd>the paper discloses AI use but says nothing about the text</dd></div>
+  </dl>
+  <p class="note" style="margin-top:14px">
+The five types partition the papers that disclose AI use, so each row adds up to the count beside it and the percentages are shares of that count, not of the month&rsquo;s submissions. A handful of papers state that they used no AI at all; they are not counted as disclosing use and do not appear here. The type is Claude&rsquo;s reading of the authors&rsquo; text, and may not be accurate.</p>
+</section>
+
+<section id="method">
+  <h2>Method</h2>
+  <p>The corpus is every arXiv preprint with primary category math.NT whose first version was submitted in the month. Nothing is sampled and nothing is left out. Each paper is read from its LaTeX source.</p>
+  <p>Disclosure is counted by searching that source for any mention of AI tools and reading every sentence found. Apparent AI writing is a score built from a fixed set of markers, primarily based on writing style and vocabulary use.  The indicators are a combination of ideas from AI detection literature, my observations, and Claude's experiments.  
+As a control, the same scoring was run on two months of arXiv number theory from well before large language models: 0.3% of those papers passed the threshold (1 of 334).</p>
+  <p>I am not publishing the precise scoring method because:</p>
+  <ul>
+    <li>I do not claim that it is a very good or accurate method, but I believe it is a decent rough approximation of flagging papers whose texts were likely generated in large part by AI</li>
+    <li>I do not claim that the method will scale well to other disciplines, or into the future</li>
+    <li>I do not want it to become a benchmark</li>
+  </ul>
+  <p>Feel free to <a href="https://kimballmartin.github.io/">contact me</a> if you would like to discuss the method in more detail.</p>
+</section>
+
+<section id="disclaimers">
+  <h2>Disclaimers</h2>
+  <p><strong>A score is not a verdict.</strong> It counts markers that generative AI tends to produce. It is not evidence that a model wrote a paper, and it says nothing about whether the mathematics is correct, original or worth reading. A paper written entirely by a person can score high, and a paper written largely by a model can score low.  
+</p>
+  <p><strong>Disclosure categories are interpreted based on text.</strong> Nothing an author states has been verified, or attempted to be verified.  Authors write disclosures in different ways, some more vague than others, and judgement calls were largely automated.
+For instance, a paper written by a person from a model&rsquo;s draft and a lightly edited model draft may be described identically, and some papers whose authors state the text is theirs carry the same markers as papers that disclose drafting. That may mean the prose was written by a person working from a model&rsquo;s write-up, or that there is more model writing than the statement suggests. Disclosure categories, and most disclosure statements themselves, do not distinguish these.</p>
+  <p><strong>Using AI is not misconduct.</strong> Nothing here is intended as an accusation, and I did not personally check or read most papers with high scores. The point of the study is the shape of the trend and the gap between use and disclosure, not any individual paper.  That said, I personally believe authors should try to accurately and clearly disclose their use of AI at this time.</p>
+  <p><strong>One subject.</strong> This is number theory on arXiv. Other fields and other repositories may look nothing like it.</p>
+</section>
+
+
+<footer class="foot"><p>A study directed by <a href="https://kimballmartin.github.io/">Kimball Martin</a> using Claude. Corpus: every math.NT preprint first submitted January&ndash;August 2026, read from its arXiv source, with December 2025 and two pre-2022 control months measured the same way. Page generated 4 September 2026.</p></footer>
+</div>
+<script>
+(function(){
+  var F = [{"label": "January 2026", "y": [56.7, 224.9, 257.8, 285.9, 292.5, 299.1, 302.4, 302.4, 302.4, 302.4, 302.4, 304.0], "h": [247.3, 79.1, 46.2, 18.1, 11.5, 4.9, 1.6, 1.6, 1.6, 1.6, 1.6, 0.0], "at": "3.2"}, {"label": "February 2026", "y": [53.0, 255.5, 253.8, 285.0, 279.8, 295.3, 297.1, 300.5, 304.0, 300.5, 304.0, 304.0], "h": [251.0, 48.5, 50.2, 19.0, 24.2, 8.7, 6.9, 3.5, 0.0, 3.5, 0.0, 0.0], "at": "5.4"}, {"label": "March 2026", "y": [86.1, 222.7, 245.9, 277.9, 292.4, 301.1, 298.2, 301.1, 298.2, 304.0, 301.1, 304.0], "h": [217.9, 81.3, 58.1, 26.1, 11.6, 2.9, 5.8, 2.9, 5.8, 0.0, 2.9, 0.0], "at": "4.9"}, {"label": "April 2026", "y": [72.6, 230.4, 256.7, 288.2, 286.5, 297.0, 293.5, 304.0, 293.5, 304.0, 302.2, 304.0], "h": [231.4, 73.6, 47.3, 15.8, 17.5, 7.0, 10.5, 0.0, 10.5, 0.0, 1.8, 0.0], "at": "7.2"}, {"label": "May 2026", "y": [109.1, 225.5, 251.1, 276.8, 293.4, 291.9, 296.4, 291.9, 293.4, 299.5, 302.5, 301.0], "h": [194.9, 78.5, 52.9, 27.2, 10.6, 12.1, 7.6, 12.1, 10.6, 4.5, 1.5, 3.0], "at": "12.4"}, {"label": "June 2026", "y": [103.2, 232.0, 266.6, 281.8, 291.5, 277.7, 291.5, 292.9, 297.1, 294.3, 302.6, 301.2], "h": [200.8, 72.0, 37.4, 22.2, 12.5, 26.3, 12.5, 11.1, 6.9, 9.7, 1.4, 2.8], "at": "17.0"}, {"label": "July 2026", "y": [111.2, 240.9, 258.8, 273.1, 292.1, 281.4, 292.1, 290.9, 296.9, 295.7, 299.2, 300.4], "h": [192.8, 63.1, 45.2, 30.9, 11.9, 22.6, 11.9, 13.1, 7.1, 8.3, 4.8, 3.6], "at": "17.2"}, {"label": "August 2026", "y": [161.8, 228.8, 242.0, 276.6, 280.6, 287.8, 283.7, 289.8, 297.9, 288.8, 299.9, 294.9], "h": [142.2, 75.2, 62.0, 27.4, 23.4, 16.2, 20.3, 14.2, 6.1, 15.2, 4.1, 9.1], "at": "20.5"}], n = F.length, at = n - 1, timer = null;
+  var bars = [], i;
+  for (i = 0; i < 12; i++) bars.push(document.getElementById('hb' + i));
+  var lab = document.getElementById('hb-month'), rd = document.getElementById('hb-at');
+  var rng = document.getElementById('hb-range'), play = document.getElementById('hb-play');
+  if (!rng || !bars[0]) return;
+  function draw(k){
+    at = k; var f = F[k];
+    for (var i = 0; i < bars.length; i++){
+      bars[i].setAttribute('y', f.y[i]);
+      bars[i].setAttribute('height', f.h[i]);
+    }
+    lab.textContent = f.label;
+    rd.textContent = f.at + '% at 5 or more';
+    rng.value = k;
+  }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } play.innerHTML = '&#9654; Play'; }
+  function start(){
+    if (at >= n - 1) draw(0);
+    play.innerHTML = '&#9646;&#9646; Pause';
+    timer = setInterval(function(){
+      if (at >= n - 1) { stop(); return; }
+      draw(at + 1);
+    }, 1000);
+  }
+  play.onclick = function(){ timer ? stop() : start(); };
+  document.getElementById('hb-prev').onclick = function(){ stop(); draw(at > 0 ? at - 1 : n - 1); };
+  document.getElementById('hb-next').onclick = function(){ stop(); draw(at < n - 1 ? at + 1 : 0); };
+  rng.oninput = function(){ stop(); draw(parseInt(this.value, 10)); };
+})();
+</script>
