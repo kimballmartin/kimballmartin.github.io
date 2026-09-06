@@ -71,6 +71,9 @@ li{margin:4px 0}
 .anim button{font:inherit;font-size:13px;padding:4px 11px;border:1px solid var(--rule);border-radius:3px;background:var(--surface-2);color:var(--ink-2);cursor:pointer;line-height:1.4}
 .anim button:hover{border-color:var(--muted)}
 .anim input[type=range]{flex:1 1 180px;min-width:140px;accent-color:var(--b3)}
+.msel{margin:0 0 10px}
+.msel button[aria-pressed=true]{background:var(--ink-2);color:var(--surface);border-color:var(--ink-2)}
+tr[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){.hb{transition:none}}
 svg{display:block;width:100%;min-width:560px;height:auto;font-family:var(--mono)}
 .gl{stroke:var(--grid);stroke-width:1}
@@ -140,23 +143,23 @@ tr.det .sec{display:block;font-family:var(--mono);font-size:11px;color:var(--mut
 <body>
 <div class="wrap">
 <header>
-  <p class="eyebrow">arXiv &middot; math.NT &middot; January&ndash;August 2026</p>
+  <p class="eyebrow">arXiv &middot; math.NT &middot; August 2025&ndash;August 2026</p>
   <h1>AI use in arXiv NT papers</h1>
   <p class="stand">How many new number theory preprints appear to be significantly written by AI, and how many say so.</p>
   <dl class="tiles">
-    <div class="tile"><dt>Papers examined</dt><dd>2,348<small>January&ndash;August 2026</small></dd></div>
-    <div class="tile"><dt>Disclose AI use</dt><dd>24.7%<small>in August, from 3.6% in January</small></dd></div>
-    <div class="tile"><dt>Disclose AI writing</dt><dd>12.7%<small>in August, from 1.6% in January</small></dd></div>
-    <div class="tile"><dt>Apparent AI writing</dt><dd>20.5%<small>in August, from 3.2% in January</small></dd></div>
+    <div class="tile"><dt>Papers examined</dt><dd>3,650<small>August 2025&ndash;August 2026</small></dd></div>
+    <div class="tile"><dt>Disclose AI use</dt><dd>23.4%<small>in August 2026, from 4.1% six months earlier (February 2026)</small><small>and 1.1% a year earlier (August 2025)</small></dd></div>
+    <div class="tile"><dt>Disclose AI writing</dt><dd>12.0%<small>in August 2026, from 0.8% six months earlier (February 2026)</small><small>and 0.0% a year earlier (August 2025)</small></dd></div>
+    <div class="tile"><dt>Apparent AI writing</dt><dd>20.7%<small>in August 2026, from 3.7% six months earlier (February 2026)</small><small>and 1.5% a year earlier (August 2025)</small></dd></div>
   </dl>
 </header>
 
 <section>
   <h2>Percentage of papers with disclosed and apparent AI use</h2>
-  <p class="note">Every preprint whose first version was submitted in the month and whose LaTeX source could be read, as a percentage of those papers. Across the series 16 of the 2,364 submissions had no readable source (at most 4 in a month); they are left out of every count and percentage on this page.</p>
+  <p class="note">Every preprint whose first version was submitted in the month and whose LaTeX source could be read, as a percentage of those papers. Across the series 10 of the 3,660 submissions had no readable source (at most 2 in a month); they are left out of every count and percentage on this page.</p>
   <div class="card">
     <div class="legend"><span><i class="sw s1"></i>Disclose AI use</span><span><i class="sw s3"></i>Disclose AI writing</span><span><i class="sw s2"></i>Apparent AI writing</span></div>
-    <div class="chartwrap"><svg viewBox="0 0 880 330" role="img" aria-label="Three rising lines, January to August 2026">
+    <div class="chartwrap"><svg viewBox="0 0 880 330" role="img" aria-label="Three rising lines, August 2025 to August 2026">
 <line class="gl" x1="48" y1="284.0" x2="862" y2="284.0"/>
 <text class="ax" x="39" y="287.5" text-anchor="end">0%</text>
 <line class="gl" x1="48" y1="232.8" x2="862" y2="232.8"/>
@@ -169,42 +172,64 @@ tr.det .sec{display:block;font-family:var(--mono);font-size:11px;color:var(--mut
 <text class="ax" x="39" y="82.9" text-anchor="end">20%</text>
 <line class="gl" x1="48" y1="28.2" x2="862" y2="28.2"/>
 <text class="ax" x="39" y="31.7" text-anchor="end">25%</text>
-<text class="ax" x="98.9" y="304" text-anchor="middle">Jan</text>
-<text class="ax" x="200.6" y="304" text-anchor="middle">Feb</text>
-<text class="ax" x="302.4" y="304" text-anchor="middle">Mar</text>
-<text class="ax" x="404.1" y="304" text-anchor="middle">Apr</text>
-<text class="ax" x="505.9" y="304" text-anchor="middle">May</text>
-<text class="ax" x="607.6" y="304" text-anchor="middle">Jun</text>
-<text class="ax" x="709.4" y="304" text-anchor="middle">Jul</text>
-<text class="ax" x="811.1" y="304" text-anchor="middle">Aug</text>
-<path class="ln s1" d="M98.9,247.5 L200.6,224.3 L302.4,237.5 L404.1,227.9 L505.9,194.7 L607.6,140.8 L709.4,131.6 L811.1,31.4"/>
-<circle class="pt s1" cx="98.9" cy="247.5" r="3.4"><title>Disclose AI use, January: 3.6%</title></circle>
-<circle class="pt s1" cx="200.6" cy="224.3" r="3.4"><title>Disclose AI use, February: 5.8%</title></circle>
-<circle class="pt s1" cx="302.4" cy="237.5" r="3.4"><title>Disclose AI use, March: 4.5%</title></circle>
-<circle class="pt s1" cx="404.1" cy="227.9" r="3.4"><title>Disclose AI use, April: 5.5%</title></circle>
-<circle class="pt s1" cx="505.9" cy="194.7" r="3.4"><title>Disclose AI use, May: 8.7%</title></circle>
-<circle class="pt s1" cx="607.6" cy="140.8" r="3.4"><title>Disclose AI use, June: 14.0%</title></circle>
-<circle class="pt s1" cx="709.4" cy="131.6" r="3.4"><title>Disclose AI use, July: 14.9%</title></circle>
-<circle class="pt s1" cx="811.1" cy="31.4" r="3.4"><title>Disclose AI use, August: 24.7%</title></circle>
-<path class="ln s3" d="M98.9,267.8 L200.6,271.2 L302.4,269.7 L404.1,258.1 L505.9,254.2 L607.6,256.7 L709.4,222.4 L811.1,153.9"/>
-<circle class="pt s3" cx="98.9" cy="267.8" r="3.4"><title>Disclose AI writing, January: 1.6%</title></circle>
-<circle class="pt s3" cx="200.6" cy="271.2" r="3.4"><title>Disclose AI writing, February: 1.2%</title></circle>
-<circle class="pt s3" cx="302.4" cy="269.7" r="3.4"><title>Disclose AI writing, March: 1.4%</title></circle>
-<circle class="pt s3" cx="404.1" cy="258.1" r="3.4"><title>Disclose AI writing, April: 2.5%</title></circle>
-<circle class="pt s3" cx="505.9" cy="254.2" r="3.4"><title>Disclose AI writing, May: 2.9%</title></circle>
-<circle class="pt s3" cx="607.6" cy="256.7" r="3.4"><title>Disclose AI writing, June: 2.7%</title></circle>
-<circle class="pt s3" cx="709.4" cy="222.4" r="3.4"><title>Disclose AI writing, July: 6.0%</title></circle>
-<circle class="pt s3" cx="811.1" cy="153.9" r="3.4"><title>Disclose AI writing, August: 12.7%</title></circle>
-<path class="ln s2" d="M98.9,251.5 L200.6,228.6 L302.4,233.9 L404.1,210.6 L505.9,157.5 L607.6,110.1 L709.4,108.1 L811.1,73.9"/>
-<circle class="pt s2" cx="98.9" cy="251.5" r="3.4"><title>Apparent AI writing, January: 3.2%</title></circle>
-<circle class="pt s2" cx="200.6" cy="228.6" r="3.4"><title>Apparent AI writing, February: 5.4%</title></circle>
-<circle class="pt s2" cx="302.4" cy="233.9" r="3.4"><title>Apparent AI writing, March: 4.9%</title></circle>
-<circle class="pt s2" cx="404.1" cy="210.6" r="3.4"><title>Apparent AI writing, April: 7.2%</title></circle>
-<circle class="pt s2" cx="505.9" cy="157.5" r="3.4"><title>Apparent AI writing, May: 12.4%</title></circle>
-<circle class="pt s2" cx="607.6" cy="110.1" r="3.4"><title>Apparent AI writing, June: 17.0%</title></circle>
-<circle class="pt s2" cx="709.4" cy="108.1" r="3.4"><title>Apparent AI writing, July: 17.2%</title></circle>
-<circle class="pt s2" cx="811.1" cy="73.9" r="3.4"><title>Apparent AI writing, August: 20.5%</title></circle>
-<text class="axlabel" x="48" y="324">2026</text></svg></div>
+<text class="ax" x="79.3" y="304" text-anchor="middle">Aug</text>
+<text class="ax" x="141.9" y="304" text-anchor="middle">Sep</text>
+<text class="ax" x="204.5" y="304" text-anchor="middle">Oct</text>
+<text class="ax" x="267.2" y="304" text-anchor="middle">Nov</text>
+<text class="ax" x="329.8" y="304" text-anchor="middle">Dec</text>
+<text class="ax" x="392.4" y="304" text-anchor="middle">Jan</text>
+<text class="ax" x="455.0" y="304" text-anchor="middle">Feb</text>
+<text class="ax" x="517.6" y="304" text-anchor="middle">Mar</text>
+<text class="ax" x="580.2" y="304" text-anchor="middle">Apr</text>
+<text class="ax" x="642.8" y="304" text-anchor="middle">May</text>
+<text class="ax" x="705.5" y="304" text-anchor="middle">Jun</text>
+<text class="ax" x="768.1" y="304" text-anchor="middle">Jul</text>
+<text class="ax" x="830.7" y="304" text-anchor="middle">Aug</text>
+<path class="ln s1" d="M79.3,272.8 L141.9,272.0 L204.5,280.3 L267.2,261.8 L329.8,259.9 L392.4,263.8 L455.0,241.7 L517.6,248.4 L580.2,236.5 L642.8,232.7 L705.5,144.6 L768.1,137.8 L830.7,44.5"/>
+<circle class="pt s1" cx="79.3" cy="272.8" r="3.4"><title>Disclose AI use, August: 1.1%</title></circle>
+<circle class="pt s1" cx="141.9" cy="272.0" r="3.4"><title>Disclose AI use, September: 1.2%</title></circle>
+<circle class="pt s1" cx="204.5" cy="280.3" r="3.4"><title>Disclose AI use, October: 0.4%</title></circle>
+<circle class="pt s1" cx="267.2" cy="261.8" r="3.4"><title>Disclose AI use, November: 2.2%</title></circle>
+<circle class="pt s1" cx="329.8" cy="259.9" r="3.4"><title>Disclose AI use, December: 2.4%</title></circle>
+<circle class="pt s1" cx="392.4" cy="263.8" r="3.4"><title>Disclose AI use, January: 2.0%</title></circle>
+<circle class="pt s1" cx="455.0" cy="241.7" r="3.4"><title>Disclose AI use, February: 4.1%</title></circle>
+<circle class="pt s1" cx="517.6" cy="248.4" r="3.4"><title>Disclose AI use, March: 3.5%</title></circle>
+<circle class="pt s1" cx="580.2" cy="236.5" r="3.4"><title>Disclose AI use, April: 4.6%</title></circle>
+<circle class="pt s1" cx="642.8" cy="232.7" r="3.4"><title>Disclose AI use, May: 5.0%</title></circle>
+<circle class="pt s1" cx="705.5" cy="144.6" r="3.4"><title>Disclose AI use, June: 13.6%</title></circle>
+<circle class="pt s1" cx="768.1" cy="137.8" r="3.4"><title>Disclose AI use, July: 14.3%</title></circle>
+<circle class="pt s1" cx="830.7" cy="44.5" r="3.4"><title>Disclose AI use, August: 23.4%</title></circle>
+<path class="ln s3" d="M79.3,284.0 L141.9,280.0 L204.5,284.0 L267.2,266.2 L329.8,276.0 L392.4,280.0 L455.0,275.5 L517.6,273.3 L580.2,262.4 L642.8,276.7 L705.5,263.6 L768.1,222.6 L830.7,161.7"/>
+<circle class="pt s3" cx="79.3" cy="284.0" r="3.4"><title>Disclose AI writing, August: 0.0%</title></circle>
+<circle class="pt s3" cx="141.9" cy="280.0" r="3.4"><title>Disclose AI writing, September: 0.4%</title></circle>
+<circle class="pt s3" cx="204.5" cy="284.0" r="3.4"><title>Disclose AI writing, October: 0.0%</title></circle>
+<circle class="pt s3" cx="267.2" cy="266.2" r="3.4"><title>Disclose AI writing, November: 1.7%</title></circle>
+<circle class="pt s3" cx="329.8" cy="276.0" r="3.4"><title>Disclose AI writing, December: 0.8%</title></circle>
+<circle class="pt s3" cx="392.4" cy="280.0" r="3.4"><title>Disclose AI writing, January: 0.4%</title></circle>
+<circle class="pt s3" cx="455.0" cy="275.5" r="3.4"><title>Disclose AI writing, February: 0.8%</title></circle>
+<circle class="pt s3" cx="517.6" cy="273.3" r="3.4"><title>Disclose AI writing, March: 1.0%</title></circle>
+<circle class="pt s3" cx="580.2" cy="262.4" r="3.4"><title>Disclose AI writing, April: 2.1%</title></circle>
+<circle class="pt s3" cx="642.8" cy="276.7" r="3.4"><title>Disclose AI writing, May: 0.7%</title></circle>
+<circle class="pt s3" cx="705.5" cy="263.6" r="3.4"><title>Disclose AI writing, June: 2.0%</title></circle>
+<circle class="pt s3" cx="768.1" cy="222.6" r="3.4"><title>Disclose AI writing, July: 6.0%</title></circle>
+<circle class="pt s3" cx="830.7" cy="161.7" r="3.4"><title>Disclose AI writing, August: 12.0%</title></circle>
+<path class="ln s2" d="M79.3,269.1 L141.9,276.0 L204.5,276.6 L267.2,261.8 L329.8,268.0 L392.4,251.6 L455.0,246.0 L517.6,237.7 L580.2,210.6 L642.8,166.7 L705.5,117.5 L768.1,117.4 L830.7,71.9"/>
+<circle class="pt s2" cx="79.3" cy="269.1" r="3.4"><title>Apparent AI writing, August: 1.5%</title></circle>
+<circle class="pt s2" cx="141.9" cy="276.0" r="3.4"><title>Apparent AI writing, September: 0.8%</title></circle>
+<circle class="pt s2" cx="204.5" cy="276.6" r="3.4"><title>Apparent AI writing, October: 0.7%</title></circle>
+<circle class="pt s2" cx="267.2" cy="261.8" r="3.4"><title>Apparent AI writing, November: 2.2%</title></circle>
+<circle class="pt s2" cx="329.8" cy="268.0" r="3.4"><title>Apparent AI writing, December: 1.6%</title></circle>
+<circle class="pt s2" cx="392.4" cy="251.6" r="3.4"><title>Apparent AI writing, January: 3.2%</title></circle>
+<circle class="pt s2" cx="455.0" cy="246.0" r="3.4"><title>Apparent AI writing, February: 3.7%</title></circle>
+<circle class="pt s2" cx="517.6" cy="237.7" r="3.4"><title>Apparent AI writing, March: 4.5%</title></circle>
+<circle class="pt s2" cx="580.2" cy="210.6" r="3.4"><title>Apparent AI writing, April: 7.2%</title></circle>
+<circle class="pt s2" cx="642.8" cy="166.7" r="3.4"><title>Apparent AI writing, May: 11.5%</title></circle>
+<circle class="pt s2" cx="705.5" cy="117.5" r="3.4"><title>Apparent AI writing, June: 16.3%</title></circle>
+<circle class="pt s2" cx="768.1" cy="117.4" r="3.4"><title>Apparent AI writing, July: 16.3%</title></circle>
+<circle class="pt s2" cx="830.7" cy="71.9" r="3.4"><title>Apparent AI writing, August: 20.7%</title></circle>
+<text class="axlabel" x="67.3" y="324">2025</text>
+<text class="axlabel" x="380.4" y="324">2026</text>
+</svg></div>
   </div>
   <p class="note" style="margin-top:14px"><em>Disclose AI use</em> counts papers that say anywhere in their text that an AI tool was used, for anything at all: code, computation, proof search, literature, language. <br><em>Disclose AI writing</em> counts the papers whose statement says a model generated or helped write the text, in full or in part (the AI, AI* and AI+Human types below); proofreading alone does not count. <br><em>Apparent AI writing</em> counts papers whose text carries the pattern that machine-drafted writing leaves, whether or not they say so. 
 <br>See <a href="#method">how this is measured</a> and <a href="#disclaimers">what it does not mean</a>.</p>
@@ -218,71 +243,75 @@ tr.det .sec{display:block;font-family:var(--mono);font-size:11px;color:var(--mut
     <div class="chartwrap"><svg viewBox="0 0 880 360" role="img" aria-label="Histogram of rubric scores, one month at a time">
 <line class="gl" x1="52" y1="304.0" x2="862" y2="304.0"/>
 <text class="ax" x="43" y="307.5" text-anchor="end">0%</text>
-<line class="gl" x1="52" y1="241.7" x2="862" y2="241.7"/>
-<text class="ax" x="43" y="245.2" text-anchor="end">15%</text>
-<line class="gl" x1="52" y1="179.4" x2="862" y2="179.4"/>
-<text class="ax" x="43" y="182.9" text-anchor="end">30%</text>
-<line class="gl" x1="52" y1="117.1" x2="862" y2="117.1"/>
-<text class="ax" x="43" y="120.6" text-anchor="end">45%</text>
-<line class="gl" x1="52" y1="54.8" x2="862" y2="54.8"/>
-<text class="ax" x="43" y="58.3" text-anchor="end">60%</text>
+<line class="gl" x1="52" y1="250.0" x2="862" y2="250.0"/>
+<text class="ax" x="43" y="253.5" text-anchor="end">15%</text>
+<line class="gl" x1="52" y1="196.0" x2="862" y2="196.0"/>
+<text class="ax" x="43" y="199.5" text-anchor="end">30%</text>
+<line class="gl" x1="52" y1="142.0" x2="862" y2="142.0"/>
+<text class="ax" x="43" y="145.5" text-anchor="end">45%</text>
+<line class="gl" x1="52" y1="88.0" x2="862" y2="88.0"/>
+<text class="ax" x="43" y="91.5" text-anchor="end">60%</text>
+<line class="gl" x1="52" y1="34.0" x2="862" y2="34.0"/>
+<text class="ax" x="43" y="37.5" text-anchor="end">75%</text>
 <line class="thr" x1="389.5" y1="28" x2="389.5" y2="304"/>
 <text class="thrtxt" x="395.5" y="23">threshold, 5 or more</text>
-<path class="ref" d="M62.8,304.0 L62.8,56.7 L108.7,56.7 L108.7,304.0 M130.3,304.0 L130.3,224.9 L176.2,224.9 L176.2,304.0 M197.8,304.0 L197.8,257.8 L243.7,257.8 L243.7,304.0 M265.3,304.0 L265.3,285.9 L311.2,285.9 L311.2,304.0 M332.8,304.0 L332.8,292.5 L378.7,292.5 L378.7,304.0 M400.3,304.0 L400.3,299.1 L446.2,299.1 L446.2,304.0 M467.8,304.0 L467.8,302.4 L513.7,302.4 L513.7,304.0 M535.3,304.0 L535.3,302.4 L581.2,302.4 L581.2,304.0 M602.8,304.0 L602.8,302.4 L648.7,302.4 L648.7,304.0 M670.3,304.0 L670.3,302.4 L716.2,302.4 L716.2,304.0 M737.8,304.0 L737.8,302.4 L783.7,302.4 L783.7,304.0 M805.3,304.0 L805.3,304.0 L851.2,304.0 L851.2,304.0"/>
-<rect id="hb0" class="hb" x="62.8" y="161.8" width="45.9" height="142.2"/>
+<path class="ref" d="M62.8,304.0 L62.8,71.4 L108.7,71.4 L108.7,304.0 M130.3,304.0 L130.3,234.4 L176.2,234.4 L176.2,304.0 M197.8,304.0 L197.8,272.5 L243.7,272.5 L243.7,304.0 M265.3,304.0 L265.3,293.5 L311.2,293.5 L311.2,304.0 M332.8,304.0 L332.8,293.5 L378.7,293.5 L378.7,304.0 M400.3,304.0 L400.3,301.4 L446.2,301.4 L446.2,304.0 M467.8,304.0 L467.8,302.7 L513.7,302.7 L513.7,304.0 M535.3,304.0 L535.3,304.0 L581.2,304.0 L581.2,304.0 M602.8,304.0 L602.8,302.7 L648.7,302.7 L648.7,304.0 M670.3,304.0 L670.3,304.0 L716.2,304.0 L716.2,304.0 M737.8,304.0 L737.8,304.0 L783.7,304.0 L783.7,304.0 M805.3,304.0 L805.3,304.0 L851.2,304.0 L851.2,304.0"/>
+<rect id="hb0" class="hb" x="62.8" y="181.1" width="45.9" height="122.9"/>
 <text class="ax" x="85.8" y="324" text-anchor="middle">0</text>
-<rect id="hb1" class="hb" x="130.3" y="228.8" width="45.9" height="75.2"/>
+<rect id="hb1" class="hb" x="130.3" y="239.0" width="45.9" height="65.0"/>
 <text class="ax" x="153.2" y="324" text-anchor="middle">1</text>
-<rect id="hb2" class="hb" x="197.8" y="242.0" width="45.9" height="62.0"/>
+<rect id="hb2" class="hb" x="197.8" y="250.4" width="45.9" height="53.6"/>
 <text class="ax" x="220.8" y="324" text-anchor="middle">2</text>
-<rect id="hb3" class="hb" x="265.3" y="276.6" width="45.9" height="27.4"/>
+<rect id="hb3" class="hb" x="265.3" y="278.5" width="45.9" height="25.5"/>
 <text class="ax" x="288.2" y="324" text-anchor="middle">3</text>
-<rect id="hb4" class="hb" x="332.8" y="280.6" width="45.9" height="23.4"/>
+<rect id="hb4" class="hb" x="332.8" y="285.6" width="45.9" height="18.4"/>
 <text class="ax" x="355.8" y="324" text-anchor="middle">4</text>
-<rect id="hb5" class="hb hi" x="400.3" y="287.8" width="45.9" height="16.2"/>
+<rect id="hb5" class="hb hi" x="400.3" y="287.3" width="45.9" height="16.7"/>
 <text class="ax" x="423.2" y="324" text-anchor="middle">5</text>
-<rect id="hb6" class="hb hi" x="467.8" y="283.7" width="45.9" height="20.3"/>
+<rect id="hb6" class="hb hi" x="467.8" y="286.4" width="45.9" height="17.6"/>
 <text class="ax" x="490.8" y="324" text-anchor="middle">6</text>
-<rect id="hb7" class="hb hi" x="535.3" y="289.8" width="45.9" height="14.2"/>
+<rect id="hb7" class="hb hi" x="535.3" y="292.6" width="45.9" height="11.4"/>
 <text class="ax" x="558.2" y="324" text-anchor="middle">7</text>
-<rect id="hb8" class="hb hi" x="602.8" y="297.9" width="45.9" height="6.1"/>
+<rect id="hb8" class="hb hi" x="602.8" y="298.7" width="45.9" height="5.3"/>
 <text class="ax" x="625.8" y="324" text-anchor="middle">8</text>
-<rect id="hb9" class="hb hi" x="670.3" y="288.8" width="45.9" height="15.2"/>
+<rect id="hb9" class="hb hi" x="670.3" y="293.5" width="45.9" height="10.5"/>
 <text class="ax" x="693.2" y="324" text-anchor="middle">9</text>
-<rect id="hb10" class="hb hi" x="737.8" y="299.9" width="45.9" height="4.1"/>
+<rect id="hb10" class="hb hi" x="737.8" y="299.6" width="45.9" height="4.4"/>
 <text class="ax" x="760.8" y="324" text-anchor="middle">10</text>
-<rect id="hb11" class="hb hi" x="805.3" y="294.9" width="45.9" height="9.1"/>
+<rect id="hb11" class="hb hi" x="805.3" y="295.2" width="45.9" height="8.8"/>
 <text class="ax" x="828.2" y="324" text-anchor="middle">11+</text>
 <text class="axlabel" x="52" y="352">rubric score</text>
 <text class="hbmonth" id="hb-month" x="862" y="50" text-anchor="end">August 2026</text>
-<text class="hbat" id="hb-at" x="862" y="70" text-anchor="end">20.5% at 5 or more</text>
+<text class="hbat" id="hb-at" x="862" y="70" text-anchor="end">20.7% at 5 or more</text>
 </svg></div>
-    <div class="anim" role="group" aria-label="Step through the months"><button type="button" id="hb-prev" aria-label="Previous month">&#9664;</button><button type="button" id="hb-play" aria-label="Play through the months">&#9654; Play</button><button type="button" id="hb-next" aria-label="Next month">&#9654;</button><input type="range" id="hb-range" min="0" max="7" value="7" step="1" aria-label="Month"><span class="dim" id="hb-first">first month outlined behind</span></div>
+    <div class="anim" role="group" aria-label="Step through the months"><button type="button" id="hb-prev" aria-label="Previous month">&#9664;</button><button type="button" id="hb-play" aria-label="Play through the months">&#9654; Play</button><button type="button" id="hb-next" aria-label="Next month">&#9654;</button><input type="range" id="hb-range" min="0" max="12" value="12" step="1" aria-label="Month"><span class="dim" id="hb-first">first month outlined behind</span></div>
   </div>
-  <p class="note" style="margin-top:14px">The distribution moves to the right across the series. Papers showing almost no markers, scoring 0 or 1, fall from 79% of January to 52% of August, while those at 5 or more grow from 3% to 21%. See <a href="#method">how this is measured</a> and <a href="#disclaimers">what it does not mean</a>.</p>
+  <p class="note" style="margin-top:14px">The distribution moves to the right across the series. Papers showing almost no markers, scoring 0 or 1, fall from 84% of August 2025 to 52% of August 2026, while those at 5 or more grow from 1% to 21%. See <a href="#method">how this is measured</a> and <a href="#disclaimers">what it does not mean</a>.</p>
 </section>
 
 <section>
   <h2>Disclosure and apparent use by month</h2>
+  <div class="anim msel" role="group" aria-label="Months shown" data-for="tb1"><span class="dim">Show</span><button type="button" data-n="6" aria-pressed="true">last 6 months</button><button type="button" data-n="12" aria-pressed="false">last 12 months</button><button type="button" data-n="0" aria-pressed="false">all 13 months</button></div>
   <div class="tablewrap"><table>
     <thead>
       <tr><th rowspan="2">Month</th><th rowspan="2" class="num">Papers</th><th rowspan="2" class="num">Disclose AI use</th><th colspan="3" class="sep">AI writing</th></tr>
       <tr><th class="num sep">Disclosed</th><th class="num">Apparent</th><th class="num">Undisclosed apparent</th></tr>
     </thead>
-    <tbody><tr><th scope="row">January</th><td class="num">252</td><td class="num ">9<small>(3.6%)</small></td><td class="num sep">4<small>(1.6%)</small></td><td class="num ">8<small>(3.2%)</small></td><td class="num ">7<small>(2.8%)</small></td></tr><tr><th scope="row">February</th><td class="num">240</td><td class="num ">14<small>(5.8%)</small></td><td class="num sep">3<small>(1.2%)</small></td><td class="num ">13<small>(5.4%)</small></td><td class="num ">12<small>(5.0%)</small></td></tr><tr><th scope="row">March</th><td class="num">286</td><td class="num ">13<small>(4.5%)</small></td><td class="num sep">4<small>(1.4%)</small></td><td class="num ">14<small>(4.9%)</small></td><td class="num ">12<small>(4.2%)</small></td></tr><tr><th scope="row">April</th><td class="num">237</td><td class="num ">13<small>(5.5%)</small></td><td class="num sep">6<small>(2.5%)</small></td><td class="num ">17<small>(7.2%)</small></td><td class="num ">13<small>(5.5%)</small></td></tr><tr><th scope="row">May</th><td class="num">275</td><td class="num ">24<small>(8.7%)</small></td><td class="num sep">8<small>(2.9%)</small></td><td class="num ">34<small>(12.4%)</small></td><td class="num ">30<small>(10.9%)</small></td></tr><tr><th scope="row">June</th><td class="num">300</td><td class="num ">42<small>(14.0%)</small></td><td class="num sep">8<small>(2.7%)</small></td><td class="num ">51<small>(17.0%)</small></td><td class="num ">47<small>(15.7%)</small></td></tr><tr><th scope="row">July</th><td class="num">349</td><td class="num ">52<small>(14.9%)</small></td><td class="num sep">21<small>(6.0%)</small></td><td class="num ">60<small>(17.2%)</small></td><td class="num ">47<small>(13.5%)</small></td></tr><tr><th scope="row">August</th><td class="num">409</td><td class="num ">101<small>(24.7%)</small></td><td class="num sep">52<small>(12.7%)</small></td><td class="num ">84<small>(20.5%)</small></td><td class="num ">54<small>(13.2%)</small></td></tr></tbody>
+    <tbody id="tb1"><tr data-k="12"><th scope="row">August 2025</th><td class="num">274</td><td class="num ">3<small>(1.1%)</small></td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">4<small>(1.5%)</small></td><td class="num ">4<small>(1.5%)</small></td></tr><tr data-k="11"><th scope="row">September 2025</th><td class="num">256</td><td class="num ">3<small>(1.2%)</small></td><td class="num sep">1<small>(0.4%)</small></td><td class="num ">2<small>(0.8%)</small></td><td class="num ">2<small>(0.8%)</small></td></tr><tr data-k="10"><th scope="row">October 2025</th><td class="num">276</td><td class="num ">1<small>(0.4%)</small></td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">2<small>(0.7%)</small></td><td class="num ">2<small>(0.7%)</small></td></tr><tr data-k="9"><th scope="row">November 2025</th><td class="num">230</td><td class="num ">5<small>(2.2%)</small></td><td class="num sep">4<small>(1.7%)</small></td><td class="num ">5<small>(2.2%)</small></td><td class="num ">3<small>(1.3%)</small></td></tr><tr data-k="8"><th scope="row">December 2025</th><td class="num">255</td><td class="num ">6<small>(2.4%)</small></td><td class="num sep">2<small>(0.8%)</small></td><td class="num ">4<small>(1.6%)</small></td><td class="num ">3<small>(1.2%)</small></td></tr><tr data-k="7"><th scope="row">January 2026</th><td class="num">253</td><td class="num ">5<small>(2.0%)</small></td><td class="num sep">1<small>(0.4%)</small></td><td class="num ">8<small>(3.2%)</small></td><td class="num ">8<small>(3.2%)</small></td></tr><tr data-k="6"><th scope="row">February 2026</th><td class="num">242</td><td class="num ">10<small>(4.1%)</small></td><td class="num sep">2<small>(0.8%)</small></td><td class="num ">9<small>(3.7%)</small></td><td class="num ">8<small>(3.3%)</small></td></tr><tr data-k="5"><th scope="row">March 2026</th><td class="num">287</td><td class="num ">10<small>(3.5%)</small></td><td class="num sep">3<small>(1.0%)</small></td><td class="num ">13<small>(4.5%)</small></td><td class="num ">11<small>(3.8%)</small></td></tr><tr data-k="4"><th scope="row">April 2026</th><td class="num">237</td><td class="num ">11<small>(4.6%)</small></td><td class="num sep">5<small>(2.1%)</small></td><td class="num ">17<small>(7.2%)</small></td><td class="num ">14<small>(5.9%)</small></td></tr><tr data-k="3"><th scope="row">May 2026</th><td class="num">279</td><td class="num ">14<small>(5.0%)</small></td><td class="num sep">2<small>(0.7%)</small></td><td class="num ">32<small>(11.5%)</small></td><td class="num ">31<small>(11.1%)</small></td></tr><tr data-k="2"><th scope="row">June 2026</th><td class="num">301</td><td class="num ">41<small>(13.6%)</small></td><td class="num sep">6<small>(2.0%)</small></td><td class="num ">49<small>(16.3%)</small></td><td class="num ">47<small>(15.6%)</small></td></tr><tr data-k="1"><th scope="row">July 2026</th><td class="num">350</td><td class="num ">50<small>(14.3%)</small></td><td class="num sep">21<small>(6.0%)</small></td><td class="num ">57<small>(16.3%)</small></td><td class="num ">45<small>(12.9%)</small></td></tr><tr data-k="0"><th scope="row">August 2026</th><td class="num">410</td><td class="num ">96<small>(23.4%)</small></td><td class="num sep">49<small>(12.0%)</small></td><td class="num ">85<small>(20.7%)</small></td><td class="num ">57<small>(13.9%)</small></td></tr></tbody>
   </table></div>
-  <p class="note" style="margin-top:14px"><em>Undisclosed apparent</em> counts the papers with apparent AI writing whose authors do not disclose using AI for the writing (the AI, AI* and AI+Human types). Such a paper may still disclose AI use for something else, such as code, computation or proofreading; it is the writing that goes undisclosed. <em>Papers</em> counts the month&rsquo;s submissions with a readable LaTeX source, and every percentage is of that count; the 16 submissions without one are left out.</p>
+  <p class="note" style="margin-top:14px"><em>Undisclosed apparent</em> counts the papers with apparent AI writing whose authors do not disclose using AI for the writing (the AI, AI* and AI+Human types). Such a paper may still disclose AI use for something else, such as code, computation or proofreading; it is the writing that goes undisclosed. <em>Papers</em> counts the month&rsquo;s submissions with a readable LaTeX source, and every percentage is of that count; the 10 submissions without one are left out.</p>
 </section>
 
 <section>
   <h2>AI writing disclosure types</h2>
   <p class="note">Papers that disclose using AI, sorted by what their authors say the model did to the text. Every month occupies two lines: <span class="k-n">the number of papers</span>, and beneath it <span class="k-a">the mean rubric score of those same papers</span>.</p>
+  <div class="anim msel" role="group" aria-label="Months shown" data-for="tb2"><span class="dim">Show</span><button type="button" data-n="6" aria-pressed="true">last 6 months</button><button type="button" data-n="12" aria-pressed="false">last 12 months</button><button type="button" data-n="0" aria-pressed="false">all 13 months</button></div>
   <div class="tablewrap"><table>
     <thead>
       <tr><th rowspan="2">Month</th><th rowspan="2" class="num">Papers disclosing AI use</th><th colspan="5" class="sep">AI writing disclosure type</th></tr>
       <tr><th class="num sep">AI</th><th class="num">AI*</th><th class="num">AI+Human</th><th class="num">Human</th><th class="num">No Statement</th></tr>
     </thead>
-    <tbody><tr class="grp"><th scope="row">January</th><td class="num">9</td><td class="num sep">1<small>(11.1%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(33.3%)</small></td><td class="num ">2<small>(22.2%)</small></td><td class="num ">3<small>(33.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">1.4</td><td class="num avg sep">7.0</td><td class="num avg ">&mdash;</td><td class="num avg ">0.0</td><td class="num avg ">0.5</td><td class="num avg ">1.7</td></tr><tr class="grp"><th scope="row">February</th><td class="num">14</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(21.4%)</small></td><td class="num ">1<small>(7.1%)</small></td><td class="num ">10<small>(71.4%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">3.7</td><td class="num avg ">2.0</td><td class="num avg ">2.9</td></tr><tr class="grp"><th scope="row">March</th><td class="num">13</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">4<small>(30.8%)</small></td><td class="num ">2<small>(15.4%)</small></td><td class="num ">7<small>(53.8%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.6</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.5</td><td class="num avg ">2.5</td><td class="num avg ">3.4</td></tr><tr class="grp"><th scope="row">April</th><td class="num">13</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">6<small>(46.2%)</small></td><td class="num ">1<small>(7.7%)</small></td><td class="num ">6<small>(46.2%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.5</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">5.3</td><td class="num avg ">4.0</td><td class="num avg ">1.5</td></tr><tr class="grp"><th scope="row">May</th><td class="num">24</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">5<small>(20.8%)</small></td><td class="num ">3<small>(12.5%)</small></td><td class="num ">8<small>(33.3%)</small></td><td class="num ">8<small>(33.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">5.0</td><td class="num avg ">4.3</td><td class="num avg ">3.4</td><td class="num avg ">3.8</td></tr><tr class="grp"><th scope="row">June</th><td class="num">42</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">1<small>(2.4%)</small></td><td class="num ">7<small>(16.7%)</small></td><td class="num ">15<small>(35.7%)</small></td><td class="num ">19<small>(45.2%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">&mdash;</td><td class="num avg ">1.0</td><td class="num avg ">5.3</td><td class="num avg ">2.7</td><td class="num avg ">4.9</td></tr><tr class="grp"><th scope="row">July</th><td class="num">52</td><td class="num sep">1<small>(1.9%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">20<small>(38.5%)</small></td><td class="num ">9<small>(17.3%)</small></td><td class="num ">22<small>(42.3%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">3.5</td><td class="num avg sep">3.0</td><td class="num avg ">&mdash;</td><td class="num avg ">5.2</td><td class="num avg ">3.8</td><td class="num avg ">2.0</td></tr><tr class="grp"><th scope="row">August</th><td class="num">101</td><td class="num sep">2<small>(2.0%)</small></td><td class="num ">5<small>(5.0%)</small></td><td class="num ">45<small>(44.6%)</small></td><td class="num ">10<small>(9.9%)</small></td><td class="num ">39<small>(38.6%)</small></td></tr><tr class="avgrow"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">6.5</td><td class="num avg ">6.2</td><td class="num avg ">5.3</td><td class="num avg ">1.6</td><td class="num avg ">3.0</td></tr></tbody>
+    <tbody id="tb2"><tr class="grp" data-k="12"><th scope="row">August 2025</th><td class="num">3</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(100.0%)</small></td></tr><tr class="avgrow" data-k="12"><th scope="row">mean score</th><td class="num avg ">1.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">1.0</td></tr><tr class="grp" data-k="11"><th scope="row">September 2025</th><td class="num">3</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">1<small>(33.3%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">2<small>(66.7%)</small></td></tr><tr class="avgrow" data-k="11"><th scope="row">mean score</th><td class="num avg ">1.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">0.0</td><td class="num avg ">&mdash;</td><td class="num avg ">1.5</td></tr><tr class="grp" data-k="10"><th scope="row">October 2025</th><td class="num">1</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">1<small>(100.0%)</small></td><td class="num ">0<small>(0.0%)</small></td></tr><tr class="avgrow" data-k="10"><th scope="row">mean score</th><td class="num avg ">1.0</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">1.0</td><td class="num avg ">&mdash;</td></tr><tr class="grp" data-k="9"><th scope="row">November 2025</th><td class="num">5</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">4<small>(80.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">1<small>(20.0%)</small></td></tr><tr class="avgrow" data-k="9"><th scope="row">mean score</th><td class="num avg ">3.8</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.8</td><td class="num avg ">&mdash;</td><td class="num avg ">0.0</td></tr><tr class="grp" data-k="8"><th scope="row">December 2025</th><td class="num">6</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">2<small>(33.3%)</small></td><td class="num ">3<small>(50.0%)</small></td><td class="num ">1<small>(16.7%)</small></td></tr><tr class="avgrow" data-k="8"><th scope="row">mean score</th><td class="num avg ">3.3</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.0</td><td class="num avg ">2.7</td><td class="num avg ">4.0</td></tr><tr class="grp" data-k="7"><th scope="row">January 2026</th><td class="num">5</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">1<small>(20.0%)</small></td><td class="num ">1<small>(20.0%)</small></td><td class="num ">3<small>(60.0%)</small></td></tr><tr class="avgrow" data-k="7"><th scope="row">mean score</th><td class="num avg ">0.4</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">0.0</td><td class="num avg ">0.0</td><td class="num avg ">0.7</td></tr><tr class="grp" data-k="6"><th scope="row">February 2026</th><td class="num">10</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">2<small>(20.0%)</small></td><td class="num ">1<small>(10.0%)</small></td><td class="num ">7<small>(70.0%)</small></td></tr><tr class="avgrow" data-k="6"><th scope="row">mean score</th><td class="num avg ">2.4</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.0</td><td class="num avg ">2.0</td><td class="num avg ">2.0</td></tr><tr class="grp" data-k="5"><th scope="row">March 2026</th><td class="num">10</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">3<small>(30.0%)</small></td><td class="num ">2<small>(20.0%)</small></td><td class="num ">5<small>(50.0%)</small></td></tr><tr class="avgrow" data-k="5"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">5.7</td><td class="num avg ">1.5</td><td class="num avg ">4.2</td></tr><tr class="grp" data-k="4"><th scope="row">April 2026</th><td class="num">11</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">5<small>(45.5%)</small></td><td class="num ">1<small>(9.1%)</small></td><td class="num ">5<small>(45.5%)</small></td></tr><tr class="avgrow" data-k="4"><th scope="row">mean score</th><td class="num avg ">2.9</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">4.2</td><td class="num avg ">4.0</td><td class="num avg ">1.4</td></tr><tr class="grp" data-k="3"><th scope="row">May 2026</th><td class="num">14</td><td class="num sep">0<small>(0.0%)</small></td><td class="num ">0<small>(0.0%)</small></td><td class="num ">2<small>(14.3%)</small></td><td class="num ">7<small>(50.0%)</small></td><td class="num ">5<small>(35.7%)</small></td></tr><tr class="avgrow" data-k="3"><th scope="row">mean score</th><td class="num avg ">3.6</td><td class="num avg sep">&mdash;</td><td class="num avg ">&mdash;</td><td class="num avg ">6.0</td><td class="num avg ">3.6</td><td class="num avg ">2.8</td></tr><tr class="grp" data-k="2"><th scope="row">June 2026</th><td class="num">41</td><td class="num sep">1<small>(2.4%)</small></td><td class="num ">1<small>(2.4%)</small></td><td class="num ">4<small>(9.8%)</small></td><td class="num ">15<small>(36.6%)</small></td><td class="num ">20<small>(48.8%)</small></td></tr><tr class="avgrow" data-k="2"><th scope="row">mean score</th><td class="num avg ">3.8</td><td class="num avg sep">3.0</td><td class="num avg ">1.0</td><td class="num avg ">4.0</td><td class="num avg ">2.7</td><td class="num avg ">4.7</td></tr><tr class="grp" data-k="1"><th scope="row">July 2026</th><td class="num">50</td><td class="num sep">1<small>(2.0%)</small></td><td class="num ">1<small>(2.0%)</small></td><td class="num ">19<small>(38.0%)</small></td><td class="num ">9<small>(18.0%)</small></td><td class="num ">20<small>(40.0%)</small></td></tr><tr class="avgrow" data-k="1"><th scope="row">mean score</th><td class="num avg ">3.6</td><td class="num avg sep">3.0</td><td class="num avg ">2.0</td><td class="num avg ">5.3</td><td class="num avg ">3.8</td><td class="num avg ">2.1</td></tr><tr class="grp" data-k="0"><th scope="row">August 2026</th><td class="num">96</td><td class="num sep">2<small>(2.1%)</small></td><td class="num ">4<small>(4.2%)</small></td><td class="num ">43<small>(44.8%)</small></td><td class="num ">10<small>(10.4%)</small></td><td class="num ">37<small>(38.5%)</small></td></tr><tr class="avgrow" data-k="0"><th scope="row">mean score</th><td class="num avg ">4.1</td><td class="num avg sep">5.5</td><td class="num avg ">6.8</td><td class="num avg ">5.2</td><td class="num avg ">1.6</td><td class="num avg ">3.2</td></tr></tbody>
   </table></div>
   <dl class="cats">
     <div><dt>AI</dt><dd>a model generated the text and no editing of it is claimed</dd></div>
@@ -297,9 +326,9 @@ The five types partition the papers that disclose AI use, so each row adds up to
 
 <section id="method">
   <h2>Method</h2>
-  <p>The corpus is every arXiv preprint with primary category math.NT whose first version was submitted in the month. Nothing is sampled and nothing is left out. Each paper is read from its LaTeX source.</p>
+  <p>The corpus is every arXiv preprint with primary category math.NT whose first version was submitted in the month. Nothing is sampled and nothing is left out. Each paper is read from the LaTeX source of its first version; later versions are not counted.</p>
   <p>Disclosure is counted by searching that source for any mention of AI tools and reading every sentence found. Apparent AI writing is a score built from a fixed set of markers, primarily based on writing style and vocabulary use.  The indicators are a combination of ideas from AI detection literature, my observations, and Claude's experiments.  
-As a control, the same scoring was run on two months of arXiv number theory from well before large language models: 0.3% of those papers passed the threshold (1 of 334). The error in the other direction is much larger: among the papers whose authors say a model generated or helped write the text, only 56% (59 of 106) reach the threshold, and the other 44% are missed. The apparent AI writing counts are therefore likely a significant undercount.</p>
+As a control, the same scoring was run on five months of arXiv number theory from well before large language models: 0.2% of those papers passed the threshold (2 of 870). The error in the other direction is much larger: among the papers whose authors say a model generated or helped write the text, only 54% (52 of 96) reach the threshold, and the other 46% are missed. The apparent AI writing counts are therefore likely a significant undercount.</p>
   <p>I am not publishing the precise scoring method because:</p>
   <ul>
     <li>I do not claim that it is a very good or accurate method, but I believe it is a decent rough approximation of flagging papers whose texts were likely generated in large part by AI</li>
@@ -320,11 +349,11 @@ For instance, a paper written by a person from a model&rsquo;s draft and a light
 </section>
 
 
-<footer class="foot"><p>A study directed by <a href="https://kimballmartin.github.io/">Kimball Martin</a> using Claude. Corpus: every math.NT preprint first submitted January&ndash;August 2026, read from its arXiv source, with December 2025 and two pre-2022 control months measured the same way. Page generated 5 September 2026.</p></footer>
+<footer class="foot"><p>A study directed by <a href="https://kimballmartin.github.io/">Kimball Martin</a> using Claude. Corpus: every math.NT preprint first submitted August 2025&ndash;August 2026, read from the arXiv source of its first version, with five pre-2023 control months measured the same way. Page generated 5 September 2026.</p></footer>
 </div>
 <script>
 (function(){
-  var F = [{"label": "January 2026", "y": [56.7, 224.9, 257.8, 285.9, 292.5, 299.1, 302.4, 302.4, 302.4, 302.4, 302.4, 304.0], "h": [247.3, 79.1, 46.2, 18.1, 11.5, 4.9, 1.6, 1.6, 1.6, 1.6, 1.6, 0.0], "at": "3.2"}, {"label": "February 2026", "y": [53.0, 255.5, 253.8, 285.0, 279.8, 295.3, 297.1, 300.5, 304.0, 300.5, 304.0, 304.0], "h": [251.0, 48.5, 50.2, 19.0, 24.2, 8.7, 6.9, 3.5, 0.0, 3.5, 0.0, 0.0], "at": "5.4"}, {"label": "March 2026", "y": [86.1, 222.7, 245.9, 277.9, 292.4, 301.1, 298.2, 301.1, 298.2, 304.0, 301.1, 304.0], "h": [217.9, 81.3, 58.1, 26.1, 11.6, 2.9, 5.8, 2.9, 5.8, 0.0, 2.9, 0.0], "at": "4.9"}, {"label": "April 2026", "y": [72.6, 230.4, 256.7, 288.2, 286.5, 297.0, 293.5, 304.0, 293.5, 304.0, 302.2, 304.0], "h": [231.4, 73.6, 47.3, 15.8, 17.5, 7.0, 10.5, 0.0, 10.5, 0.0, 1.8, 0.0], "at": "7.2"}, {"label": "May 2026", "y": [109.1, 225.5, 251.1, 276.8, 293.4, 291.9, 296.4, 291.9, 293.4, 299.5, 302.5, 301.0], "h": [194.9, 78.5, 52.9, 27.2, 10.6, 12.1, 7.6, 12.1, 10.6, 4.5, 1.5, 3.0], "at": "12.4"}, {"label": "June 2026", "y": [103.2, 232.0, 266.6, 281.8, 291.5, 277.7, 291.5, 292.9, 297.1, 294.3, 302.6, 301.2], "h": [200.8, 72.0, 37.4, 22.2, 12.5, 26.3, 12.5, 11.1, 6.9, 9.7, 1.4, 2.8], "at": "17.0"}, {"label": "July 2026", "y": [111.2, 240.9, 258.8, 273.1, 292.1, 281.4, 292.1, 290.9, 296.9, 295.7, 299.2, 300.4], "h": [192.8, 63.1, 45.2, 30.9, 11.9, 22.6, 11.9, 13.1, 7.1, 8.3, 4.8, 3.6], "at": "17.2"}, {"label": "August 2026", "y": [161.8, 228.8, 242.0, 276.6, 280.6, 287.8, 283.7, 289.8, 297.9, 288.8, 299.9, 294.9], "h": [142.2, 75.2, 62.0, 27.4, 23.4, 16.2, 20.3, 14.2, 6.1, 15.2, 4.1, 9.1], "at": "20.5"}], n = F.length, at = n - 1, timer = null;
+  var F = [{"label": "August 2025", "y": [71.4, 234.4, 272.5, 293.5, 293.5, 301.4, 302.7, 304.0, 302.7, 304.0, 304.0, 304.0], "h": [232.6, 69.6, 31.5, 10.5, 10.5, 2.6, 1.3, 0.0, 1.3, 0.0, 0.0, 0.0], "at": "1.5"}, {"label": "September 2025", "y": [69.2, 252.0, 259.0, 284.3, 298.4, 302.6, 302.6, 304.0, 304.0, 304.0, 304.0, 304.0], "h": [234.8, 52.0, 45.0, 19.7, 5.6, 1.4, 1.4, 0.0, 0.0, 0.0, 0.0, 0.0], "at": "0.8"}, {"label": "October 2025", "y": [73.1, 237.5, 270.1, 284.4, 297.5, 302.7, 302.7, 304.0, 304.0, 304.0, 304.0, 304.0], "h": [230.9, 66.5, 33.9, 19.6, 6.5, 1.3, 1.3, 0.0, 0.0, 0.0, 0.0, 0.0], "at": "0.7"}, {"label": "November 2025", "y": [64.5, 247.7, 264.9, 291.5, 299.3, 299.3, 302.4, 302.4, 304.0, 304.0, 304.0, 304.0], "h": [239.5, 56.3, 39.1, 12.5, 4.7, 4.7, 1.6, 1.6, 0.0, 0.0, 0.0, 0.0], "at": "2.2"}, {"label": "December 2025", "y": [82.4, 233.4, 265.9, 285.6, 298.4, 301.2, 304.0, 301.2, 304.0, 304.0, 304.0, 304.0], "h": [221.6, 70.6, 38.1, 18.4, 5.6, 2.8, 0.0, 2.8, 0.0, 0.0, 0.0, 0.0], "at": "1.6"}, {"label": "January 2026", "y": [76.3, 235.7, 271.3, 294.0, 294.0, 301.2, 301.2, 302.6, 302.6, 302.6, 302.6, 304.0], "h": [227.7, 68.3, 32.7, 10.0, 10.0, 2.8, 2.8, 1.4, 1.4, 1.4, 1.4, 0.0], "at": "3.2"}, {"label": "February 2026", "y": [88.3, 262.3, 253.4, 287.6, 281.7, 298.0, 301.0, 302.5, 302.5, 302.5, 304.0, 304.0], "h": [215.7, 41.7, 50.6, 16.4, 22.3, 6.0, 3.0, 1.5, 1.5, 1.5, 0.0, 0.0], "at": "3.7"}, {"label": "March 2026", "y": [114.6, 228.7, 253.8, 281.4, 297.7, 301.5, 299.0, 302.7, 297.7, 304.0, 302.7, 304.0], "h": [189.4, 75.3, 50.2, 22.6, 6.3, 2.5, 5.0, 1.3, 6.3, 0.0, 1.3, 0.0], "at": "4.5"}, {"label": "April 2026", "y": [98.9, 241.7, 263.0, 293.4, 288.8, 293.4, 296.4, 301.0, 301.0, 302.5, 304.0, 304.0], "h": [205.1, 62.3, 41.0, 10.6, 15.2, 10.6, 7.6, 3.0, 3.0, 1.5, 0.0, 0.0], "at": "7.2"}, {"label": "May 2026", "y": [133.7, 234.3, 261.4, 278.2, 293.7, 296.3, 295.0, 296.3, 295.0, 300.1, 302.7, 301.4], "h": [170.3, 69.7, 42.6, 25.8, 10.3, 7.7, 9.0, 7.7, 9.0, 3.9, 1.3, 2.6], "at": "11.5"}, {"label": "June 2026", "y": [127.0, 237.0, 277.7, 284.9, 292.0, 278.9, 294.4, 296.8, 296.8, 298.0, 302.8, 301.6], "h": [177.0, 67.0, 26.3, 19.1, 12.0, 25.1, 9.6, 7.2, 7.2, 6.0, 1.2, 2.4], "at": "16.3"}, {"label": "July 2026", "y": [136.3, 251.5, 261.8, 275.2, 293.7, 288.6, 292.7, 292.7, 297.8, 296.8, 299.9, 300.9], "h": [167.7, 52.5, 42.2, 28.8, 10.3, 15.4, 11.3, 11.3, 6.2, 7.2, 4.1, 3.1], "at": "16.3"}, {"label": "August 2026", "y": [181.1, 239.0, 250.4, 278.5, 285.6, 287.3, 286.4, 292.6, 298.7, 293.5, 299.6, 295.2], "h": [122.9, 65.0, 53.6, 25.5, 18.4, 16.7, 17.6, 11.4, 5.3, 10.5, 4.4, 8.8], "at": "20.7"}], n = F.length, at = n - 1, timer = null;
   var bars = [], i;
   for (i = 0; i < 12; i++) bars.push(document.getElementById('hb' + i));
   var lab = document.getElementById('hb-month'), rd = document.getElementById('hb-at');
@@ -353,6 +382,25 @@ For instance, a paper written by a person from a model&rsquo;s draft and a light
   document.getElementById('hb-prev').onclick = function(){ stop(); draw(at > 0 ? at - 1 : n - 1); };
   document.getElementById('hb-next').onclick = function(){ stop(); draw(at < n - 1 ? at + 1 : 0); };
   rng.oninput = function(){ stop(); draw(parseInt(this.value, 10)); };
+})();
+</script>
+<script>
+(function(){
+  // The monthly tables: show the last six months unless the reader asks for
+  // more. Every row carries data-k, its distance from the last month.
+  var sels = document.getElementsByClassName('msel');
+  for (var s = 0; s < sels.length; s++) (function(sel){
+    var body = document.getElementById(sel.getAttribute('data-for'));
+    if (!body) return;
+    var btns = sel.getElementsByTagName('button');
+    function show(n){
+      var tr = body.getElementsByTagName('tr');
+      for (var i = 0; i < tr.length; i++) tr[i].hidden = n > 0 && parseInt(tr[i].getAttribute('data-k'), 10) >= n;
+      for (var j = 0; j < btns.length; j++) btns[j].setAttribute('aria-pressed', parseInt(btns[j].getAttribute('data-n'), 10) === n ? 'true' : 'false');
+    }
+    for (var b = 0; b < btns.length; b++) btns[b].onclick = function(){ show(parseInt(this.getAttribute('data-n'), 10)); };
+    show(6);
+  })(sels[s]);
 })();
 </script>
 </body>
