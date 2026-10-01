@@ -211,7 +211,7 @@ dl.cats.areas dt{flex:0 0 230px;font-family:var(--sans);font-size:13px}
     <noscript><p class="note">This page draws its charts and tables with JavaScript.</p></noscript>
   </div>
   <dl class="tiles">
-    <div class="tile"><dt>Papers examined</dt><dd><span class="big" data-f="tot"></span><small>August 2025&ndash;September 2026</small></dd></div>
+    <div class="tile"><dt>Papers examined</dt><dd><span class="big" data-f="tot"></span><span class="spark" data-k="S" data-count="1"></span><small>August 2025&ndash;September 2026; arXiv papers a month: <span data-f="S1"></span> in <span data-f="lastm"></span>, from <span data-f="S12"></span> <span data-f="ago12"></span></small></dd></div>
     <div class="tile c-s2"><dt>Apparent AI writing</dt><dd><span class="big"><span data-f="at1"></span>%</span><span class="spark" data-k="a"></span><small>in <span data-f="lastm"></span>, from <span data-f="at12"></span>% <span data-f="ago12"></span></small></dd></div>
     <div class="tile c-s4"><dt>Apparent heavy AI writing</dt><dd><span class="big"><span data-f="hv1"></span>%</span><span class="spark" data-k="hv"></span><small>in <span data-f="lastm"></span>, from <span data-f="hv12"></span>% <span data-f="ago12"></span></small></dd></div>
     <div class="tile c-s1"><dt>Disclose AI use</dt><dd><span class="big"><span data-f="use1"></span>%</span><span class="spark" data-k="u"></span><small>in <span data-f="lastm"></span>, from <span data-f="use12"></span>% <span data-f="ago12"></span></small></dd></div>
@@ -548,8 +548,10 @@ For instance, a paper written by a person from a model&rsquo;s draft and a light
     function whole(v){ return v >= 1 ? Math.round(v) + '%' : v > 0 ? 'under 1%' : '0%'; }
     setF('atr', whole(pct(last.a, last.N))); setF('wrr', whole(pct(last.w, last.N)));   // the sentence under the title (owner)
     Array.prototype.forEach.call(document.querySelectorAll('.spark'), function(el){
-      var k = el.getAttribute('data-k'); el.innerHTML = spark(m.map(function(r){ return pct(r[k], r.N); }));
+      var k = el.getAttribute('data-k'), count = el.hasAttribute('data-count');   // a count (papers a month), else a percentage
+      el.innerHTML = spark(m.map(function(r){ return count ? r[k] : pct(r[k], r.N); }));
     });
+    setF('S1', last.S.toLocaleString('en-US')); setF('S12', m12.S.toLocaleString('en-US'));
     document.getElementById('typebar').innerHTML = typeBar(last); setF('tyN', last.u.toLocaleString('en-US'));
     setF('b0first', pct(first.h[0] + first.h[1], first.N).toFixed(0)); setF('b0last', pct(last.h[0] + last.h[1], last.N).toFixed(0));
     setF('topfirst', pct(first.a, first.N).toFixed(0)); setF('toplast', pct(last.a, last.N).toFixed(0));
